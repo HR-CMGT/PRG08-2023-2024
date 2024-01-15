@@ -1,7 +1,7 @@
 # Week 2
 
 - Introductie taalmodellen
-- Werken met OpenAI API
+- Werken met de Azure OpenAI
 - Webproject opzetten
 
 <br><br><br>
@@ -121,3 +121,4 @@ app.listen(3000, () => console.log(`app luistert naar port 3000!`))
 - [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
 - [Node Express Hello World](https://expressjs.com/en/starter/hello-world.html)
 - [JSON teruggeven vanuit Express](https://expressjs.com/en/5x/api.html#res.json)
+- [Voorbeeld fetch met POST](https://jasonwatmore.com/post/2021/09/05/fetch-http-post-request-examples)
