@@ -27,11 +27,13 @@ In deze repository vind je startcode voor opdrachten van het vak PRG08. De prese
 
 Tijdens de cursus werk je aan twee opdrachten die ingaan op de stof uit de les. Je levert deze in via Brightspace. Zie de cursushandleiding.
 
+- [Opdracht 1: werken met taalmodellen](./opdracht1.md)
+- [Opdracht 2: werken met data](./opdracht2.md)
+
 
 <br>
 <br>
 <br>
-
 
 
 ## Links
