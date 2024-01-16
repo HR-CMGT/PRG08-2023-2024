@@ -2,6 +2,12 @@
 
 <br><br><br>
 
+### Live zetten
+
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, of `codesandbox.com`.
+
+<br><br><br>
+
 ## Inspiratie taalopdracht
 
 - Maak een chatbot die vragen kan beantwoorden over een bepaald onderwerp. Zorg dat je assistent echt veel weet over dat onderwerp, bv. door Wikipedia als chat input of embedding te gebruiken.

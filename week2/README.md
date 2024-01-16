@@ -27,14 +27,20 @@ We gaan werken met de Azure variant van de OpenAI API.
 ### .env gebruiken
 
 De nieuwste nodeJS heeft auto import via de command line. 
-```
-node --env-file=.env mijntestje.js
+```sh
+node --env-file=.env mijnapp.js
 console.log(process.env.OPENAI_API_KEY)
 ```
-Met `dotenv` kan je een `.env` file importeren
-```
+Als dat niet werkt kan je `dotenv` installeren om je `.env` file te openen:
+```sh
 npm install dotenv
+```
+```js
+import 'dotenv/config'
 console.log(process.env.OPENAI_API_KEY)
+```
+```sh
+node mijnapp.js
 ```
 > *Langchain heeft *auto import* als je keys exact de goede naam hebben. Als je met [bun](https://bun.sh) werkt heb je geen `dotenv` nodig.*
 
@@ -94,7 +100,7 @@ import express from 'express'
 const app = express()
 app.use(cors())
 
-app.get('/', async(req, res) => {
+app.get('/asksomething', async(req, res) => {
     let chat = await myCoolFunction() // jouw langchain function hier
     res.json(chat)
 })
@@ -109,11 +115,17 @@ app.listen(3000, () => console.log(`app luistert naar port 3000!`))
 ### Frontend in HTML
 
 - In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier bijvoorbeeld een vraag stellen in een invoerveld.
-- In de frontend javascript gebruik je `fetch` met `GET` of `POST` om je server aan te roepen.
+- In de frontend javascript gebruik je `fetch("http://localhost:3000/asksomething")` met `GET` of `POST` om je server aan te roepen.
 - Het resultaat toon je vervolgens weer aan de gebruiker in een chat interface.
 - Als je de UI aan het testen bent is het beter om op je server even de `Fake LLM` aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
 
 <br><br><br>
+
+### Live zetten
+
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, of `codesandbox.com`.
+
+<br><Br><br>
 
 ## Links
 
