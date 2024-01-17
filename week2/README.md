@@ -20,7 +20,8 @@ We gaan werken met de Azure variant van de OpenAI API.
 - Installeer de langchain library via `npm install langchain`
 - Maak een `.env` file aan, plaats hierin de API keys uit de les.
 - Test of je in `node.js` de keys uit je `.env` file kan lezen met `console.log(process.env.YOUR_KEY)`. Zie de code snippets hieronder voor het werken met `.env` files.
-- Als dat werkt kan je testen of je een chat aanroep kan doen met de langchain voorbeeldcode.
+- Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
+- Als alles tot zo ver werkt kan je testen of je een chat aanroep kan doen met de langchain voorbeeldcode.
 
 <br>
 
@@ -42,7 +43,7 @@ console.log(process.env.OPENAI_API_KEY)
 ```sh
 node mijnapp.js
 ```
-> *Langchain heeft *auto import* als je keys exact de goede naam hebben. Als je met [bun](https://bun.sh) werkt heb je geen `dotenv` nodig.*
+> *Langchain heeft *auto import* voor .env variabelen, als je keys exact de goede naam hebben. Als je met [bun](https://bun.sh) werkt heb je geen `dotenv` nodig.*
 
 <br>
 
@@ -96,12 +97,17 @@ In PRG06 heb je geleerd te werken met node express. Bouw naar eigen inzicht een 
 ```js
 import cors from 'cors'
 import express from 'express'
+import bodyParser from 'body-parser'
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/asksomething', async(req, res) => {
-    let chat = await myCoolFunction() // jouw langchain function hier
+    // plaats hier je langchain function. 
+    // gebruik de GET / POST data uit het request.
+    let chat = await myLangchainFunction() 
     res.json(chat)
 })
 
@@ -110,14 +116,14 @@ app.listen(3000, () => console.log(`app luistert naar port 3000!`))
 
 > *Als je [bun](https://bun.sh) gebruikt kan je `bun --watch server.js` gebruiken om automatisch te herstarten als je server code is aangepast. Je kan ook `nodemon` gebruiken.*
  
-<br>
+<br><br><br>
 
 ### Frontend in HTML
 
 - In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier bijvoorbeeld een vraag stellen in een invoerveld.
 - In de frontend javascript gebruik je `fetch("http://localhost:3000/asksomething")` met `GET` of `POST` om je server aan te roepen.
 - Het resultaat toon je vervolgens weer aan de gebruiker in een chat interface.
-- Als je de UI aan het testen bent is het beter om op je server even de `Fake LLM` aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
+- Als je de UI aan het testen bent is het beter om op je server de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
 
 <br><br><br>
 

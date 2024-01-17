@@ -1,4 +1,8 @@
-# Opdracht 1 : taalmodellen
+### Opdracht week 4 : taalmodellen
+
+# Opdracht 1
+
+Je gaat zelf een originele toepassing bedenken en bouwen waarin een taalmodel is geïntegreerd. Lees de exacte opdracht en inlevervoorwaarden in de cursushandleiding.
 
 <br><br><br>
 
