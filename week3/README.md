@@ -115,7 +115,7 @@ const chat = new FakeListChatModel({
 const res1 = await chat.invoke("Tell me a JavasSript joke!")
 console.log(res.content)
 ```
-[Meer opties voor Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
+[Documentatie Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
 
 
 <Br><br><br>
@@ -151,6 +151,7 @@ let weather = await fetch("http://api.openweathermap.org/forecast")
 let temperature = weather.today.temp
 let chatresult = model.invoke(`Complain about the temperature of ${temperature} degrees`)
 ```
+💬 Je kan `text-to-speech` gebruiken om een chat uit te spreken. [De browser heeft dit ingebouwd!](./snippets/speech.md)
 
 <Br><br><br>
 

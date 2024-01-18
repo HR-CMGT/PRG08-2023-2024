@@ -80,6 +80,21 @@ console.log(joke.content)
 
 Om de code geschikt te maken voor de volgende stap kan je de `invoke` call alvast in een `async function` plaatsen.
 
+<br>
+
+### Eigen OpenAI KEY gebruiken
+
+Als je zelf een key hebt voor OpenAI kan je die ook gebruiken. Het aanmaken van het model ziet er dan iets anders uit. Afhankelijk van je abonnement kan je hier `gpt-3.5` of `gpt-4` gebruiken.
+
+```js
+import { ChatOpenAI } from "@langchain/openai"
+
+const model = new ChatOpenAI({
+    modelName: "gpt-3.5-turbo",
+    openAIApiKey: process.env.OPEN_AI_KEY
+})
+```
+
 <br><br><br>
 
 
@@ -113,6 +128,8 @@ app.get('/asksomething', async(req, res) => {
 
 app.listen(3000, () => console.log(`app luistert naar port 3000!`))
 ```
+<br>
+
 #### Werken met nodemon 👺
 
 Je kan `nodemon` gebruiken zodat je express server automatisch herstart als je een wijziging hebt gemaakt. 
@@ -142,24 +159,6 @@ npm run mycoolproject
 
 <br><br><br>
 
-### Fake LLM
-
-Als je de UI aan het testen bent is het beter om in `server.js` de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart:
-
-```js
-import { FakeListChatModel } from "@langchain/core/utils/testing"
-
-const chat = new FakeListChatModel({
-    responses: ["Maybe later.", "Not right now"],
-})
-
-const res1 = await chat.invoke("Tell me a JavasSript joke!")
-console.log(res.content)
-```
-[Meer opties voor Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
-
-<br><br><br>
-
 ### Live zetten
 
 Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`.
@@ -169,7 +168,6 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 ## Links
 
 - [Langchain Azure instellingen](https://js.langchain.com/docs/integrations/chat/azure)
-- [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
 - [Node Express Hello World](https://expressjs.com/en/starter/hello-world.html)
 - [JSON teruggeven vanuit Express](https://expressjs.com/en/5x/api.html#res.json)
 - [Voorbeeld fetch met POST](https://jasonwatmore.com/post/2021/09/05/fetch-http-post-request-examples)

@@ -40,13 +40,10 @@ Tijdens de cursus werk je aan twee opdrachten die ingaan op de stof uit de les. 
 
 Code snippets en links voor werken met AI in Javascript
 
-- [Laat de browser praten met web speech](./snippets/speech.md)
-- [Image upload button](./snippets/uploadimage.md)
+- [Langchain](https://js.langchain.com/docs/get_started/quickstart)
+- [MediaPipe](https://mediapipe-studio.webapps.google.com/home)
+- [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
-- [Normaliseer data om beter te trainen](./snippets/normalise.md)
 - [CSV en JSON data laden en filteren](./snippets/csv.md)
-- [Neural Networks hidden layers in ML5](./snippets/layers.md)
-- [Scatterplot tekenen met een CSV bestand](./snippets/scatterplot.md)
-- [Image recognition trainen op je eigen afbeeldingen](https://github.com/HR-CMGT/Machine-Learning-Readinglist/tree/master/extractfeatures)
-- [Machine Learning in React Native](./snippets/reactnative/)
-- [Javascript Machine Learning Reading List](https://github.com/HR-CMGT/Javascript-Machine-Learning) 
+- [Neural Networks hidden layers](./snippets/layers.md)
+- [React Native](./snippets/reactnative/)
