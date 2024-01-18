@@ -26,15 +26,21 @@ Je kan een `<canvas>` element gebruiken om de poses over het webcam beeld heen t
 
 Bouw een html pagina met webcam pose detection van [MediaPipe](https://developers.google.com/mediapipe/solutions/examples). Kies hand, body of face detection. Gebruik de documentatie om de webcam te lezen en de poses in een canvas te tekenen.
 
-- [✌️ Demo Hand Pose](https://mediapipe-studio.webapps.google.com/demo/hand_landmarker) en [Code Examples](https://developers.google.com/mediapipe/solutions/vision/hand_landmarker#get_started)
-- [🕺 Demo Body Pose](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) en [Code Examples](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started)
-- [😱 Demo Face Pose](https://mediapipe-studio.webapps.google.com/demo/face_landmarker) en [Code Examples](https://developers.google.com/mediapipe/solutions/vision/face_landmarker#get_started)
+|Pose|Demo|Docs|Codepen|
+|---|---|---|---|
+| ✌️ Hand | [demo]((https://mediapipe-studio.webapps.google.com/demo/hand_landmarker)) | [docs]((https://developers.google.com/mediapipe/solutions/vision/hand_landmarker#get_started)) | [codepen](https://codepen.io/mediapipe-preview/pen/gOKBGPN) |
+| 🕺 Body | [demo](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/abRLMxN) |
+| 😱 Face | [demo](https://mediapipe-studio.webapps.google.com/demo/face_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/face_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/OJBVQJm) |
+
+<br>
 
 ## Stap 2
 
 Omdat je de poses in een canvas tekent, heb je toegang tot de `x,y` pose coördinaten. Toon deze coördinaten in de browser console of in een html veld. 
 
 Maak een button die de coördinaten alleen toont `on click`, omdat de pagina traag kan worden als je 60 keer per seconde een grote hoeveelheid data logt.
+
+<br>
 
 ## Stap 3
 
@@ -46,6 +52,8 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de `x,y` coördinaten
 - Squid game: je moet naar de laptop toe lopen zonder dat de evil robot je ziet.
 
 > *Tip: Is er een `z` coördinaat beschikbaar? En kan je aan de afstand tussen beide ogen ook zien hoe ver iemand van de webcam verwijderd is?*
+
+<br>
 
 <img src="../images/pose-sun.png" width="400">
 
