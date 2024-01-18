@@ -1,94 +1,93 @@
 # Week 2
 
-- Introductie taalmodellen
-- Werken met de Azure OpenAI
-- Webproject opzetten
+In deze oefening gaan we het basis webproject opzetten dat je nodig hebt voor beide inleveropdrachten. 
+
+Voor inleveropdracht 1 gaan we de Azure OpenAI API aanroepen met de Langchain library.
 
 <br><br><br>
 
-## Taalmodellen
+## Het webproject opzetten
 
-Zie de presentatie
-
-<br><br><br>
-
-## Werken met de OpenAI API
-
-We gaan werken met de Azure variant van de OpenAI API.
-
-- Maak een map genaamd `server`
-- Installeer de langchain library via `npm install langchain`
-- Maak een `.env` file aan, plaats hierin de API keys uit de les.
-- Test of je in `node.js` de keys uit je `.env` file kan lezen met `console.log(process.env.YOUR_KEY)`. Zie de code snippets hieronder voor het werken met `.env` files.
-- Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
-- Als alles tot zo ver werkt kan je testen of je een chat aanroep kan doen met de langchain voorbeeldcode.
-
-<br>
-
-### .env gebruiken
-
-De nieuwste nodeJS heeft auto import via de command line. 
-```sh
-node --env-file=.env mijnapp.js
-console.log(process.env.OPENAI_API_KEY)
-```
-Als dat niet werkt kan je `dotenv` installeren om je `.env` file te openen:
-```sh
-npm install dotenv
-```
-```js
-import 'dotenv/config'
-console.log(process.env.OPENAI_API_KEY)
-```
-```sh
-node mijnapp.js
-```
-> *Langchain heeft *auto import* voor .env variabelen, als je keys exact de goede naam hebben. Als je met [bun](https://bun.sh) werkt heb je geen `dotenv` nodig.*
-
-<br>
-
-### Langchain Chat aanroep
-
-Test of je een chat kan starten met OpenAI via Langchain.
-
-```js
-import { ChatOpenAI } from "@langchain/openai"
-
-const model = new ChatOpenAI({
-    azureOpenAIApiKey: KEY, 
-    azureOpenAIApiVersion: VERSION, 
-    azureOpenAIApiInstanceName: INSTANCE, 
-    azureOpenAIApiDeploymentName: MODEL, 
-})
-let messages = [["human", "How is the solar system composed?"]]
-const result = await model.invoke(messages)
-console.log(result)
-```
-<br><br><br>
-
-## Webproject opzetten
-
-Als je de aanroep van langchain en het werken met `.env` files werkend hebt, kan je de werkomgeving voor de inleveropdracht gaan opzetten.
-
-- Plaats een client map naast de server map.
-- In de client map plaats je je HTML+CSS+JS frontend.
+- Maak een nieuw project aan met de volgende structuur:
 
 ```
 SERVER
 ├── .env
+├── .gitignore
 ├── server.js
 CLIENT
 ├── index.html
 ├── script.js
 └── style.css
 ```
-<br>
 
-### Node express
+### Client
+
+Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaats je `console.log("hello world")`.
+
+### Server
+
+- Installeer [NodeJS 20.11 LTS](https://nodejs.org/en). 
+
+#### Werken met de `.env` file
+
+- Maak een `.env` file aan, plaats hierin de API keys uit de les.
+- Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
+
+> *🚨 Deel de API keys niet met anderen. Plaats de API keys niet online.*
+
+#### API keys lezen
+
+Met *Node 20.11 LTS* kan je de `.env` file uitlezen als je deze meegeeft in je aanroep.
+
+```sh
+node --env-file=.env server.js
+```
+Als alternatief kan je `dotenv` importeren in `server.js`:
+```sh
+npm install dotenv
+```
+Test of het inlezen van je `.env` is gelukt:
+```js
+import 'dotenv/config'
+console.log(process.env.AZURE_OPENAI_API_KEY)
+```
+
+
+<br><br><br>
+
+## Langchain
+
+[Langchain](https://js.langchain.com/docs/get_started/introduction) is de API die we in `server.js` gaan gebruiken om te werken met Azure OpenAI (ChatGPT). 
+
+```sh
+npm install langchain
+```
+Om de OpenAI API's te kunnen aanroepen heb je de API keys uit je `.env` file nodig. Vervolgens kan je een vraag stellen aan het chat model. Test of dit werkt! 
+```js
+import { ChatOpenAI } from "@langchain/openai"
+
+const model = new ChatOpenAI({
+    azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY, 
+    azureOpenAIApiVersion: process.env.OPENAI_API_VERSION, 
+    azureOpenAIApiInstanceName: process.env.INSTANCE_NAME, 
+    azureOpenAIApiDeploymentName: process.env.MODEL_CHAT, 
+})
+
+const joke = await model.invoke("Tell me a Javascript joke!")
+console.log(joke.content)
+```
+
+Om de code geschikt te maken voor de volgende stap kan je de `invoke` call alvast in een `async function` plaatsen.
+
+<br><br><br>
+
+
+## Express
 
 We gaan de langchain code geschikt maken om vanuit een web client op te vragen.
 
-In PRG06 heb je geleerd te werken met node express. Bouw naar eigen inzicht een node express server waarmee je jouw langchain functie kan aanroepen.
+In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de OpenAI code vanuit je frontend te kunnen aanroepen.
 
 - Maak een express aanroep die een `request` via `GET` of `POST` kan ontvangen.
 - Roep vervolgens je langchain chat functie aan.
@@ -105,31 +104,64 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/asksomething', async(req, res) => {
-    // plaats hier je langchain function. 
-    // gebruik de GET / POST data uit het request.
+    // roep hier je langchain function aan 
+    // gebruik de GET / POST data uit het request als prompt
+    // geef het chat result terug als JSON
     let chat = await myLangchainFunction() 
     res.json(chat)
 })
 
 app.listen(3000, () => console.log(`app luistert naar port 3000!`))
 ```
+#### Werken met nodemon 👺
 
-> *Als je [bun](https://bun.sh) gebruikt kan je `bun --watch server.js` gebruiken om automatisch te herstarten als je server code is aangepast. Je kan ook `nodemon` gebruiken.*
+Je kan `nodemon` gebruiken zodat je express server automatisch herstart als je een wijziging hebt gemaakt. 
+```sh
+npm install nodemon
+```
+Het nodemon commando kan je het beste in je `scripts` plaatsen in je `package.json`:
+
+```json
+"scripts": {
+    "mycoolproject" : "nodemon server.js"
+},
+```
+```sh
+npm run mycoolproject
+```
+
  
 <br><br><br>
 
-### Frontend in HTML
+### HTML Frontend
 
-- In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier bijvoorbeeld een vraag stellen in een invoerveld.
-- In de frontend javascript gebruik je `fetch("http://localhost:3000/asksomething")` met `GET` of `POST` om je server aan te roepen.
-- Het resultaat toon je vervolgens weer aan de gebruiker in een chat interface.
-- Als je de UI aan het testen bent is het beter om op je server de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
+- In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier een vraag stellen in een invoerveld.
+- In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
+- Het resultaat toon je vervolgens weer aan de gebruiker in de user interface.
+
+<br><br><br>
+
+### Fake LLM
+
+Als je de UI aan het testen bent is het beter om in `server.js` de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart:
+
+```js
+import { FakeListChatModel } from "@langchain/core/utils/testing"
+
+const chat = new FakeListChatModel({
+    responses: ["Maybe later.", "Not right now"],
+})
+
+const res1 = await chat.invoke("Tell me a JavasSript joke!")
+console.log(res.content)
+```
+[Meer opties voor Fake LLM](https://js.langchain.com/docs/integrations/chat/fake)
 
 <br><br><br>
 
 ### Live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, of `codesandbox.com`.
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`.
 
 <br><Br><br>
 

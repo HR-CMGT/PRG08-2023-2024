@@ -1,134 +1,118 @@
 # Week 6
 
-## Algoritmes: Decision Tree
+- Herhaling data>training>model. 
+- Werken met KNN in javascript
+- Data verzamelen uit MediaPipe en opslaan als JSON.
+- Data uit MediaPipe voorspellen met KNN
 
-Dit algoritme bouwt een hiërarchische boomstructuur om te bepalen wat het belangrijkst is in een dataset. 
+<br><br><br>
 
-- **Classification** : we geven data een label, bv, "survived" of "died"
-- **Supervised Learning** : het algoritme wordt getrained met bestaande data die al labels heeft.
+## Introductie K-Nearest-Neighbour
 
-In deze Decision Tree zien we de kans dat een passagier zijn vakantie op de Titanic overleeft. Het algoritme genereert deze tree op basis van training data.
+Dit algoritme gebruikt afstanden tussen punten om te bepalen waar een punt bij hoort. Je leert de termen *Classification* en *Supervised Learning*.
 
-<br>
+In dit voorbeeld tekenen we de *weight* en *ear length* van katten en honden in een 2D grafiek als X en Y coördinaten:
 
-![knn](../images/titanic.png)
+![knn](../images/knn_catdog_icons.png)
 
-<br>
-<br>
-
-# Opdracht
-
-In deze voorbeeldcode werken we met het `decisiontree` algoritme en een `tree visualiser` waarmee de tree getekend kan worden. We gebruiken de `papa parse` library om CSV bestanden in te laden.
+Als we een nieuw punt tekenen in de grafiek, kunnen we via de **afstand tot de andere punten** bepalen of het nieuwe punt een kat of een hond is! Dit is wat het KNN algoritme doet. Zie ook dit [interactief voorbeeld op Codepen](https://codepen.io/Qbrid/pen/OwpjLX). 
 
 <br>
 <br>
+<Br>
 
-## Data laden
+## Werken met KNN in Javascript
 
-Gebruik Papa Parse om een van de datasets te laden. 
+Installeer het KNN algoritme. 
+
+```sh
+npm install knear
+```
+Maak het algoritme aan in app.js
 
 ```javascript
-function loadData(){
-    Papa.parse("data/simpsons.csv", {
-        download:true,
-        header:true, 
-        dynamicTyping:true,
-        complete: results => console.log(results.data)
-    })
-}
+import knn from 'knear'
+const k = 3
+const machine = new knn.kNear(k)
 ```
 
-<br>
-<br>
-<br>
+- Als je deze test in de `node` backend doet kan je het makkelijk testen via `node app.js`
+- Als je deze test in de frontend/browser doet heb je een module bundler nodig zoals [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) of [Parcel](https://parceljs.org/getting-started/webapp/)
 
-## Training
+<br><br><br>
 
-In de CSV moet je controleren wat de **naam is van het label**. In het geval van de Simpsons data (waarbij we gaan kijken of een Simpsons karakter een man of een vrouw is), is het label **"Gender"**. 
+## Classifying
 
-Het algoritme geeft ook de mogelijkheid om kolommen te negeren. In het geval van de simpsons data is de `Name` kolom niet behulpzaam bij de voorspelling.
+Je gaat het KNN algoritme trainen met gelabelde data. In dit voorbeeld zie je twee datapunten. Vul hier alle data uit onderstaande tabel in! 
 
 ```javascript
-let ignoredColumns = ['Name']
-let label = "Gender"
-
-function trainModel(data) {
-    let decisionTree = new DecisionTree({
-        ignoredAttributes: ignoredColumns,
-        trainingSet: data,
-        categoryAttr: label
-    })
-}
+machine.learn([6, 5, 9], 'cat')
+machine.learn([12, 20, 19], 'dog')
 ```
 
-<br>
-<br>
-<br>
+| Body length | Height | Weight | Ear length |  Label |
+| ----------- | ------ | ------ | ---------- |  ----- |
+| 18 | 9.2 | 8.1 | 2 | 'cat' |
+| 20.1 | 17 | 15.5 | 5 | 'dog' |
+| 17 | 9.1 | 9 | 1.95 | 'cat' |
+| 23.5 | 20 | 20 | 6.2 | 'dog' |
+| 16 | 9.0 | 10 | 2.1 | 'cat' |
+| 21 | 16.7 | 16 | 3.3 | 'dog' |
 
-## Boomstructuur visualiseren 🌳 
-
-Je kan visualiseren hoe de tree er uit ziet! Dat doe je door de tree structuur op te vragen als JSON. Die JSON kan je doorgeven aan de [visualiser](https://vega.github.io/vega/examples/tree-layout/). 
-
-Je geeft ook een DOM element mee, en de breedte en hoogte. 
-
-```javascript
-let json = decisionTree.toJSON()
-let visual = new VegaTree('#view', 2300, 1000, json)
-```
-
-De visualisatie is niet per sé nodig om een voorspelling te maken. Het helpt wel om te zien hoe het algoritme tot een keuze komt.
-
-<br>
-<br>
-<br>
-
-## Prediction
-
-Nu kunnen we nieuwe data classificeren! Bedenk zelf fictieve eigenschappen en kijk wat het algoritme erover zegt:
+Als je met voldoende data getraind hebt, kan je een `classification` doen.
 
 ```javascript
-let person = {Name:"Bob", Hairlength:0.1, Weight:77, Age:33}
-let prediction = decisionTree.predict(person)
-console.log(`${person.Name}'s gender is ${prediction}`)
+let prediction = machine.classify([12,18,17])
+console.log(`I think this is a ${prediction}`)
 ```
 <br>
 <br>
 <br>
 
-## Grotere datasets
+## Werken met MediaPipe data
 
-We gaan dit nu uitproberen met *titanic data* : voorspel of iemand zijn vakantie op de titanic gaat overleven
+Het volgende doel is om een handpose, bodypose of facepose uit MediaPipe te classificeren *(bijvoorbeeld het herkennen van "rock" "paper" "scissors" poses)*. Om dit te kunnen doen ga je de volgende stappen zelfstandig doorlopen:
 
-Let hierbij op de **naam van het label** in de CSV file, en of er kolommen zijn die je wil negeren. Kijk ook naar de betekenis van de labels. Bijvoorbeeld: bij de paddestoelen betekent "P" poisonous en "E" edible.
+### Pose data verzamelen
 
-```javascript
-// mushroom data
-let ignoredColumns = []
-let label = "class"
+Verzamel handpose, bodypose of facepose data uit mediapipe.
 
-let decisionTree = new DecisionTree({
-    ignoredAttributes: ignoredColumns,
-    trainingSet: data,
-    categoryAttr: label     
-})
+Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor een pose die je wil leren in de console of in een html veld. Kopieer deze coördinaten en voeg er een label aan toe. 
+
+> *🚨 Zorg dat de data uit één enkele array van getallen bestaat. De mediapipe posedata bestaat vaak uit meerdere nested arrays en objecten. Dit moet je vereenvoudigen.*
+
+Let op dat je voor elke pose die je wil leren tientallen voorbeelden nodig hebt. De data sla je op in een javascript array of in een JSON file. Dit zou er als volgt uit kunnen zien:
+
+```js
+[
+    {pose:[3,34,6,3], label:"rock"}
+]
 ```
+### Pose data gebruiken
+
+Nu kan je de posedata aan het KNN algoritme leren op dezelfde manier als bij het *cats and dogs* voorbeeld hierboven.
+
+### Nieuwe poses herkennen
+
+Maak een nieuw project waarin ook weer de MediaPipe pose detection met de webcam draait. Echter, nu ga je de poses proberen te herkennen met je getrainde model!
+
+### Reminder
+
+Bij het werken met AI en Machine learning heb je vaak twee projecten tegelijk open staan:
+
+- Het project waarin je een model aan het trainen bent met gelabelde data.
+- Het project waarin je test of je model goed werkt met nieuwe input.
+
 
 
 <br>
 <br>
 <br>
-<br>
 
-# Inleveropdracht week 6
+## Links
 
-Bij de inleveropdracht van week 6 ga je een nieuwe dataset gebruiken, en je gaat testen hoe accuraat je voorspellingen zijn. [Ga naar de inleveropdracht](./inleveropdracht.md).
-
-<br>
-<br>
-
-## Externe links
-
-- [Decision Tree Javascript](https://github.com/lagodiuk/decision-tree-js)
-- [Vega tree hierarchy viewer](https://vega.github.io/vega/examples/tree-layout/)
-- [Towards Data Science : Decision Tree explanation](https://towardsdatascience.com/decision-trees-in-machine-learning-641b9c4e8052/)
-- [Een getal voorspellen met een Regression Tree](https://winkjs.org/wink-regression-tree/)
+- [kNear](https://github.com/NathanEpstein/KNear)
+- [KNN Codepen Demo](https://codepen.io/Qbrid/pen/OwpjLX) en [uitleg](https://burakkanber.com/blog/machine-learning-in-js-k-nearest-neighbor-part-1/)
+- [MediaPipe Examples](https://developers.google.com/mediapipe/solutions/examples)
+- [MediaPipe Javascript Documentation](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision)
+- [MediaPipe Handpose](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision.handlandmarker#handlandmarker_class)

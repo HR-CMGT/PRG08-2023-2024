@@ -10,7 +10,7 @@ In deze repository vind je startcode voor opdrachten van het vak PRG08. De prese
 |------|---------|----------|
 | 1 | International Week Gastcollege | Introductie AI | 
 | 2 | [Kennismaking Taalmodellen](./week2) | Werkomgeving opzetten |
-| 3 | [Taalmodellen advanced](./week3) | Chat app bouwen | 
+| 3 | [Taalmodellen continued](./week3) | Chat app bouwen | 
 | 4 | [Documenten lezen met een taalmodel](./week4) | Document assistent bouwen |
 |   | DEADLINE OPDRACHT 1 |
 | 5 | [Van generative AI naar pattern recognition](./week5) | Pose detection game bouwen | 
