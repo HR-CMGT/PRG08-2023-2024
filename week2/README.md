@@ -137,6 +137,7 @@ npm run mycoolproject
 
 - In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier een vraag stellen in een invoerveld.
 - In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
+- ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen.
 - Het resultaat toon je vervolgens weer aan de gebruiker in de user interface.
 
 <br><br><br>
