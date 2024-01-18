@@ -45,5 +45,4 @@ Code snippets en links voor werken met AI in Javascript
 - [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
 - [CSV en JSON data laden en filteren](./snippets/csv.md)
-- [Neural Networks hidden layers](./snippets/layers.md)
 - [React Native](./snippets/reactnative/)
