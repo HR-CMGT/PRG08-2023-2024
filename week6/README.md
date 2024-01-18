@@ -77,17 +77,19 @@ Het volgende doel is om een handpose, bodypose of facepose uit MediaPipe te clas
 
 Verzamel handpose, bodypose of facepose data uit mediapipe.
 
-Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor een pose die je wil leren in de console of in een html veld. Kopieer deze coördinaten en voeg er een label aan toe. 
+Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor de pose in de console of in een html veld. Kopieer de coördinaten van een pose die je wil kunnen herkennen. Voeg er een label aan toe.
 
 > *🚨 Zorg dat de data uit één enkele array van getallen bestaat. De mediapipe posedata bestaat vaak uit meerdere nested arrays en objecten. Dit moet je vereenvoudigen.*
 
-Let op dat je voor elke pose die je wil leren tientallen voorbeelden nodig hebt. De data sla je op in een javascript array of in een JSON file. Dit zou er als volgt uit kunnen zien:
+De data sla je op in een javascript array of in een JSON file. Hieronder een voorbeeld met één pose:
 
 ```js
 [
-    {pose:[3,34,6,3], label:"rock"}
+    {pose:[3,34,6,3,...], label:"rock"}
 ]
 ```
+*Let op dat je voor elke pose die je wil leren tientallen voorbeelden nodig hebt.*
+
 ### Pose data gebruiken
 
 Nu kan je de posedata aan het KNN algoritme leren op dezelfde manier als bij het *cats and dogs* voorbeeld hierboven.
