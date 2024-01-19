@@ -3,6 +3,7 @@
 - Accuracy berekenen
 - Accuracy verbeteren
 - Troubleshooting
+- Next steps
 
 <br><br><br>
 
@@ -96,8 +97,27 @@ Als je merkt dat de accuracy laag blijft, dan heeft dit waarschijnlijk met de kw
 <br>
 <br>
 
+# Next steps
+
+We hebben tot nu toe ons algoritme (`K-Nearest-Neighbour` en `Neural Network`) getraind met posedata uit de webcam. De data bestaat uit een array van getallen, zoals `[4,3,5,2,1]`, vergezeld van een label, zoals `rock`. Voor het algoritme maakt het niets uit dat dit *poses* zijn, want elk soort data kan je weergeven als een array met een label. Hieronder een aantal voorbeelden.
+
+| Subject | Data | Label |
+| ------- | ---- | ----- |
+| Animals |    `[fangs, eggs, legs]` | `mammal` |
+| Mushrooms |  `[color, size, weight]` |`poisonous` |
+| Titanic passenger | `[Female, age, class]` | `survived` |
+
+#### Oefening
+
+Zoek een [dataset voor classification](https://www.kaggle.com/datasets?tags=13302-Classification), en maak hier een model en voorspelling mee.
+
+<br>
+<br>
+<br>
+
 ## Documentatie
 
 - [Prepareren van data met map en filter](https://github.com/HR-CMGT/PRG08-2020-2021/blob/main/snippets/csv.md).
 - [ML5 Neural Networks in Javascript](https://learn.ml5js.org/#/reference/neural-network)
 - [Werken met hidden layers in ML5](./snippets/layers.md)
+- [Datasets voor classification](https://www.kaggle.com/datasets?tags=13302-Classification)
