@@ -1,5 +1,12 @@
 # Week 7
 
+- Werken met Neural Networks in Javascript
+- Data, trainen en model opslaan
+- Voorspellingen doen
+- Troubleshooting
+
+<br><br><br>
+
 ## Neural Networks
 
 ![nn](../images/nn.png)
@@ -145,16 +152,46 @@ Nadat het model is geladen *(let op de callback functie)*, kan je live posedata 
 <br>
 <br>
 
-# Volgorde in je code
+# Troubleshooting
 
-De voorbeeldcode uit dit document moet je in de goede volgorde uitvoeren. Onderstaande acties kosten tijd *(de acties zijn asynchroon)*, wat betekent dat je moet wachten tot het klaar is, voordat je verder kan.
+### Workflow
 
-- laden van een JSON file met `fetch`
-- trainen van een neural network
-- doen van een voorspelling
-- inladen van een model
+Bij het werken met Neural Networks heb je vaak meerdere projecten tegelijk open staan:
 
-We gebruiken `callback` functies en `async await` om te wachten totdat een voorgaande functie klaar is. We maken `nn` een *globale variabele*, zodat we deze in alle functies kunnen gebruiken.
+- Het project waarin je data verzamelt uit de webcam en er een label aan geeft. 
+- Het project waarin je een model aan het trainen bent met de gelabelde data. Hier heb je de webcam input niet nodig.
+- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input.
+- In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
+
+### Asynchrone functies
+
+Een ML5 neural network werkt met *callbacks* en *asynchrone functies*. Dat betekent dat je moet *wachten* totdat een bepaalde taak is afgrond, *voordat* je de volgende taak kan uitvoeren! Bijvoorbeeld:
+
+- Laden van een JSON file met `fetch`
+- Trainen van een ML5 Neural Network
+- Inladen van een model
+- Doen van een voorspelling
+
+> *🚨Een veel voorkomende fout is om te proberen een voorspelling te doen terwijl het trainen nog niet klaar is, of als het model nog niet is ingeladen.*
+
+### Trainen
+
+Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
+
+- De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet voor elk datapunt exact hetzelfde zijn. Als één pose uit 100 punten bestaat, dan moeten alle poses uit 100 punten bestaan.
+- De labels kloppen niet of je bent labels vergeten.
+- Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
+- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme. In dit voorbeeld gaat het fout omdat alle `fingers` van een handpose zijn opgeslagen in objecten, terwijl het neural network één array met getallen verwacht:
+
+```js
+// data uit webcam pose
+const data = [
+    {pose:[{indexfinger:[4,5,2,2], thumb:[2,4,5,3], ...}], label:"rock"}
+    ...
+]
+// data toevoegen aan neural network gaat fout
+nn.addData(data[0].pose, data[0].label)
+```
 
 <br>
 <br>

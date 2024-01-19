@@ -2,6 +2,7 @@
 
 - Accuracy berekenen
 - Accuracy verbeteren
+- Troubleshooting
 
 <br><br><br>
 
@@ -25,7 +26,7 @@ const train = data.slice(0, Math.floor(data.length * 0.8))
 const test = data.slice(Math.floor(data.length * 0.8) + 1)
 ```
 
-> *🚨 Het is belangrijk dat je voldoende data hebt voor elke pose. Let ook op dat zowel je traindata als je testdata voldoende voorbeelden van elke pose bevat.*
+> *🚨 Let op dat zowel je traindata als je testdata voldoende voorbeelden van elke pose bevat.*
 
 ### Accuracy uitrekenen
 
@@ -43,7 +44,7 @@ Maak een variabele aan waarin je bijhoudt hoe vaak de voorspelling overeenkomt m
 
 ## Accuracy verbeteren
 
-Een algoritme heeft vaak instellingen waarmee je kan experimenteren *(zgn. hyperparameters)*. Kijk of jouw voorspellingen beter worden nadat je deze instellingen hebt aangepast. 
+Een algoritme heeft vaak instellingen waarmee je kan experimenteren *(zgn. hyperparameters)*. In deze les ga je kijken of jouw voorspellingen beter worden nadat je deze instellingen hebt aangepast. 
 
 ### K-Nearest-Neighbour
 
@@ -81,7 +82,19 @@ De vorm van deze `hidden layers` bepaalt hoe complex de patronen in de data kunn
 <br>
 <br>
 
+# Troubleshooting
 
+Als je merkt dat de accuracy laag blijft, dan heeft dit waarschijnlijk met de kwaliteit van je data te maken:
+
+- Er zijn te weinig voorbeelden van elke pose in de train én de test set.
+- Je testset bevat andere poses dan je train set.
+- De posedata is van lage kwaliteit doordat de poses niet duidelijk zijn, te ver weg van de webcam, of er is te weinig variatie in de poses.
+- Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
+- De dataset bevat irrelevante data. In het geval van posedata zou je kunnen kijken of de `z` waarde van een pose echt nodig is om een pose te herkennen.
+
+<br>
+<br>
+<br>
 
 ## Documentatie
 
