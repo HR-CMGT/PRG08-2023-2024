@@ -170,12 +170,6 @@ Kijk zelf of dit in jouw project van toepassing kan zijn. Bijvoorbeeld:
 
 Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms) kan je naast OpenAI ook connectie maken met andere [LLM's](https://js.langchain.com/docs/integrations/llms/) en [ChatLLM's](https://js.langchain.com/docs/integrations/chat/).
 
-Voor de meeste van deze API's en LLM's heb je een account en een API key nodig van de desbetreffende provider. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken, en vervolgens dit taalmodel gebruiken in Langchain.
+Voor de meeste van deze API's heb je een API key nodig van de desbetreffende provider. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken, en vervolgens dit taalmodel gebruiken in Langchain.
 
-Populaire LLM's zijn *LLama API, Mistral, Anthropic Claude*. 
-
-### Lokale LLM
-
-Voor Mac en Linux is *OLLama* interessant. Hiermee kan je een open source LLM downloaden naar je eigen computer. Je kan dit model met langchain aanspreken, zie [langchain Ollama](https://js.langchain.com/docs/use_cases/question_answering/local_retrieval_qa). 
-
-De reden om een lokaal LLM te gebruiken kan zijn dat je geen copyright-gevoelige documenten en chats wil uploaden naar OpenAI of Google.
+Populaire LLM API's zijn *LLama API, Mistral API, Anthropic Claude*.
