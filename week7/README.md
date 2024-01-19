@@ -22,7 +22,7 @@ We gaan een Neural Network trainen met de `mediapipe posedata` uit les 5 en 6. H
 Net zoals in week 6 werk je met twee projecten:
 
 - Project 1: laden posedata en trainen van het model
-- Project 2: inladen model en daarmee webcam posedata voorspellen
+- Project 2: inladen model en daarmee live webcam poses voorspellen
 
 <br>
 
@@ -45,7 +45,12 @@ data.sort(() => (Math.random() - 0.5))
 
 ### Neural network
 
-We maken een [ML5](https://learn.ml5js.org/#/reference/neural-network) neural network aan voor classification. 
+We voegen de [ML5](https://learn.ml5js.org/#/reference/neural-network) library toe aan ons project met een `<script>` tag.
+
+```html
+<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+```
+We maken een neural network aan voor classification. 
 
 ```js
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
@@ -88,19 +93,18 @@ async function finishedTraining(){
 
 ## Maak een voorspelling
 
-Met de `classify` functie kunnen we nieuwe data voorspellen! Je kan dit snel testen door een pose uit je data array te halen en te kijken of het goede label tevoorschijn komt.
+Met de `classify` functie kunnen we nieuwe data voorspellen. Om te testen of het trainen wel goed is gegaan kan je een enkel datapunt uit je originele data array testen:
 
 ```js
 async function makePrediction() {
-    // een array met numbers
-    // bv. [3,5,5,3,3,5,6,3,3,...]
-    let test = data[0].pose
-
-    nn.classify(test)
-    const results = await nn.classify(input)
+    // haal een array met numbers uit je originele data, bijvoorbeeld:
+    let test = [3,5,5,3,3,5,6,3,3,...]
+    // kijk wat voor label voorspeld wordt
+    const results = await nn.classify(test)
     console.log(results)
 }
 ```
+
 <br>
 <br>
 <br>
@@ -118,7 +122,9 @@ nn.save("model", () => console.log("model was saved!"))
 
 ## Model laden
 
-In je webcam project kan je nu ook een neural network aanmaken, waarin je meteen het getrainde model inlaadt.
+Vanaf dit punt werk je in je tweede project. Hierin wordt de live webcam getoond met poses. Er wordt geen data ingeladen en geen model getraind.
+
+In plaats daarvan maken we een nieuw neural network, waarin we het getrainde model uit de vorige stap inladen.
 
 ```js
 function createNetwork() {
@@ -130,11 +136,10 @@ function createNetwork() {
         metadata: 'model/model_meta.json',
         weights: 'model/model.weights.bin'
     }
-    nn.load(modelDetails, () => modelLoaded())
+    nn.load(modelDetails, () => console.log("het model is geladen!"))
 }
 ```
-Je kan nu posedata uit de webcam gaan voorspellen met het neural network!
-
+Nadat het model is geladen *(let op de callback functie)*, kan je live posedata uit de webcam gaan voorspellen met het neural network. Verzamel data van één live pose, en roep hiermee de `classify()` functie aan.
 
 <br>
 <br>
@@ -149,7 +154,7 @@ De voorbeeldcode uit dit document moet je in de goede volgorde uitvoeren. Onders
 - doen van een voorspelling
 - inladen van een model
 
-We gebruiken `callback` functies en `async await` om te wachten totdat een voorgaande functie klaar is. We maken `nn` een globale variabele, zodat we deze in alle functies kunnen gebruiken.
+We gebruiken `callback` functies en `async await` om te wachten totdat een voorgaande functie klaar is. We maken `nn` een *globale variabele*, zodat we deze in alle functies kunnen gebruiken.
 
 <br>
 <br>
@@ -157,7 +162,8 @@ We gebruiken `callback` functies en `async await` om te wachten totdat een voorg
 
 ## Documentatie
 
-- [ML5 Neural Networks in Javascript](https://learn.ml5js.org/#/reference/neural-network)
-- [ML5 Neural Networks hidden layers](./snippets/layers.md)
+- [ML5 AI library voor Javascript](https://learn.ml5js.org/#/)
+- [ML5 Neural Networks](https://learn.ml5js.org/#/reference/neural-network)
+- [ML5 Neural Networks Hidden Layers](./snippets/layers.md)
 - [📺 Crash Course Neural Networks](https://www.youtube.com/watch?v=JBlm4wnjNMY)
 - [📺 But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk)
