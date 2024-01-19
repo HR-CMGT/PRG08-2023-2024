@@ -33,9 +33,9 @@ const test = data.slice(Math.floor(data.length * 0.8) + 1)
 We trainen het model nu alleen met de `train` dataset, zoals je ook gedaan hebt in les 6 en 7. Vervolgens ga je voor elk datapunt in je `test` dataset een voorspelling doen. Omdat je voor de `test` data ook het label beschikbaar hebt, kan je vergelijken of de voorspelling overeenkomt met het echte label:
 
 ```js
-for (let data of test) {
-    const result = await nn.classify(data.pose)  // bv. [3,5,3,45,65,3,...]
-    console.log(`I predicted: ${result[0].label}, But it really is: ${data.label}`)
+for (let d of test) {
+    const result = await nn.classify(d.pose)  // bv. [3,5,3,45,65,3,...]
+    console.log(`Ik voorspelde: ${result[0].label}. Het correcte antwoord is: ${d.label}`)
 }
 ```
 Maak een variabele aan waarin je bijhoudt hoe vaak de voorspelling overeenkomt met het echte label. Toon als percentage hoeveel voorspellingen van het totaal goed zijn gegaan!

@@ -72,3 +72,4 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de `x,y` coördinaten
 - [Codepen Hand](https://codepen.io/mediapipe-preview/pen/gOKBGPN)
 - [Codepen Body](https://codepen.io/mediapipe-preview/pen/abRLMxN)
 - [Codepen Face](https://codepen.io/mediapipe-preview/pen/OJBVQJm)
+- [Hand as computer interface](https://medium.spatialpixel.com/turning-your-hand-into-a-keyboard-6b21d092cfd0)
