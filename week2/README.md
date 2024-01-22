@@ -118,6 +118,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+// voorbeeld GET request
 app.get('/asksomething', async(req, res) => {
     // roep hier je langchain function aan 
     // gebruik de GET / POST data uit het request als prompt
@@ -147,6 +148,11 @@ Het nodemon commando kan je het beste in je `scripts` plaatsen in je `package.js
 npm run mycoolproject
 ```
 
+#### Server testen
+
+- Gebruik [Hoppscotch](https://hoppscotch.io), de VS Code extension [Thunder Client](https://www.thunderclient.com) of [Postman](https://www.postman.com/downloads/) om je server calls te testen.
+
+
  
 <br><br><br>
 
@@ -154,8 +160,8 @@ npm run mycoolproject
 
 - In de client map ga je een user interface bouwen met HTML + CSS. De gebruiker kan hier een vraag stellen in een invoerveld.
 - In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
-- ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen.
-- Het resultaat toon je vervolgens weer aan de gebruiker in de user interface.
+- ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen. De submit button is disabled. Toon via een `loading spinner` dat de app bezig is.
+- Het resultaat toon je vervolgens weer aan de gebruiker in de user interface. Enable de submit button en verwijder de loading spinner.
 
 <br><br><br>
 

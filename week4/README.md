@@ -50,6 +50,8 @@ const vectordata = await embeddings.embedQuery("Hello world")
 console.log(vectordata)
 console.log(`Created ${vectordata.length} vectors`)
 ```
+[Langchain documentatie voor Azure OpenAI embedding](https://js.langchain.com/docs/integrations/text_embedding/azure_openai).
+
 <br>
 
 ## Tekstbestand inlezen
@@ -124,5 +126,6 @@ Voor python zijn meer opties om lokale LLMs te draaien:
 
  ## Links
 
- - [Langchain document loaders](https://js.langchain.com/docs/modules/data_connection/document_loaders/)
- - [FAISS - Facebook Vector Store](https://js.langchain.com/docs/integrations/vectorstores/faiss)
+- [Langchain Azure OpenAI Text Embedding](https://js.langchain.com/docs/integrations/text_embedding/azure_openai)
+- [Langchain document loaders](https://js.langchain.com/docs/modules/data_connection/document_loaders/)
+- [FAISS - Facebook Vector Store](https://js.langchain.com/docs/integrations/vectorstores/faiss)

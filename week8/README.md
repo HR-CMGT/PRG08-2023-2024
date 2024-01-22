@@ -2,8 +2,9 @@
 
 - Accuracy berekenen
 - Accuracy verbeteren
+- Confusion matrix
+- Data bronnen
 - Troubleshooting
-- Next steps
 
 <br><br><br>
 
@@ -39,7 +40,27 @@ for (let d of test) {
     console.log(`Ik voorspelde: ${result[0].label}. Het correcte antwoord is: ${d.label}`)
 }
 ```
-Maak een variabele aan waarin je bijhoudt hoe vaak de voorspelling overeenkomt met het echte label. Toon als percentage hoeveel voorspellingen van het totaal goed zijn gegaan!
+#### Opdracht
+
+*Maak een variabele aan waarin je bijhoudt hoe vaak de voorspelling overeenkomt met het echte label. Toon als percentage hoeveel voorspellingen van het totaal goed zijn gegaan!*
+
+<br>
+
+### Confusion matrix
+
+Als je nóg preciezer wil kunnen bepalen hoe accuraat je voorspelling is kan je werken met een confusion matrix. Hierbij ga kijken hoe goed elk van je classes voorspeld wordt. 
+
+*In dit voorbeeld van `rock, paper, scissors` zie je dat rock 2 keer als paper werd voorspeld en 0 keer als scissors. Dat is goed! Maar scissors werd 10 keer als paper gezien, dus wellicht heb je meer `scissors` voorbeelden in je data nodig.*
+
+| real ➡️ <br> predict ⬇️  | Rock | Paper | Scissors |
+| --- | ---  |  --- |  ---- |
+| Rock | 20 | 3 | 3 |
+| Paper | 2 | 18 | 10 |
+| Scissors | 0 | 1 | 19 |
+
+#### Opdracht
+
+*Verbeter je accuracy berekening door per class bij te houden of de voorspelling goed gaat.*
 
 <br><br><br>
 
@@ -79,6 +100,26 @@ De vorm van deze `hidden layers` bepaalt hoe complex de patronen in de data kunn
 
 [Zie deze tutorial](../snippets/layers.md)
 
+
+
+<br>
+<br>
+<br>
+
+# Data bronnen
+
+We hebben tot nu toe ons algoritme (`K-Nearest-Neighbour` en `Neural Network`) getraind met posedata uit de webcam. De data bestaat uit een array van getallen, zoals `[4,3,5,2,1]`, vergezeld van een label, zoals `rock`. Voor het algoritme maakt het niets uit dat dit *poses* zijn, want elk soort data kan je weergeven als een array met een label. Hieronder een aantal voorbeelden.
+
+| Subject | Data | Label |
+| ------- | ---- | ----- |
+| Animals |    `[fangs, eggs, legs]` | `mammal` |
+| Mushrooms |  `[color, size, weight]` |`poisonous` |
+| Titanic passenger | `[Female, age, class]` | `survived` |
+
+#### Oefening databronnen
+
+Zoek een [dataset voor classification](https://www.kaggle.com/datasets?tags=13302-Classification), en maak hier een model en voorspelling mee.
+
 <br>
 <br>
 <br>
@@ -92,24 +133,6 @@ Als je merkt dat de accuracy laag blijft, dan heeft dit waarschijnlijk met de kw
 - De posedata is van lage kwaliteit doordat de poses niet duidelijk zijn, te ver weg van de webcam, of er is te weinig variatie in de poses.
 - Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
 - De dataset bevat irrelevante data. In het geval van posedata zou je kunnen kijken of de `z` waarde van een pose echt nodig is om een pose te herkennen.
-
-<br>
-<br>
-<br>
-
-# Next steps
-
-We hebben tot nu toe ons algoritme (`K-Nearest-Neighbour` en `Neural Network`) getraind met posedata uit de webcam. De data bestaat uit een array van getallen, zoals `[4,3,5,2,1]`, vergezeld van een label, zoals `rock`. Voor het algoritme maakt het niets uit dat dit *poses* zijn, want elk soort data kan je weergeven als een array met een label. Hieronder een aantal voorbeelden.
-
-| Subject | Data | Label |
-| ------- | ---- | ----- |
-| Animals |    `[fangs, eggs, legs]` | `mammal` |
-| Mushrooms |  `[color, size, weight]` |`poisonous` |
-| Titanic passenger | `[Female, age, class]` | `survived` |
-
-#### Oefening
-
-Zoek een [dataset voor classification](https://www.kaggle.com/datasets?tags=13302-Classification), en maak hier een model en voorspelling mee.
 
 <br>
 <br>

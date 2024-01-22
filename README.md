@@ -44,5 +44,4 @@ Code snippets en links voor werken met AI in Javascript
 - [MediaPipe](https://mediapipe-studio.webapps.google.com/home)
 - [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
-- [CSV en JSON data laden en filteren](./snippets/csv.md)
-- [React Native](./snippets/reactnative/)
+- [Data laden en filteren](./snippets/csv.md)
