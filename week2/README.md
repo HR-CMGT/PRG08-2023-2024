@@ -62,6 +62,7 @@ console.log(process.env.AZURE_OPENAI_API_KEY)
 
 ```sh
 npm install langchain
+npm install @langchain/openai
 ```
 Om de OpenAI API's te kunnen aanroepen heb je de API keys uit je `.env` file nodig. Vervolgens kan je een vraag stellen aan het chat model. Test of dit werkt! 
 ```js
