@@ -8,7 +8,7 @@
 
 ## MediaPipe
 
-[MediaPipe](https://developers.google.com/mediapipe/solutions/examples) is een library van google, waarin een model is getraind om poses in webcam beelden te herkennen. Je krijgt deze poses terug als vector data (`x,y` coördinaten). 
+[MediaPipe](https://developers.google.com/mediapipe/solutions/examples) is een library van google, waarin een model is getraind om poses in webcam beelden te herkennen. Je krijgt deze poses terug als vector data (`x,y,z` coördinaten). 
 
 Je kan een `<canvas>` element gebruiken om de poses over het webcam beeld heen te tekenen.
 
@@ -40,9 +40,9 @@ Omdat je de poses in een canvas tekent, heb je toegang tot de `x,y` pose coördi
 
 ## Posedata gebruiken
 
-Bedenk een game of applicatie waarbij je gebruik maakt van de `x,y` coördinaten van de pose. Dit haal je uit de *live posedata*. Lees de documentatie om precies te weten welk getal bij welk lichaamsdeel hoort.
+Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van de pose. Dit haal je uit de *live posedata*. Lees de documentatie om precies te weten welk getal bij welk lichaamsdeel hoort.
 
-> *Tips: Is er een `z` coördinaat beschikbaar? En kan je aan de afstand tussen beide ogen ook zien hoe ver iemand van de webcam verwijderd is?*
+> *Tips: Is er een `z` coördinaat beschikbaar om te zien hoe ver weg iets is? En kan je aan de afstand tussen beide ogen ook zien hoe ver iemand van de webcam verwijderd is?*
 
 <br>
 
@@ -50,9 +50,7 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de `x,y` coördinaten
 |--|--|
 | <img src="../images/pose-sun.png" width="400"><br>Fashion site om zonnebrillen uit te proberen| <img src="../images/posture.png" width="400"><br>Afstand tot de laptop gebruiken om te zien of iemand rechtop zit. |
 | <img src="../images/posepong.png" width="400"><br>Handpositie gebruiken om pong paddles te besturen | <img src="../images/pose-squid.png" width="400"><br>Afstand en beweging gebruiken om squid-game na te bouwen |
-| <img src="../images/audiobutton.gif" width="400"><br>Volume button zonder fysieke button |<img src="../images/emotion.png" width="400"><br>Emotie gebruiken om spotify playlist aan te passen | 
-| <img src="../images/paint.png" width="400"><br>Handpositie gebruiken als verfkwast |<img src="../images/drumgesture.png" width="400"><br>[Gestures gebruiken om drumcomputer te besturen](https://youtube.com/shorts/zQ8Il7xyVQk) | 
-| <img src="../images/politeness.png" width="400"><br>Bodypose gebruiken om te controleren of je wel beleefd genoeg buigt |<img src="../images/yoga.png" width="400"><br>Yoga poses oefenen | 
+| <img src="../images/paint.png" width="400"><br>Wijsvinger gebruiken als verfkwast, duim als gum |<img src="../images/drumgesture.png" width="400"><br>[Gestures gebruiken om drumcomputer te besturen](https://youtube.com/shorts/zQ8Il7xyVQk) | 
 
 
 <br><br><br>

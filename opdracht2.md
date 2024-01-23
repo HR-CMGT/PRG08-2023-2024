@@ -8,4 +8,16 @@ Je hebt zelf een creatieve applicatie bedacht waarbij een algoritme kan leren va
 
 ### Live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, of `codesandbox.com`.
+Voor de lessen en inleveropdrachten kan je jouw project (frontend en training/datacollectie) lokaal draaien op je eigen computer. Als je je frontend applicatie live online wil zetten kan je dit doen op je HR studenthosting, github pages, codesandbox, etc.
+
+<br><br><br>
+
+## Inspiratie
+
+|  |  |
+|--|--|
+| <img src="./images/audiobutton.gif" width="400"><br>Music player besturen met gestures |<img src="./images/emotion.png" width="400"><br>Emotie herkennen om Spotify playlist aan te passen | 
+| <img src="./images/politeness.png" width="400"><br>Bodypose gebruiken om te controleren of je wel beleefd genoeg buigt |<img src="./images/yoga.png" width="400"><br>Yoga poses oefenen | 
+
+
+

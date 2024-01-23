@@ -44,4 +44,4 @@ Code snippets en links voor werken met AI in Javascript
 - [MediaPipe](https://mediapipe-studio.webapps.google.com/home)
 - [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
-- [Data laden en filteren](./snippets/csv.md)
+- [Javascript AI Reading List](https://github.com/HR-CMGT/Javascript-Machine-Learning)

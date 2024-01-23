@@ -12,19 +12,20 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 
 <br><br><br>
 
-## Inspiratie taalopdracht
+## Inspiratie
 
-- Maak een chatbot die vragen kan beantwoorden over een bepaald onderwerp. Zorg dat je assistent echt veel weet over dat onderwerp, bv. door Wikipedia als chat input of embedding te gebruiken.
-- Gebruik AI om een afspeellijst te maken voor een bepaalde situatie, en gebruik de Spotify API om die lijst af te spelen.
-- Maak een muziek oefen-app met `tone.js` en gebruik ChatGPT om de oefeningen te maken (bijvoorbeeld een akkoordprogressie).
-- Haal informatie op van een nieuws-API of weer-API en gebruik ChatGPT om dit uit te leggen, kledingtips te geven of om te klagen over het weer!
+- Maak een chatbot die vragen kan beantwoorden over een bepaald onderwerp. Zorg zelf dat je assistent veel weet over dat onderwerp.
+- Haal informatie op van een nieuws-API, weer-API of [een van de vele online api's](https://apilist.fun) en gebruik ChatGPT om dit uit te leggen, kledingtips te geven of om te klagen over het weer!
+- Gebruik een taalmodel om een afspeellijst te maken voor een bepaalde situatie, en gebruik de Spotify API om die lijst af te spelen.
+- Maak een tamagotchi game waarbij de tamagotchi echt een persoonlijkheid heeft en opmerkingen kan maken over hoe goed je voor de tamagotchi zorgt.
+- Maak een muziek oefen-app met [tone.js](https://tonejs.github.io) en gebruik ChatGPT om de oefeningen te maken (bijvoorbeeld een akkoordprogressie).
+- Of laat het taalmodel automatisch beats en melodiën bedenken die je afspeelt met [tone.js](https://tonejs.github.io)
 - Maak een assistent voor het leren van een taal. Geef het taalmodel instructies om een score bij te houden of te onthouden waar je wel en niet goed in bent.
-- Combineer ChatGPT met een fotoherkennings-API, bijvoorbeeld om recepten te geven voor voedsel in je koelkast.
-- Combineer ChatGPT met webcam beeldherkenning, bijvoorbeeld om te reageren op emoties of te praten met katten die voor de webcam lopen. Dit kan je doen met ml5.js of mediapipe.js.
+- Maak een standaard-app zoals een `to-do-lijst` slim door vrije tekstinvoer toe te staan. ChatGPT kan de invoer interpreteren *(als je zegt `Ik heb vandaag de kat gevoerd!` wordt `kat voeren` van de lijst verwijderd).*
+- Combineer ChatGPT met een fotoherkennings-API, bijvoorbeeld om recepten te geven voor voedsel in je koelkast, of door iets te zeggen als een kat voor de webcam loopt.
 - Gebruik ChatGPT in een spel om een verhaal te creëren of hints te geven. Je kunt vooruitgang boeken in een quest door tekst te gebruiken! *(de speler heeft het zwaard aan de koning geleverd, wat is het volgende?)*
 - Gebruik een hardwareboard zoals Adafruit Feather of een Raspberry Pi om een fysiek apparaat aan ChatGPT te koppelen.
-- Maak een standaard-app zoals een `to-do-lijst` slim door vrije tekstinvoer toe te staan. ChatGPT kan de invoer interpreteren en items aan de lijst toevoegen of items van de lijst afstrepen *(door te zeggen `Ik heb vandaag de kat gevoerd!` wordt `kat voeren` van de lijst verwijderd).*
-- Doe onderzoek naar image en speech generation voor je applicatie. Je kunt de `browser speech API` gebruiken om de resultaten terug te spreken naar de gebruiker.
+- Doe onderzoek naar image en speech generation voor je applicatie. Je kunt de [browser speech API](./snippets/speech.md) gebruiken om de resultaten terug te spreken naar de gebruiker.
 - Experimenteer met de persoonlijkheid van de AI, het hoeft niet altijd een vriendelijke behulpzame assistent te zijn!
 
 <br><br><br>
