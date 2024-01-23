@@ -30,11 +30,17 @@ Tijdens de cursus werk je aan twee opdrachten die ingaan op de stof uit de les. 
 - [Week 4 - Opdracht 1: werken met taalmodellen](./opdracht1.md)
 - [Week 8 - Opdracht 2: werken met posedata](./opdracht2.md)
 
-
 <br>
 <br>
 <br>
 
+## Taalassistent
+
+Stel vragen over het vak aan de [PRG8 assistent](https://ai-assistent-mu.vercel.app)
+
+<br>
+<br>
+<br>
 
 ## Links
 
