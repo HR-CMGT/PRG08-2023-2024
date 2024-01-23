@@ -18,6 +18,7 @@ Voor de lessen en inleveropdrachten kan je jouw project (frontend en training/da
 |--|--|
 | <img src="./images/audiobutton.gif" width="400"><br>Music player besturen met gestures |<img src="./images/emotion.png" width="400"><br>Emotie herkennen om Spotify playlist aan te passen | 
 | <img src="./images/politeness.png" width="400"><br>Bodypose gebruiken om te controleren of je wel beleefd genoeg buigt |<img src="./images/yoga.png" width="400"><br>Yoga poses oefenen | 
+| <img src="./images/kpopdance.png" width="400"><br>[KPOP dance dance revolution](https://www.youtube.com/watch?v=X-mX5PhYYRQ) |<img src="./images/humantetris.jpg" width="400"><br>Human tetris | 
 
 
 
