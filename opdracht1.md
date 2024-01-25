@@ -8,14 +8,17 @@ Je gaat zelf een originele toepassing bedenken en bouwen waarin een taalmodel is
 
 ### Live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, of `codesandbox.com`.
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Voor het expert level kan je je project live online zetten. Dit doe je door node te installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
 
 <br><br><br>
 
 ## Inspiratie
 
-- Maak een chatbot die vragen kan beantwoorden over een bepaald onderwerp. Zorg zelf dat je assistent veel weet over dat onderwerp.
+- Maak een online chatbot die vragen kan beantwoorden over een bepaald onderwerp. Voed de chatbot met veel data over dat onderwerp. 
+- Geef je chatbot een persoonlijkheid die bij het onderwerp past, bijvoorbeeld door alle gesproken lines van een filmkarakter uit een filmscript te halen. [Harry Potter dataset](https://www.kaggle.com/datasets/gulsahdemiryurek/harry-potter-dataset).
+- Plaats je chatbot op discord, [tutorial hier](https://dev.to/rtagliavia/how-to-create-a-discord-bot-with-discordjs-and-nodejs-plb) en [hier](https://www.freecodecamp.org/news/discord-ai-chatbot/)
 - Haal informatie op van een nieuws-API, weer-API of [een van de vele online api's](https://apilist.fun) en gebruik ChatGPT om dit uit te leggen, kledingtips te geven of om te klagen over het weer!
+- Maak een quiz die creative vragen stelt over je favoriete onderwerp en hou een score bij.
 - Gebruik een taalmodel om een afspeellijst te maken voor een bepaalde situatie, en gebruik de Spotify API om die lijst af te spelen.
 - Link een taalmodel aan een smart home, zodat je je huis kan besturen met taal. Hier kan je [IFTTT](https://ifttt.com) voor gebruiken.
 - Maak een tamagotchi game waarbij de tamagotchi echt een persoonlijkheid heeft en opmerkingen kan maken over hoe goed je voor de tamagotchi zorgt.

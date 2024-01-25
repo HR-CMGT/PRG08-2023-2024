@@ -85,7 +85,7 @@ Om de code geschikt te maken voor de volgende stap kan je de `invoke` call alvas
 
 ### Eigen OpenAI KEY gebruiken
 
-Als je zelf een key hebt voor OpenAI kan je die ook gebruiken. Het aanmaken van het model ziet er dan iets anders uit. Afhankelijk van je abonnement kan je hier `gpt-3.5` of `gpt-4` gebruiken.
+Als je zelf een key hebt voor OpenAI mag je die ook gebruiken. Het aanmaken van het model ziet er dan iets anders uit. Afhankelijk van je abonnement kan je hier `gpt-3.5-turbo` of `gpt-4` gebruiken. [Je kan hier een eigen key aanvragen](https://platform.openai.com/docs/introduction).
 
 ```js
 import { ChatOpenAI } from "@langchain/openai"
@@ -95,6 +95,10 @@ const model = new ChatOpenAI({
     openAIApiKey: process.env.OPEN_AI_KEY
 })
 ```
+
+<br>
+
+> *📃 De documentatie van Langchain en OpenAI verandert regelmatig. Als de voorbeeldcode uit deze repository een warning geeft moet je de officiële documentatie nalezen*.
 
 <br><br><br>
 
@@ -163,18 +167,20 @@ npm run mycoolproject
 - In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
 - ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen. De submit button is disabled. Toon via een `loading spinner` dat de app bezig is.
 - Het resultaat toon je vervolgens weer aan de gebruiker in de user interface. Enable de submit button en verwijder de loading spinner.
+- Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
 
 <br><br><br>
 
 ### Live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`.
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
 
 <br><Br><br>
 
 ## Links
 
 - [Langchain Azure instellingen](https://js.langchain.com/docs/integrations/chat/azure)
+- [Eigen OpenAI key aanvragen](https://platform.openai.com/docs/introduction)
 - [Node Express Hello World](https://expressjs.com/en/starter/hello-world.html)
 - [JSON teruggeven vanuit Express](https://expressjs.com/en/5x/api.html#res.json)
 - [Voorbeeld fetch met POST](https://jasonwatmore.com/post/2021/09/05/fetch-http-post-request-examples)

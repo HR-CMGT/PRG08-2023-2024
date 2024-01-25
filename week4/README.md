@@ -10,6 +10,7 @@ In deze oefening gaan we vragen over een document beantwoorden met een taalmodel
 
 ### Inhoud
 
+- Werken met grote hoeveelheden tekst
 - Tekst omzetten naar vectors
 - Tekstbestand inlezen
 - Vragen beantwoorden
@@ -95,7 +96,7 @@ Het doen van prompts (genereren van tokens) kost geld. Een simpele prompt kost b
 
 ### FAISS
 
-Voor deze les werken we met [FAISS - Facebook Vector Store](https://js.langchain.com/docs/integrations/vectorstores/faiss). Hiermee sla je de vector embeddings lokaal op in een een folder van je project. 
+Voor deze les werken we met [FAISS - Facebook Vector Store](https://js.langchain.com/docs/integrations/vectorstores/faiss). Hiermee sla je de vector embeddings lokaal op in een een folder van je project. Let op dat de documentatie van FAISS recent is aangepast.
 
 #### Opdracht
 
@@ -116,9 +117,9 @@ De meest veilige oplossing voor dit probleem is om een open source taalmodel op 
 
 Voor python zijn meer opties om lokale LLMs te draaien:
 
-- [Werken met OpenLLM in Langchain](https://python.langchain.com/docs/integrations/llms/openllm) en [OpenLLM](https://github.com/bentoml/OpenLLM)
+- [Download LLMs met OpenLLM](https://github.com/bentoml/OpenLLM), inclusief webserver en [Langchain integratie](https://python.langchain.com/docs/integrations/llms/openllm)
+- [HuggingFace tutorial](https://www.markhneedham.com/blog/2023/06/23/hugging-face-run-llm-model-locally-laptop/) en [6 ways to run a local LLM on your laptop](https://semaphoreci.com/blog/local-llm).
 - [Huggingface models in Langchain](https://python.langchain.com/docs/integrations/llms/huggingface_pipelines)
-- [How to run HuggingFace LLM on your laptop](https://www.markhneedham.com/blog/2023/06/23/hugging-face-run-llm-model-locally-laptop/) en [6 ways to run a local LLM on your laptop](https://semaphoreci.com/blog/local-llm).
 
  > *🚨 Voor het draaien van een lokaal LLM heb je een krachtige laptop nodig met een snelle GPU en minimaal 16GB RAM.*
 
