@@ -46,8 +46,9 @@ Stel vragen over het vak aan de [PRG8 assistent](https://ai-assistent-mu.vercel.
 
 Code snippets en links voor werken met AI in Javascript
 
-- [Langchain](https://js.langchain.com/docs/get_started/quickstart)
+- [LangChain](https://js.langchain.com/docs/get_started/quickstart)
 - [MediaPipe](https://mediapipe-studio.webapps.google.com/home)
+- [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
 - [Javascript AI Reading List](https://github.com/HR-CMGT/Javascript-Machine-Learning)

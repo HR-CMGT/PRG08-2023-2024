@@ -9,13 +9,13 @@ Je kan zelf bepalen welke onderwerpen voor jou belangrijk zijn. In de beoordelin
 Inhoud:
 
 - Verschil taalmodel (LLM) en chat model (ChatLLM)
-- Prompt templates
+- Prompt engineering
 - System instructions en chat roles
 - Chat history
 - Fake llm
-- Streaming
 - Koppeling met externe services
-- Langchain advanced
+- Streaming
+- Documentatie
 - Andere LLM's en LLM api's
 
 <Br><br><br>
@@ -26,7 +26,7 @@ Een taalmodel is getraind om het volgende woord in een zin te voorspellen. Een c
 
 <Br><br><br>
 
-## Prompt templates
+## Prompt engineering
 
 Dit houdt in dat je de vraag van de eindgebruiker uitbreidt met extra taalinstructies, om zo een beter resultaat terug te krijgen van het model. Bijvoorbeeld:
 
@@ -35,7 +35,9 @@ let userQestion = `Tell me how to take care of my banana plant`
 let promptTemplate = `Answer the following question: ${userQuestion} as short as you can.`
 let res = await model.invoke(promptTemplate)
 ```
-> *🚨Langchain biedt [helper functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.*
+
+- [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+- [Langchain Functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.*
 
 <br><bR><br>
 
@@ -120,6 +122,20 @@ console.log(res.content)
 
 <Br><br><br>
 
+## Koppeling met externe services
+
+Het kan heel interessant zijn om externe services zoals Spotify, Openweather, News, etc. te koppelen aan een taalmodel. Je kan dan bijvoorbeeld de hele user interface in taal uitvoeren, of je kan het LLM laten klagen over het weer. 
+
+*Pseudo code voorbeeld:*
+```js
+let weather = await fetch("http://api.openweathermap.org/forecast")
+let temperature = weather.today.temp
+let chatresult = model.invoke(`Complain about the temperature of ${temperature} degrees`)
+```
+💬 Je kan `text-to-speech` gebruiken om een chat uit te spreken. [De browser heeft dit ingebouwd!](./snippets/speech.md)
+
+<Br><br><br>
+
 ## Streaming
 
 Het kan tijd kosten voordat je een volledig antwoord van een LLM terug krijgt. Vooral bij hele lange antwoorden *(zoals de samenvatting van een boek)* kan het lijken of je user interface niet meer reageert. Om een betere user experience te creeëren kan je streaming gebruiken. Je krijgt dan woord-voor-woord een antwoord terug.
@@ -141,25 +157,10 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Koppeling met externe services
+## Documentatie
 
-Het kan heel interessant zijn om externe services zoals Spotify, Openweather, News, etc. te koppelen aan een taalmodel. Je kan dan bijvoorbeeld de hele user interface in taal uitvoeren, of je kan het LLM laten klagen over het weer. 
-
-*Pseudo code voorbeeld:*
-```js
-let weather = await fetch("http://api.openweathermap.org/forecast")
-let temperature = weather.today.temp
-let chatresult = model.invoke(`Complain about the temperature of ${temperature} degrees`)
-```
-💬 Je kan `text-to-speech` gebruiken om een chat uit te spreken. [De browser heeft dit ingebouwd!](./snippets/speech.md)
-
-<Br><br><br>
-
-## Langchain advanced
-
-Kijk zelf of dit in jouw project van toepassing kan zijn. Bijvoorbeeld:
-
-- [Agents](https://js.langchain.com/docs/modules/agents/)
+- [LangChain](https://js.langchain.com/docs/get_started/quickstart)
+- [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Annuleren van een OpenAI call](https://js.langchain.com/docs/modules/model_io/llms/cancelling_requests)
 - [Tokens bijhouden](https://js.langchain.com/docs/modules/model_io/llms/token_usage_tracking)
 - [Omgaan met errors](https://js.langchain.com/docs/modules/model_io/llms/dealing_with_api_errors)
