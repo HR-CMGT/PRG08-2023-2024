@@ -57,7 +57,7 @@ console.log(`Created ${vectordata.length} vectors`)
 
 ## Tekstbestand inlezen
 
-Langchain heeft [verschillende opties om tekstbestanden, PDF files, JSON files, CSV files, enz. in te lezen](https://js.langchain.com/docs/modules/data_connection/document_loaders/). In dit voorbeeld lezen we een `.txt` file. Voor grote teksten is het nodig om deze op te splitsen in kleinere chunks. Dit moet je doen bij bestanden van tientallen tot honderden pagina's. 
+Langchain heeft verschillende opties om tekstbestanden te lezen, zoals [.txt, PDF, JSON, CSV, etc.](https://js.langchain.com/docs/modules/data_connection/document_loaders/). Je kan zelfs een [hele github repository](https://js.langchain.com/docs/integrations/document_loaders/web_loaders/github#usage) inlezen. In dit voorbeeld lezen we een `.txt` file. Voor grote teksten is het nodig om deze op te splitsen in kleinere "chunks". Dit moet je doen bij bestanden van tientallen tot honderden pagina's. 
 
 ```js
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"

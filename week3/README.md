@@ -1,6 +1,6 @@
 # Week 3
 
-## Langchain en Language models
+## Language models en prompt engineering
 
 Deze week ga je je langchain kennis verder uitbreiden om betere LLM calls te kunnen maken. 
 
@@ -97,15 +97,20 @@ messages.push(
 const chat2 = await model.invoke(messages)
 console.log(chat2.content)
 ```
+<br>
 
-> *🚨 Langchain biedt een [Chat Memory](
-https://js.langchain.com/docs/modules/memory/types/buffer_memory_chat) class om automatisch de chat history bij te houden!*
+#### Optioneel
+
+In bovenstaand voorbeeld is de chat history een variabele binnen de node applicatie. Maar als je tegelijk met meerdere web clients bent verbonden, krijgt niet elke user een eigen chat history.
+
+- Hou de chat history bij *in de browser* in plaats van op de server, en geef die telkens mee.
+- Je hebt nu ook de optie om de chat history in `localStorage` op te slaan.
 
 <br><br><br>
 
 ### Fake LLM
 
-Als je onderdelen van de app aan het testen bent die niet met het taalmodel te maken hebben, is het beter om in `server.js` de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
+Als je onderdelen van de app aan het testen bent waarvoor het chat result niet belangrijk is, is het beter om in `server.js` de [Langchain Fake LLM](https://js.langchain.com/docs/integrations/chat/fake) aan te roepen in plaats van OpenAI, omdat je dan tokens bespaart.
 
 ```js
 import { FakeListChatModel } from "@langchain/core/utils/testing"
