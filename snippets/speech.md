@@ -38,6 +38,9 @@ let voices = window.speechSynthesis.getVoices()
 let name = "Alex"
 utterThis.voice = voices.filter(function(voice) { return voice.name == name; })[0]
 ```
+
+[Op MacOS kan je je eigen stem toevoegen aan de beschikbare voices!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac)
+
 <br>
 <Br>
     
