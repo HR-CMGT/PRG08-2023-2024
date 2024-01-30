@@ -66,7 +66,8 @@ playButton.addEventListener("click", () => {
 
 ## Links
 
-- [Complete Browser speech example with voices and pitch](https://github.com/mdn/web-speech-api/tree/master/speak-easy-synthesis)
-- [Human Speech recognition](https://github.com/mdn/web-speech-api)
+- [MDN speech synthesizer API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
+- [MDN speech recognition API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+- [MDN speech code examples](https://github.com/mdn/dom-examples/tree/main/web-speech-api)
 - [Synthesizer API](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
 - [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)	

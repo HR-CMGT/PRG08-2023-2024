@@ -172,10 +172,13 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Andere LLM's en LLM API's
+## Andere LLM API's
 
 Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms) kan je naast OpenAI ook connectie maken met andere [LLM's](https://js.langchain.com/docs/integrations/llms/) en [ChatLLM's](https://js.langchain.com/docs/integrations/chat/).
 
-Voor de meeste van deze API's heb je een API key nodig van de desbetreffende provider. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken, en vervolgens dit taalmodel gebruiken in Langchain.
+Voor de meeste van deze API's heb je een *API key nodig van de desbetreffende provider*. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken. Populaire LLM API's zijn:
 
-Populaire LLM API's zijn *LLama API, Mistral API, Anthropic Claude*.
+- [LLama API](https://www.llama-api.com)
+- [Mistral](https://mistral.ai)
+- [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
+- [Gemini](https://ai.google.dev)
