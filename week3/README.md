@@ -1,28 +1,20 @@
 # Week 3
 
-## Language models en prompt engineering
+## Werken met Large Language Models
 
-Deze week ga je je langchain kennis verder uitbreiden om betere LLM calls te kunnen maken. 
+Deze week ga je je langchain kennis via [prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering) uitbreiden om betere LLM calls te kunnen maken. Via externe API's ga je functionaliteit toevoegen aan je LLM applicatie. Let op dat je het concept voor jouw [opdracht 1](../opdracht1.md) op tijd inlevert. 
 
-Je kan zelf bepalen welke onderwerpen voor jou belangrijk zijn. In de beoordeling ga je aantonen hoe ver je gekomen bent. Bekijk de cursushandleiding om te zien hoe je punten verdient.
+#### Onderwerpen
 
-Inhoud:
-
-- Verschil taalmodel (LLM) en chat model (ChatLLM)
 - Prompt engineering
 - System instructions en chat roles
 - Chat history
 - Fake llm
 - Koppeling met externe services
+- Spraak
 - Streaming
 - Documentatie
 - Andere LLM's en LLM api's
-
-<Br><br><br>
-
-## LLM en ChatLLM
-
-Een taalmodel is getraind om het volgende woord in een zin te voorspellen. Een chatmodel doet dit ook, maar is doorgetraind om te begrijpen hoe een conversatie tussen een persoon en een AI assistent kan verlopen. Een chat model kan een chat historie begrijpen en toepassen. Het hangt af van het doel van jouw applicatie welk model beter geschikt is.
 
 <Br><br><br>
 
@@ -37,7 +29,7 @@ let res = await model.invoke(promptTemplate)
 ```
 
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
-- [Langchain Functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.*
+- [Langchain Functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.
 
 <br><bR><br>
 
@@ -49,7 +41,11 @@ Een chat model maakt onderscheid in de rol van degene die het bericht stuurt:
 - `human` : Dit is het bericht van de eindgebruiker.
 - `ai` (of `assistant`) : Hiermee kan je aangeven hoe het chat model zelf heeft gereageerd (of zou moeten reageren) op een vraag.
 
-In dit voorbeeld sturen we een heel gesprek en system instructions naar het taalmodel, zodat het zal antwoorden in dezelfde toon:
+<br>
+
+### Persoonlijkheid
+
+Je assistent hoeft niet altijd netjes en behulpzaam te zijn. In dit voorbeeld sturen we een heel gesprek en system instructions naar het taalmodel, zodat het zal antwoorden in dezelfde toon:
 
 ```js
 const res = await model.invoke([
@@ -138,6 +134,18 @@ let temperature = weather.today.temp
 let chatresult = model.invoke(`Complain about the temperature of ${temperature} degrees`)
 ```
 💬 Je kan `text-to-speech` gebruiken om een chat uit te spreken. [De browser heeft dit ingebouwd!](./snippets/speech.md)
+
+<Br><br><br>
+
+## Spraak
+
+De browser/javascript heeft zowel spraak als spraakherkenning ingebouwd.
+De spraak komt uit je OS. In MacOS kan je [hier je eigen stem aan toevoegen!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac). Je kan dit gebruiken om je LLM tot leven te brengen.
+
+- [Code snippet spraak](https://github.com/HR-CMGT/PRG08-2023-2024/blob/main/snippets/speech.md)
+- [Documentatie spraakherkenning](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+
+> *Je kan ook via [OpenAI "speech to text"](https://openai.com/research/whisper) doen, maar dit lijkt niet te werken met de Azure OpenAI key.*
 
 <Br><br><br>
 
