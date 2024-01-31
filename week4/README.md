@@ -72,18 +72,19 @@ const splitDocs = await textSplitter.splitDocuments(data)
 <br><br><br>
 
 ## Vectordata maken en vragen stellen
-Je gaat de ingeladen tekstdata omzetten naar vectordata. In dit voorbeeld slaan we de vectordata op in het geheugen. Je kan nu chatten met je eigen document! 
+Je gaat de ingeladen tekstdata omzetten naar vectordata. In dit voorbeeld slaan we de vectordata op in een `MemoryVectorStore`. 
 ```js
 const vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings)
 ```
-Vragen stellen:
+🤯 Je kan nu vragen stellen aan je eigen document! 
 
 ```js
 const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever())
 const response = await chain.call({ query: "who is the text about?" })
 console.log(response.text)
 ```
-Let op dat hier geen chat history wordt bijgehouden. Dit is ook niet altijd nodig, als je alleen vragen over het document wil stellen.
+- Let op dat hier geen chat history wordt bijgehouden. Dit is ook niet altijd nodig, als je alleen vragen over het document wil stellen.
+- De `MemoryVectorStore` verdwijnt uit het geheugen zodra je de node app afsluit.
 
 <br><br><br>
 

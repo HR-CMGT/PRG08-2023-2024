@@ -1,8 +1,8 @@
 # Week 2
 
-In deze oefening gaan we het basis webproject opzetten dat je nodig hebt voor beide inleveropdrachten. 
+In deze oefening gaan we het basis webproject opzetten dat je nodig hebt voor beide inleveropdrachten. Voor inleveropdracht 1 gaan we de Azure OpenAI API aanroepen met de Langchain library. 
 
-Voor inleveropdracht 1 gaan we de Azure OpenAI API aanroepen met de Langchain library.
+> *Voor een uitleg van deze les en het werken met de `.env` file, zie de slides van week 2.*
 
 <br><br><br>
 
