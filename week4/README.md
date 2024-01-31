@@ -69,13 +69,30 @@ const data = await loader.load()
 const textSplitter = new RecursiveCharacterTextSplitter({chunkSize: 1500, chunkOverlap: 10})
 const splitDocs = await textSplitter.splitDocuments(data)
 ```
+<br><br><br>
 
-
-Je kan nu de ingeladen tekstdata omzetten naar vectordata. In dit voorbeeld slaan we de vectordata op in het geheugen.
+## Vectordata maken en vragen stellen
+Je gaat de ingeladen tekstdata omzetten naar vectordata. In dit voorbeeld slaan we de vectordata op in het geheugen. Je kan nu chatten met je eigen document! 
 ```js
 const vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings)
 ```
-Vanaf dit moment kan je chatten met je eigen document! In dit voorbeeld wordt de chat history automatisch bijgehouden door langchain.
+Vragen stellen:
+
+```js
+const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever())
+const response = await chain.call({ query: "who is the text about?" })
+console.log(response.text)
+```
+Let op dat hier geen chat history wordt bijgehouden. Dit is ook niet altijd nodig, als je alleen vragen over het document wil stellen.
+
+<br><br><br>
+
+### Automatic Chat History
+
+In onderstaand voorbeeld wordt de chat history automatisch bijgehouden dankzij de `BufferMemory` class van langchain. Je hoeft nu niet meer zelf een chat history in een array op te slaan.
+
+We geven de `vectorStore` en de `bufferMemory` mee aan langchain als we een vraag stellen.
+
 ```js
 const memory = new BufferMemory({ memoryKey: "chat_history", returnMessages: true })
 const chain = ConversationalRetrievalQAChain.fromLLM(model, vectorStore.asRetriever(), { memory })
@@ -103,25 +120,29 @@ Voor deze les werken we met [FAISS - Facebook Vector Store](https://js.langchain
 - Maak een embedding van een tekstbestand en sla deze op met [FAISS](https://js.langchain.com/docs/integrations/vectorstores/faiss)
 - Maak een nieuwe `.js` file waarin de [FAISS](https://js.langchain.com/docs/integrations/vectorstores/faiss) data wordt ingeladen. Gebruik deze file om vragen over het document te stellen met het `chatgpt` model.
 
+<br><br><br>
+
+## Troubleshooting
+
+Je krijgt een error over `size of k`. OpenAI verwacht minimaal 3 chunks in je tekst. Als er minder zijn kan je dit aangeven. In dit voorbeeld is er maar 1 chunk:
+
+```js
+const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever({ k: 1 }))
+```
+
+De FAISS documentatie is recent veranderd. Je kan deze waarschuwing krijgen. 
+
+> *[WARNING]: Importing from "langchain/vectorstores/faiss" is deprecated. Instead, please add the "@langchain/community" package to your project with e.g. `npm install @langchain/community` en `import from "@langchain/community/vectorstores/faiss"`.*
+
 
 
 <br><br><br>
 
 ## Privacy en copyright
 
-Bij het maken van embeddings verstuur je een document naar OpenAI en/of Microsoft. De kans bestaat hierbij dat jouw data wordt gebruikt om de taalmodellen van OpenAI te verbeteren. Het is daarom belangrijk dat je geen data verstuurt die auteursrechtelijk beschermd is (niet van jouzelf), gevoelige data bevat, of waarvan je simpelweg niet wil dat derden hier eventueel beschikking over krijgen.
+Bij het maken van embeddings verstuur je een document naar OpenAI en/of Microsoft. Het is daarom belangrijk dat je geen data verstuurt die auteursrechtelijk beschermd is. Om data helemaal veilig te houden zou je kunnen werken met een [Lokaal LLM](../snippets/local.md)
 
-De meest veilige oplossing voor dit probleem is om een open source taalmodel op je eigen machine of webserver te installeren. Je data blijft dan altijd binnen je eigen ecosysteem. Voor javascript is de meest eenvoudige oplossing om [OLLama]() te installeren. OLLama heeft een webserver ingebouwd, en je kan [langchain local LLM](https://js.langchain.com/docs/use_cases/question_answering/local_retrieval_qa) gebruiken om embeddings te maken. Ollama werkt *(nog)* niet op windows 😭.
 
-#### Python
-
-Voor python zijn meer opties om lokale LLMs te draaien:
-
-- [Download LLMs met OpenLLM](https://github.com/bentoml/OpenLLM), inclusief webserver en [Langchain integratie](https://python.langchain.com/docs/integrations/llms/openllm)
-- [HuggingFace tutorial](https://www.markhneedham.com/blog/2023/06/23/hugging-face-run-llm-model-locally-laptop/) en [6 ways to run a local LLM on your laptop](https://semaphoreci.com/blog/local-llm).
-- [Huggingface models in Langchain](https://python.langchain.com/docs/integrations/llms/huggingface_pipelines)
-
- > *🚨 Voor het draaien van een lokaal LLM heb je een krachtige laptop nodig met een snelle GPU en minimaal 16GB RAM.*
 
 <br><br><br>
 
