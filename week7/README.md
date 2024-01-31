@@ -15,68 +15,85 @@ In week 6 hebben we pose data leren herkennen met het "K-Nearest-Neighbour" algo
 
 - Het KNN model moet altijd alle data onthouden.
 - Een KNN model kan erg groot zijn als er veel data is.
-- Het NN model kan juist erg klein zijn.
-- Een NN is beter in het vinden van complexe of onlogisch lijkende patronen.
+- Het NN model kan juist erg klein zijn, ongeacht hoeveel data er is.
+- Een NN is beter in het vinden van complexe of onlogisch lijkende patronen *(een grote dikke kat wordt toch als kat herkend en niet als hond)*
+- Een NN kan focussen op de belangrijke onderdelen *(de "claws" van een kat bepalen eigenlijk al dat het een kat is)*
 
 <br>
 <br>
 <br>
 
-# Neural Network
+# Neural Network: the basics
 
-We gaan een Neural Network trainen met de `mediapipe posedata` uit les 5 en 6. Het doel is dat we een kleiner model krijgen dat beter is in het voorspellen van de webcam pose.
+Om te oefenen gebruiken we dezelfde cat/dog data als in week 6.
 
-Net zoals in week 6 werk je met twee projecten:
-
-- Project 1: laden posedata en trainen van het model
-- Project 2: inladen model en daarmee live webcam poses voorspellen
-
-<br>
-
-### Data klaar zetten
-
-Zorg dat je posedata beschikbaar is in je project. Data kan in de vorm van objecten of arrays zijn. In dit voorbeeld ziet onze data er zo uit:
-
-```js
-data = [
-    {pose:[4,2,5,2,1,...], label:"rock"},
-    {pose:[3,1,4,4,1,...], label:"rock"},
-    ...
-]
-```
-Voor een neural network is het belangrijk om je data te randomizen:
-```js
-data.sort(() => (Math.random() - 0.5))
-```
-<br>
-
-### Neural network
+| Body length | Height | Weight | Ear length |  Label |
+| ----------- | ------ | ------ | ---------- |  ----- |
+| 18 | 9.2 | 8.1 | 2 | 'cat' |
+| 20.1 | 17 | 15.5 | 5 | 'dog' |
+| 17 | 9.1 | 9 | 1.95 | 'cat' |
+| 23.5 | 20 | 20 | 6.2 | 'dog' |
+| 16 | 9.0 | 10 | 2.1 | 'cat' |
+| 21 | 16.7 | 16 | 3.3 | 'dog' |
 
 We voegen de [ML5](https://learn.ml5js.org/#/reference/neural-network) library toe aan ons project met een `<script>` tag.
 
 ```html
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 ```
-We maken een neural network aan voor classification. 
+We maken een neural network aan voor classification, en voegen de cat/dog data toe. Vul dit zelf helemaal in.
 
 ```js
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
-```
-Je kan je data als volgt toevoegen aan het neural network: het eerste argument is een array van numbers. Het tweede argument is een object met een `label` property:
-
-```js
-nn.addData([3,5,2,1,4,3,5,2], {label:"rock"})
-```
-Je hebt een `for` loop nodig om al je datapunten in de juiste vorm toe te voegen aan het neural network:
-
-```js
-for(let item of data) {
-    const inputs = item.pose
-    const output = { label: item.label }
-    nn.addData(inputs, output)
+nn.addData([18,9.2,8.1,2], {label:"cat"})
+nn.addData([20.1,17,15.5.5], {label:"dog"})
+// vul hier zelf de rest van de data in
+// ...
+nn.normalizeData()
+nn.train({ epochs: 10 }, () => finishedTraining()) 
+async function finishedTraining(){    
+    const results = await nn.classify([29,11,10,3])
+    console.log(results)
 }
 ```
 
+<br>
+<br>
+<br>
+
+# Werken met posedata
+
+Als bovenstaande testje werkt kan je je `mediapipe posedata` uit les 5 gaan gebruiken om te trainen. Je werkt in drie projecten:
+
+- Project 1: Verzamelen posedata (week 5)
+- Project 2: trainen van het model met de posedata (week 6, week 7)
+- Project 3: inladen model in de frontend applicatie, live webcam poses voorspellen voor gameplay
+
+Zorg dat je posedata beschikbaar is in je project. Data kan in de vorm van objecten of arrays zijn. Voor een neural network is het belangrijk om je *data te randomizen*. Dat doen we in dit voorbeeld:
+
+```js
+data = [
+    {pose:[4,2,5,2,1,...], label:"rock"},
+    {pose:[3,1,4,4,1,...], label:"rock"},
+    {pose:[5,2,5,3,3,...], label:"paper"},
+    ...
+]
+data.sort(() => (Math.random() - 0.5))
+```
+<br>
+
+### Neural network
+
+Je kan de `data` aan het neural network toevoegen via de `addData` functie.
+
+> 🚨 *Je moet hierbij goed opletten dat het neural network alleen een array van numbers, en een object met een label verwacht! Let op dat de vorm van arrays en objecten correct is, anders gaat het trainen mis.*
+
+#### Input voor neural network
+```js
+nn.addData([3,5,2,1,4,3,5,2], {label:"rock"})
+```
+
+<br><br><br>
 
 ## Trainen
 
@@ -100,14 +117,11 @@ async function finishedTraining(){
 
 ## Maak een voorspelling
 
-Met de `classify` functie kunnen we nieuwe data voorspellen. Om te testen of het trainen wel goed is gegaan kan je een enkel datapunt uit je originele data array testen:
+Met de `classify` functie kunnen we nieuwe data voorspellen. 
 
 ```js
 async function makePrediction() {
-    // haal een array met numbers uit je originele data, bijvoorbeeld:
-    let test = [3,5,5,3,3,5,6,3,3,...]
-    // kijk wat voor label voorspeld wordt
-    const results = await nn.classify(test)
+    const results = await nn.classify([...]) // array van numbers
     console.log(results)
 }
 ```
@@ -129,22 +143,16 @@ nn.save("model", () => console.log("model was saved!"))
 
 ## Model laden
 
-Vanaf dit punt werk je in je tweede project. Hierin wordt de live webcam getoond met poses. Er wordt geen data ingeladen en geen model getraind.
-
-In plaats daarvan maken we een nieuw neural network, waarin we het getrainde model uit de vorige stap inladen.
+Dit is je game of applicatie die door de eindgebruiker gebruikt gaat worden. Hierin wordt de live webcam getoond met poses. Je gaat nu ook weer posedata uit de webcam halen. Het doel is nu om te voorspellen welke pose de gebruiker aanneemt, dit doen we met ons getrainde model.
 
 ```js
-function createNetwork() {
-    const options = { task: 'classification', debug: true }
-    nn = ml5.neuralNetwork(options)
-
-    const modelDetails = {
-        model: 'model/model.json',
-        metadata: 'model/model_meta.json',
-        weights: 'model/model.weights.bin'
-    }
-    nn.load(modelDetails, () => console.log("het model is geladen!"))
+const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
+const modelDetails = {
+    model: 'model/model.json',
+    metadata: 'model/model_meta.json',
+    weights: 'model/model.weights.bin'
 }
+nn.load(modelDetails, () => console.log("het model is geladen!"))
 ```
 Nadat het model is geladen *(let op de callback functie)*, kan je live posedata uit de webcam gaan voorspellen met het neural network. Verzamel data van één live pose, en roep hiermee de `classify()` functie aan.
 
@@ -160,8 +168,7 @@ Bij het werken met Neural Networks heb je vaak meerdere projecten tegelijk open 
 
 - Het project waarin je data verzamelt uit de webcam en er een label aan geeft. 
 - Het project waarin je een model aan het trainen bent met de gelabelde data. Hier heb je de webcam input niet nodig.
-- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input.
-- In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
+- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
 
 ### Asynchrone functies
 
@@ -174,23 +181,26 @@ Een ML5 neural network werkt met *callbacks* en *asynchrone functies*. Dat betek
 
 > *🚨Een veel voorkomende fout is om te proberen een voorspelling te doen terwijl het trainen nog niet klaar is, of als het model nog niet is ingeladen.*
 
-### Trainen
+### Fouten bij trainen
 
 Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
 
 - De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet voor elk datapunt exact hetzelfde zijn. Als één pose uit 100 punten bestaat, dan moeten alle poses uit 100 punten bestaan.
 - De labels kloppen niet of je bent labels vergeten.
 - Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
-- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme. In dit voorbeeld gaat het fout omdat alle `fingers` van een handpose zijn opgeslagen in objecten, terwijl het neural network één array met getallen verwacht:
+- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme.
+- Je data in de classify aanroep heeft een andere vorm dan de data die je bij addData hebt gebruikt.
+
+#### Veel voorkomende fouten
 
 ```js
-// data uit webcam pose
-const data = [
-    {pose:[{indexfinger:[4,5,2,2], thumb:[2,4,5,3], ...}], label:"rock"}
-    ...
-]
-// data toevoegen aan neural network gaat fout
-nn.addData(data[0].pose, data[0].label)
+// de pose is hier een object, maar het moet alleen een array met numbers zijn
+nn.addData({pose:[2,4,5,3]}, {label:"rock"})
+
+// hier gaat het trainen wel goed, maar bij classify is de data array ineens veel langer
+nn.addData([2,3,4], {label:"rock"})
+nn.addData([5,3,1], {label:"paper"})
+let result = await nn.classify([2,3,4,5,6,7])
 ```
 
 <br>
