@@ -46,7 +46,7 @@ for (let d of test) {
 
 <br>
 
-### Confusion matrix
+### Expert level: Confusion matrix
 
 Als je nóg preciezer wil kunnen bepalen hoe accuraat je voorspelling is kan je werken met een confusion matrix. Hierbij ga kijken hoe goed elk van je classes voorspeld wordt. 
 
@@ -93,7 +93,7 @@ const trainingOptions = {
 }
 nn.train(trainingOptions, finishedTraining);
 ```
-#### Hidden layers
+### Expert level: Hidden layers
 
 Via het `layers` argument kan je zelf meer hidden layers aan het neural network toevoegen!
 De vorm van deze `hidden layers` bepaalt hoe complex de patronen in de data kunnen zijn, om toch nog herkend te worden door het neural network.

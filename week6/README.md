@@ -109,28 +109,30 @@ Bij het werken met KNN heb je meerdere projecten tegelijk open staan:
 
 - Het project waarin je data verzamelt uit de webcam en er een label aan geeft. In dit project heb je een live webcam en teken je de posedata over het webcam beeld.
 - Het project waarin je een model aan het trainen bent met de gelabelde data. Hier heb je de webcam input niet nodig.
-- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input.
-- In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
+- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
 
-### Trainen
+
+### Fouten bij trainen
 
 Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
 
 - De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet voor elk datapunt exact hetzelfde zijn. Als één pose uit 100 punten bestaat, dan moeten alle poses uit 100 punten bestaan.
 - De labels kloppen niet of je bent labels vergeten.
 - Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
-- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme. In dit voorbeeld gaat het fout omdat alle `fingers` van een handpose los zijn opgeslagen in objecten, terwijl K-Nearest-Neighbour één array met getallen verwacht:
+- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme.
+- Je data in de classify aanroep heeft een andere vorm dan de data die je bij addData hebt gebruikt.
+
+#### Veel voorkomende fouten
 
 ```js
-// data uit webcam pose
-const data = [
-    {pose:[{indexfinger:[4,5,2,2], thumb:[2,4,5,3], ...}], label:"rock"}
-    ...
-]
-// data toevoegen aan KNN gaat fout
-machine.learn(data[0].pose, data[0].label)
-```
+// de pose is hier een object, maar het moet alleen een array met numbers zijn
+machine.learn({pose:[2,4,5,3]}, "rock")
 
+// hier gaat het trainen wel goed, maar bij classify is de data array ineens veel langer
+machine.learn([2,3,4], "rock")
+machine.learn([5,3,1], "paper")
+let result = machine.classify([2,3,4,5,6,7])
+```
 
 <br>
 <br>
