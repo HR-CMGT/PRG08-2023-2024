@@ -48,9 +48,7 @@ for (let d of test) {
 
 ### Expert level: Confusion matrix
 
-Als je nóg preciezer wil kunnen bepalen hoe accuraat je voorspelling is kan je werken met een confusion matrix. Hierbij ga kijken hoe goed elk van je classes voorspeld wordt. 
-
-*In dit voorbeeld van `rock, paper, scissors` zie je dat rock 2 keer als paper werd voorspeld en 0 keer als scissors. Dat is goed! Maar scissors werd 10 keer als paper gezien, dus wellicht heb je meer `scissors` voorbeelden in je data nodig.*
+Als je nóg preciezer wil kunnen bepalen hoe accuraat je voorspelling is kan je werken met een confusion matrix. Hierbij ga je kijken hoe goed elk van je classes voorspeld wordt. *In dit voorbeeld van `rock, paper, scissors` zie je dat rock 2 keer als paper werd voorspeld en 0 keer als scissors. Dat is goed! Maar scissors werd 10 keer als paper gezien, dus wellicht heb je meer `scissors` voorbeelden in je data nodig.*
 
 | real ➡️ <br> predict ⬇️  | Rock | Paper | Scissors |
 | --- | ---  |  --- |  ---- |
@@ -106,7 +104,7 @@ De vorm van deze `hidden layers` bepaalt hoe complex de patronen in de data kunn
 <br>
 <br>
 
-# Data bronnen
+# Expert level: Data bronnen
 
 We hebben tot nu toe ons algoritme (`K-Nearest-Neighbour` en `Neural Network`) getraind met posedata uit de webcam. De data bestaat uit een array van getallen, zoals `[4,3,5,2,1]`, vergezeld van een label, zoals `rock`. Voor het algoritme maakt het niets uit dat dit *poses* zijn, want elk soort data kan je weergeven als een array met een label. Hieronder een aantal voorbeelden.
 
@@ -116,7 +114,7 @@ We hebben tot nu toe ons algoritme (`K-Nearest-Neighbour` en `Neural Network`) g
 | Mushrooms |  `[color, size, weight]` |`poisonous` |
 | Titanic passenger | `[Female, age, class]` | `survived` |
 
-#### Oefening databronnen
+#### Oefening
 
 Zoek een [dataset voor classification](https://www.kaggle.com/datasets?tags=13302-Classification), en maak hier een model en voorspelling mee.
 

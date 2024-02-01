@@ -95,12 +95,12 @@ console.log(chat2.content)
 ```
 <br>
 
-#### Optioneel
+#### Expert level: chat history in client
 
 In bovenstaand voorbeeld is de chat history een variabele binnen de node applicatie. Maar als je tegelijk met meerdere web clients bent verbonden, krijgt niet elke user een eigen chat history.
 
-- Hou de chat history bij *in de browser* in plaats van op de server, en geef die telkens mee.
-- Je hebt nu ook de optie om de chat history in `localStorage` op te slaan.
+- Hou de chat history bij *in de browser* in plaats van op de server, en geef die telkens mee. 
+- Je hebt nu ook de optie om de chat history in `localStorage` op te slaan. Dan blijft de history zelfs bewaard nadat je de browser afsluit.
 
 <br><br><br>
 
@@ -174,19 +174,21 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 - [LangChain](https://js.langchain.com/docs/get_started/quickstart)
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
-- [Annuleren van een OpenAI call](https://js.langchain.com/docs/modules/model_io/llms/cancelling_requests)
-- [Tokens bijhouden](https://js.langchain.com/docs/modules/model_io/llms/token_usage_tracking)
-- [Omgaan met errors](https://js.langchain.com/docs/modules/model_io/llms/dealing_with_api_errors)
 
-<Br><br><br>
+### LLM API's
 
-## Andere LLM API's
-
-Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms) kan je naast OpenAI ook connectie maken met andere [LLM's](https://js.langchain.com/docs/integrations/llms/) en [ChatLLM's](https://js.langchain.com/docs/integrations/chat/).
-
-Voor de meeste van deze API's heb je een *API key nodig van de desbetreffende provider*. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken. Populaire LLM API's zijn:
+Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms) kan je naast Azure OpenAI ook connectie maken met andere [LLM's](https://js.langchain.com/docs/integrations/llms/) en [ChatLLM's](https://js.langchain.com/docs/integrations/chat/). Voor de meeste van deze API's heb je een *API key nodig van de desbetreffende provider*. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken. Populaire LLM API's zijn:
 
 - [LLama API](https://www.llama-api.com)
 - [Mistral](https://mistral.ai)
 - [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 - [Gemini](https://ai.google.dev)
+
+### Expert level
+
+Je kan deze onderwerpen gebruiken voor het expert level. 
+
+- [Annuleren van een OpenAI call](https://js.langchain.com/docs/modules/model_io/llms/cancelling_requests)
+- [Tokens bijhouden](https://js.langchain.com/docs/modules/model_io/llms/token_usage_tracking)
+- [Omgaan met errors](https://js.langchain.com/docs/modules/model_io/llms/dealing_with_api_errors)
+- [Spraak](https://github.com/HR-CMGT/PRG08-2023-2024/blob/main/snippets/speech.md)

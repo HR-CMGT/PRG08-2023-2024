@@ -6,7 +6,7 @@ Je gaat zelf een originele toepassing bedenken en bouwen waarin een taalmodel is
 
 <br><br><br>
 
-### Live zetten
+### Expert level: live zetten
 
 Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Voor het expert level kan je je project live online zetten. Dit doe je door node te installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
 
@@ -20,8 +20,11 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 - Haal informatie op van een nieuws-API, weer-API of [een van de vele online api's](https://apilist.fun) en gebruik ChatGPT om dit uit te leggen, kledingtips te geven of om te klagen over het weer!
 - Maak een quiz die creative vragen stelt over je favoriete onderwerp en hou een score bij.
 - Gebruik een taalmodel om een afspeellijst te maken voor een bepaalde situatie, en gebruik de Spotify API om die lijst af te spelen.
+- Maak een virtuele social media persoonlijkheid die elke dag een post publiceert.
 - Link een taalmodel aan een smart home, zodat je je huis kan besturen met taal. Hier kan je [IFTTT](https://ifttt.com) voor gebruiken.
 - Maak een tamagotchi game waarbij de tamagotchi echt een persoonlijkheid heeft en opmerkingen kan maken over hoe goed je voor de tamagotchi zorgt.
+- Maak een kook-app die recepten kan bedenken of recepten kan omzetten voor vegetariërs / veganisten.
+- Maak een dagboek-app waar je tegen kan praten, de app noteert per dag een samenvatting van wat je verteld hebt. Er is een maandoverzicht waarin je nog korter snel kan zien wat er allemaal die maand gebeurd is.
 - Maak een muziek oefen-app met [tone.js](https://tonejs.github.io) en gebruik ChatGPT om de oefeningen te maken (bijvoorbeeld een akkoordprogressie).
 - Of laat het taalmodel automatisch beats en melodiën bedenken die je afspeelt met [tone.js](https://tonejs.github.io)
 - Maak een assistent voor het leren van een taal. Geef het taalmodel instructies om een score bij te houden of te onthouden waar je wel en niet goed in bent.
@@ -31,7 +34,11 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 - Gebruik een hardwareboard zoals Adafruit Feather of een Raspberry Pi om een fysiek apparaat aan ChatGPT te koppelen.
 - Doe onderzoek naar image en speech generation voor je applicatie. Je kunt de [browser speech API](./snippets/speech.md) gebruiken om de resultaten terug te spreken naar de gebruiker.
 - Experimenteer met de persoonlijkheid van de AI, het hoeft niet altijd een vriendelijke behulpzame assistent te zijn!
-- Expert level: gebruik [functions](https://platform.openai.com/docs/guides/function-calling) of [agents] om het taalmodel *code in jouw eigen programma* te laten uitvoeren, zoals het besturen van een game karakter 🤯.
+- Expert level: gebruik [functions](https://platform.openai.com/docs/guides/function-calling) of agents om het taalmodel *code in jouw eigen programma* te laten uitvoeren, zoals het besturen van een game karakter 🤯.
 - Expert level: gebruik de [javascript machine learning](https://github.com/HR-CMGT/Javascript-Machine-Learning) readinglist om meer ideeën en inspiratie op te doen.
 
 <br><br><br>
+
+## Links
+
+- [Use cases for LLM models](https://www.projectpro.io/article/large-language-model-use-cases-and-applications/887)
