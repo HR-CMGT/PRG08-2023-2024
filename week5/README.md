@@ -26,7 +26,7 @@ Bouw een html pagina met webcam pose detection van [MediaPipe](https://developer
 
 |Pose|Demo|Docs|Codepen|
 |---|---|---|---|
-| ✌️ Hand | [demo]((https://mediapipe-studio.webapps.google.com/demo/hand_landmarker)) | [docs]((https://developers.google.com/mediapipe/solutions/vision/hand_landmarker#get_started)) | [codepen](https://codepen.io/mediapipe-preview/pen/gOKBGPN) |
+| ✌️ Hand | [demo](https://mediapipe-studio.webapps.google.com/demo/hand_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/hand_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/gOKBGPN) |
 | 🕺 Body | [demo](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/abRLMxN) |
 | 😱 Face | [demo](https://mediapipe-studio.webapps.google.com/demo/face_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/face_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/OJBVQJm) |
 
@@ -38,11 +38,21 @@ Omdat je de poses in een canvas tekent, heb je toegang tot de `x,y` pose coördi
 
 <br>
 
+## Oefening: zonnebril
+
+Plaats deze zonnebril op de plek van je neus, met de Face landmarks.
+
+<img src="../images/sunglasses.png" width="180">
+
+<br>
+
 ## Posedata gebruiken
 
 Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van de pose. Dit haal je uit de *live posedata*. Lees de documentatie om precies te weten welk getal bij welk lichaamsdeel hoort.
 
 > *Tips: Is er een `z` coördinaat beschikbaar om te zien hoe ver weg iets is? En kan je aan de afstand tussen beide ogen ook zien hoe ver iemand van de webcam verwijderd is?*
+
+
 
 <br>
 
