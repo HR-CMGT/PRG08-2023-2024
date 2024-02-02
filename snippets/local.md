@@ -15,9 +15,10 @@ Als je zeker wil weten dat je data privé blijft, op je eigen machine, dan kan j
 
 <br>
 
-## Huggingface hosting
+## HuggingFace Spaces
 
-[Huggingface biedt hosting met automatische javascript endpoints voor LLM models](https://huggingface.co/blog/inference-endpoints-llm) 💰.
+- *HuggingFace Spaces* biedt hosting met automatische javascript endpoints voor [LLM models](https://huggingface.co/blog/inference-endpoints-llm) 💰.
+- Spaces van andere users bieden soms een gratis endpoint aan. Zie dit voorbeeld voor een [Geitje endpoint](./huggingface.md).
 
 <br>
 

@@ -149,7 +149,7 @@ De spraak komt uit je OS. In MacOS kan je [hier je eigen stem aan toevoegen!](ht
 
 <Br><br><br>
 
-## Streaming
+## Expert level: streaming
 
 Het kan tijd kosten voordat je een volledig antwoord van een LLM terug krijgt. Vooral bij hele lange antwoorden *(zoals de samenvatting van een boek)* kan het lijken of je user interface niet meer reageert. Om een betere user experience te creeëren kan je streaming gebruiken. Je krijgt dan woord-voor-woord een antwoord terug.
 
@@ -159,16 +159,22 @@ for await (const chunk of stream) {
     console.log(chunk.content)
 }
 ```
-### Streaming in node express
+#### Streaming in frontend
 
-Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als stream terug sturen naar de browser. Dit kan met een `readablestream` en `fetch`.
-
-[Tutorial readablestream en fetch](https://www.loginradius.com/blog/engineering/guest-post/http-streaming-with-nodejs-and-fetch-api/)
-
-
+Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als stream terug sturen naar de browser. Dit kan met een [readablestream en fetch](https://www.loginradius.com/blog/engineering/guest-post/http-streaming-with-nodejs-and-fetch-api/).
 
 
 <Br><br><br>
+
+## Expert level: Agents
+
+Een Agent is een LLM die ***code in jouw app*** kan uitvoeren en iets kan doen met het resultaat.
+
+- [OpenAI Agents in Langchain](https://js.langchain.com/docs/modules/agents/)
+
+<br><br><bR>
+
+
 
 ## Documentatie
 
@@ -183,6 +189,7 @@ Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms)
 - [Mistral](https://mistral.ai)
 - [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 - [Gemini](https://ai.google.dev)
+- [HuggingFace](../snippets/huggingface.md) biedt een eigen API om met taalmodellen te werken, dit werkt nog niet samen met LangChain.
 
 ### Expert level
 
@@ -192,3 +199,4 @@ Je kan deze onderwerpen gebruiken voor het expert level.
 - [Tokens bijhouden](https://js.langchain.com/docs/modules/model_io/llms/token_usage_tracking)
 - [Omgaan met errors](https://js.langchain.com/docs/modules/model_io/llms/dealing_with_api_errors)
 - [Spraak](https://github.com/HR-CMGT/PRG08-2023-2024/blob/main/snippets/speech.md)
+- [Agents](https://js.langchain.com/docs/modules/agents/)

@@ -8,7 +8,16 @@ Je gaat zelf een originele toepassing bedenken en bouwen waarin een taalmodel is
 
 ### Expert level: live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Voor het expert level kan je je project live online zetten. Dit doe je door node te installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Voor het expert level kan je je project live online zetten. Dit doe je door node te installeren op je HR studenthosting. Er zijn ook online ***node hosting*** providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
+
+<br><br><br>
+
+## Troubleshooting
+
+- Gebruik de praktijklessen om met problemen bij je docent langs te lopen
+- Als de Azure OpenAI API key niet werkt, geef dit dan zo snel mogelijk aan bij je docenten.
+- Je kan dit tijdelijk oplossen door even de [Fake LLM](https://js.langchain.com/docs/integrations/llms/fake) te gebruiken, zodat je in elk geval door kan werken aan je app.
+- Je kan ook besluiten om een eigen `OpenAI API Key` aan te vragen.
 
 <br><br><br>
 
