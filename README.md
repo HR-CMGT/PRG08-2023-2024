@@ -34,14 +34,6 @@ Tijdens de cursus werk je aan twee opdrachten die ingaan op de stof uit de les. 
 <br>
 <br>
 
-## Taalassistent
-
-Stel vragen over het vak aan de [PRG8 assistent](https://ai-assistent-mu.vercel.app)
-
-<br>
-<br>
-<br>
-
 ## Links
 
 Code snippets en links voor werken met AI in Javascript

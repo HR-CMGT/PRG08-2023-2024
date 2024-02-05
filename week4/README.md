@@ -144,6 +144,15 @@ De FAISS documentatie is recent veranderd. Je kan deze waarschuwing krijgen.
 Bij het maken van embeddings verstuur je een document naar OpenAI en/of Microsoft. Het is daarom belangrijk dat je geen data verstuurt die auteursrechtelijk beschermd is. Om data helemaal veilig te houden zou je kunnen werken met een [Lokaal LLM of je eigen LLM hosting](../snippets/local.md)
 
 
+<br>
+<br>
+<br>
+
+
+## Voorbeeld
+
+Stel vragen over dit vak aan de [PRG8 assistent](https://ai-assistent-mu.vercel.app)
+
 <br><br><br>
 
  ## Links
