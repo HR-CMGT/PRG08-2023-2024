@@ -168,7 +168,7 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Expert level: Agents en tools
+## Expert level: agents
 
 Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is.
 
@@ -199,6 +199,7 @@ Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms)
 - [Mistral](https://mistral.ai)
 - [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 - [Gemini](https://ai.google.dev)
+- [Lokaal LLM installeren](../snippets/local.md)
 
 ### Expert level
 

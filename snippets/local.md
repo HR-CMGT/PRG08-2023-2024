@@ -9,9 +9,38 @@ In de [online community](https://huggingface.co/models?other=text-generation) ve
 
 ## Lokaal LLM
 
-Als je zeker wil weten dat je data privé blijft, op je eigen machine, dan kan je een open source taalmodel installeren. Met [OLLama](https://ollama.ai) of [LM Studio](https://lmstudio.ai) kan je dit automatisch doen, en krijg je meteen een ingebouwde webserver om je prompts naartoe te sturen.
+Als je zeker wil weten dat je data privé blijft, op je eigen machine, dan kan je een open source taalmodel installeren. Je betaalt nu ook geen tokens om taaldata te genereren. 
 
-> *🚨 Voor het draaien van een lokaal LLM heb je een krachtige laptop nodig. Zelfs dan moet je opletten dat je alleen hele kleine modellen download :***1B of 7B versies***.*
+Met [OLLama](https://ollama.ai) of [LM Studio](https://lmstudio.ai) kan je LLMs installeren en krijg je meteen een ingebouwde webserver om je prompts naartoe te sturen.
+
+> *🚨 Voor het draaien van een lokaal LLM heb je een krachtige laptop nodig. Zelfs dan moet je opletten dat je alleen kleine modellen download :***1B of 7B versies***.*
+
+#### Code voorbeeld LM Studio / Ollama
+
+In dit codevoorbeeld wordt het lokale LLM aangeroepen met de standaard `openai` api.
+
+```js
+import { OpenAI } from "openai";
+
+const openai = new OpenAI({
+    temperature: 0.3,
+    apiKey: "not-needed",
+    baseURL: "http://localhost:1234/v1",
+});
+
+async function main() {
+    const completion = await openai.chat.completions.create({
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role : "user",  content: "Hello, can you tell me a joke."}
+        ],
+    });
+
+    console.log(completion.choices[0]);
+}
+
+main();
+```
 
 <br>
 
