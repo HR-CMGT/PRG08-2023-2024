@@ -107,7 +107,9 @@ const model = new ChatOpenAI({
 
 ### Troubleshooting
 
-📃 De documentatie van Langchain en OpenAI verandert regelmatig. Als de voorbeeldcode uit deze repository een warning geeft moet je de officiële documentatie nalezen.
+- 📃 De documentatie van Langchain en OpenAI verandert regelmatig. Als de voorbeeldcode uit deze repository een warning geeft moet je de officiële documentatie nalezen.
+- Bijvoorbeeld: `import { ChatOpenAI } from "langchain/chat_models/openai"` is recent veranderd naar `import { ChatOpenAI } from "@langchain/openai";`
+- De Azure API Key kan veranderen tijdens de lessen. Als je een "not authorized" error krijgt kan je in Teams kijken of er een nieuwe key is.
 
 <br><br><br>
 

@@ -133,11 +133,13 @@ let weather = await fetch("http://api.openweathermap.org/forecast")
 let temperature = weather.today.temp
 let chatresult = model.invoke(`Complain about the temperature of ${temperature} degrees`)
 ```
-💬 Je kan `text-to-speech` gebruiken om een chat uit te spreken. [De browser heeft dit ingebouwd!](./snippets/speech.md)
+
+- [Lijst van interessante API's om te koppelen aan je LLM](https://apilist.fun)
+- [Koppel je Smart Home of Social Media aan een LLM](https://ifttt.com)
 
 <Br><br><br>
 
-## Spraak
+## 💬 Spraak
 
 De browser/javascript heeft zowel spraak als spraakherkenning ingebouwd.
 De spraak komt uit je OS. In MacOS kan je [hier je eigen stem aan toevoegen!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac). Je kan dit gebruiken om je LLM tot leven te brengen.
@@ -166,10 +168,11 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Expert level: Agents
+## Expert level: Agents en tools
 
-Een Agent is een LLM die ***code in jouw app*** kan uitvoeren en iets kan doen met het resultaat.
+Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is.
 
+- [OpenAI Tools and function calling](https://platform.openai.com/docs/guides/function-calling)
 - [OpenAI Agents in Langchain](https://js.langchain.com/docs/modules/agents/)
 
 <br><br><bR>
