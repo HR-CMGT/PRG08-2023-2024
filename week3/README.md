@@ -179,7 +179,14 @@ Een Agent is een LLM die ***code in jouw app*** kan uitvoeren en iets kan doen m
 ## Documentatie
 
 - [LangChain](https://js.langchain.com/docs/get_started/quickstart)
+- [Langchain Azure OpenAI](https://js.langchain.com/docs/integrations/chat/azure)
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+
+In de lessen benaderen we Azure OpenAI via LangChain. Je kan hier meer lezen over Azure en OpenAI.
+
+- [Eigen OpenAI key aanvragen](https://platform.openai.com/docs/introduction)
+- [OpenAI API](https://platform.openai.com/docs/introduction)
+- [Azure REST API](https://learn.microsoft.com/en-gb/azure/ai-services/openai/reference)
 
 ### LLM API's
 
@@ -189,7 +196,6 @@ Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms)
 - [Mistral](https://mistral.ai)
 - [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 - [Gemini](https://ai.google.dev)
-- [HuggingFace](../snippets/huggingface.md) biedt een eigen API om met taalmodellen te werken, dit werkt nog niet samen met LangChain.
 
 ### Expert level
 

@@ -34,7 +34,19 @@ Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaa
 - Maak een `.env` file aan, plaats hierin de API keys uit de les.
 - Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
 
-> *🚨 Deel de API keys niet met anderen. Plaats de API keys niet online.*
+#### .env
+
+```sh
+OPENAI_API_TYPE=___
+OPENAI_API_VERSION=___
+OPENAI_API_BASE=___
+AZURE_OPENAI_API_KEY=___
+DEPLOYMENT_NAME=___
+ENGINE_NAME=___
+INSTANCE_NAME=___
+```
+
+> *🚨 Deel de API keys en de ENV file niet met anderen. Plaats de API keys niet online.*
 
 #### API keys lezen
 
@@ -43,13 +55,8 @@ Met *Node 20.11 LTS* kan je de `.env` file uitlezen als je deze meegeeft in je a
 ```sh
 node --env-file=.env server.js
 ```
-Als alternatief kan je `dotenv` importeren in `server.js`:
-```sh
-npm install dotenv
-```
 Test of het inlezen van je `.env` is gelukt:
 ```js
-import 'dotenv/config'
 console.log(process.env.AZURE_OPENAI_API_KEY)
 ```
 
@@ -98,7 +105,9 @@ const model = new ChatOpenAI({
 
 <br>
 
-> *📃 De documentatie van Langchain en OpenAI verandert regelmatig. Als de voorbeeldcode uit deze repository een warning geeft moet je de officiële documentatie nalezen*.
+### Troubleshooting
+
+📃 De documentatie van Langchain en OpenAI verandert regelmatig. Als de voorbeeldcode uit deze repository een warning geeft moet je de officiële documentatie nalezen.
 
 <br><br><br>
 
@@ -171,16 +180,22 @@ npm run mycoolproject
 
 <br><br><br>
 
-### Live zetten
+### Expert level: live zetten
 
-Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Als je je project live online wil zetten kan je node installeren op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
+Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draaien op je eigen computer. Voor het expert level kan je jouw project live zetten op je HR studenthosting. Er zijn ook online node hosting providers te vinden zoals `vercel.com`, `netlify.com`, `codesandbox.com`, `github codespaces`, `huggingface spaces`, `stackblitz.com`, `deno.com`, `amazon serverless webservices`, etc.
 
 <br><Br><br>
 
 ## Links
 
+- [LangChain](https://js.langchain.com/docs/get_started/quickstart)
 - [Langchain Azure instellingen](https://js.langchain.com/docs/integrations/chat/azure)
-- [Eigen OpenAI key aanvragen](https://platform.openai.com/docs/introduction)
 - [Node Express Hello World](https://expressjs.com/en/starter/hello-world.html)
 - [JSON teruggeven vanuit Express](https://expressjs.com/en/5x/api.html#res.json)
 - [Voorbeeld fetch met POST](https://jasonwatmore.com/post/2021/09/05/fetch-http-post-request-examples)
+
+In de lessen benaderen we Azure OpenAI via LangChain. Je kan hier meer lezen over Azure en OpenAI.
+
+- [Eigen OpenAI key aanvragen](https://platform.openai.com/docs/introduction)
+- [OpenAI API](https://platform.openai.com/docs/introduction)
+- [Azure REST API](https://learn.microsoft.com/en-gb/azure/ai-services/openai/reference)

@@ -30,6 +30,9 @@ Bouw een html pagina met webcam pose detection van [MediaPipe](https://developer
 | 🕺 Body | [demo](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/abRLMxN) |
 | 😱 Face | [demo](https://mediapipe-studio.webapps.google.com/demo/face_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/face_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/OJBVQJm) |
 
+
+> *TIP: Als je niet bekend bent met het `<canvas>` element kan je eerst [deze MDN tutorial volgen](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)*
+
 <br>
 
 ## Posedata tonen
@@ -67,6 +70,7 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van d
 
 ## Links
 
+- [Canvas Drawing Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
 - [MediaPipe Javascript Documentation](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision)
 - [MediaPipe Examples](https://developers.google.com/mediapipe/solutions/examples)
 - [Codepen Hand](https://codepen.io/mediapipe-preview/pen/gOKBGPN)

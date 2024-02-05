@@ -52,3 +52,8 @@ Code snippets en links voor werken met AI in Javascript
 - [Browser speech](./snippets/speech.md)
 - [Lees de webcam](./snippets/camera.md)
 - [Javascript AI Reading List](https://github.com/HR-CMGT/Javascript-Machine-Learning)
+
+In de lessen benaderen we Azure OpenAI via LangChain. Je kan hier meer lezen over Azure en OpenAI.
+
+- [OpenAI API](https://platform.openai.com/docs/introduction)
+- [Azure REST API](https://learn.microsoft.com/en-gb/azure/ai-services/openai/reference)
