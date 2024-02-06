@@ -43,7 +43,8 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 - Gebruik een hardwareboard zoals Adafruit Feather of een Raspberry Pi om een fysiek apparaat aan ChatGPT te koppelen.
 - Doe onderzoek naar image en speech generation voor je applicatie. Je kunt de [browser speech API](./snippets/speech.md) gebruiken om de resultaten terug te spreken naar de gebruiker.
 - Experimenteer met de persoonlijkheid van de AI, het hoeft niet altijd een vriendelijke behulpzame assistent te zijn!
-- Expert level: gebruik [functions](https://platform.openai.com/docs/guides/function-calling) of agents om het taalmodel *code in jouw eigen programma* te laten uitvoeren, zoals het besturen van een game karakter 🤯.
+- Bekijk [OpenGPT](https://www.opengpt.com) om inspiratie op te doen voor AI assistants.
+- Expert level: gebruik [tools, functions of agents](https://platform.openai.com/docs/guides/function-calling) om het taalmodel *code in jouw eigen programma* te laten uitvoeren, zoals het besturen van een game karakter 🤯.
 - Expert level: gebruik de [javascript machine learning](https://github.com/HR-CMGT/Javascript-Machine-Learning) readinglist om meer ideeën en inspiratie op te doen.
 
 <br><br><br>

@@ -121,24 +121,19 @@ We gaan de langchain code geschikt maken om vanuit een web client op te vragen.
 In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de OpenAI code vanuit je frontend te kunnen aanroepen.
 
 - Maak een express aanroep die een `request` via `GET` of `POST` kan ontvangen.
-- Roep vervolgens je langchain chat functie aan.
+- Je hebt `POST` nodig als je veel data mee wil kunnen sturen of als je niet wil dat de hele prompt in de adresbalk te zien is. 
+- Binnen node roep je de langchain functie aan.
 - Het resultaat geef je terug als JSON in de `response`.
 
 ```js
 import cors from 'cors'
 import express from 'express'
-import bodyParser from 'body-parser'
 
 const app = express()
 app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// voorbeeld GET request
 app.get('/asksomething', async(req, res) => {
-    // roep hier je langchain function aan 
-    // gebruik de GET / POST data uit het request als prompt
-    // geef het chat result terug als JSON
+    // hier komt via GET / POST de vraag van de eindgebruiker binnen
+    // gebruik dit om je langchain functie aan te roepen en geef het result terug als JSON
     let chat = await myLangchainFunction() 
     res.json(chat)
 })
