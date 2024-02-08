@@ -79,7 +79,7 @@ const model = new ChatOpenAI({
     azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY, 
     azureOpenAIApiVersion: process.env.OPENAI_API_VERSION, 
     azureOpenAIApiInstanceName: process.env.INSTANCE_NAME, 
-    azureOpenAIApiDeploymentName: process.env.MODEL_CHAT, 
+    azureOpenAIApiDeploymentName: process.env.ENGINE_NAME, 
 })
 
 const joke = await model.invoke("Tell me a Javascript joke!")
@@ -124,47 +124,13 @@ In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de Op
 - Je hebt `POST` nodig als je veel data mee wil kunnen sturen of als je niet wil dat de hele prompt in de adresbalk te zien is. 
 - Binnen node roep je de langchain functie aan.
 - Het resultaat geef je terug als JSON in de `response`.
-
-```js
-import cors from 'cors'
-import express from 'express'
-
-const app = express()
-app.use(cors())
-app.get('/asksomething', async(req, res) => {
-    // hier komt via GET / POST de vraag van de eindgebruiker binnen
-    // gebruik dit om je langchain functie aan te roepen en geef het result terug als JSON
-    let chat = await myLangchainFunction() 
-    res.json(chat)
-})
-
-app.listen(3000, () => console.log(`app luistert naar port 3000!`))
-```
-<br>
-
-#### Werken met nodemon 👺
-
-Je kan `nodemon` gebruiken zodat je express server automatisch herstart als je een wijziging hebt gemaakt. 
-```sh
-npm install nodemon
-```
-Het nodemon commando kan je het beste in je `scripts` plaatsen in je `package.json`:
-
-```json
-"scripts": {
-    "mycoolproject" : "nodemon server.js"
-},
-```
-```sh
-npm run mycoolproject
-```
+- Gebruik `nodemon` om je server automatisch te herstarten als je een wijziging hebt gemaakt. Je kunt hiervoor ook `--watch` gebruiken. 
+- Het commando kun je het beste in je `scripts` plaatsen van `package.json`. <br/>```"dev": "node --env-file=.env --watch server.js",```
 
 #### Server testen
 
 - Gebruik [Hoppscotch](https://hoppscotch.io), de VS Code extension [Thunder Client](https://www.thunderclient.com) of [Postman](https://www.postman.com/downloads/) om je server calls te testen.
 
-
- 
 <br><br><br>
 
 ### HTML Frontend
@@ -173,7 +139,7 @@ npm run mycoolproject
 - In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
 - ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen. De submit button is disabled. Toon via een `loading spinner` dat de app bezig is.
 - Het resultaat toon je vervolgens weer aan de gebruiker in de user interface. Enable de submit button en verwijder de loading spinner.
-- Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
+- Tip: Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
 
 <br><br><br>
 
