@@ -29,6 +29,7 @@ Voor de lessen en inleveropdrachten kan je jouw frontend en backend lokaal draai
 - Haal informatie op van een nieuws-API, weer-API of [een van de vele online api's](https://apilist.fun) en gebruik ChatGPT om dit uit te leggen, kledingtips te geven of om te klagen over het weer!
 - Maak een quiz die creative vragen stelt over je favoriete onderwerp en hou een score bij.
 - Gebruik een taalmodel om een afspeellijst te maken voor een bepaalde situatie, en gebruik de Spotify API om die lijst af te spelen.
+- Maak een taal-game zoals [Codenames](https://www.whitegoblingames.com/game/codenames/) na met ChatGPT.
 - Maak een virtuele social media persoonlijkheid die elke dag een post publiceert.
 - Link een taalmodel aan een smart home, zodat je je huis kan besturen met taal. Hier kan je [IFTTT](https://ifttt.com) voor gebruiken.
 - Maak een tamagotchi game waarbij de tamagotchi echt een persoonlijkheid heeft en opmerkingen kan maken over hoe goed je voor de tamagotchi zorgt.
