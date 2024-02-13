@@ -172,7 +172,8 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is.
 
-- [OpenAI Tools and function calling](https://platform.openai.com/docs/guides/function-calling)
+- [Code voorbeeld Langchain weerbericht](../snippets/functions.md)
+- [OpenAI LangChain Function Calling](https://js.langchain.com/docs/integrations/chat/openai)
 - [OpenAI Agents in Langchain](https://js.langchain.com/docs/modules/agents/)
 
 <br><br><bR>
