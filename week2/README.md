@@ -29,6 +29,15 @@ Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaa
 
 - Installeer [NodeJS 20.11 LTS](https://nodejs.org/en). 
 
+#### .gitignore
+```sh
+.vscode
+.idea
+
+.env
+node_modules
+```
+
 #### Werken met de `.env` file
 
 - Maak een `.env` file aan, plaats hierin de API keys uit de les.
@@ -48,6 +57,8 @@ INSTANCE_NAME=___
 
 > *🚨 Deel de API keys en de ENV file niet met anderen. Plaats de API keys niet online.*
 
+
+
 #### API keys lezen
 
 Met *Node 20.11 LTS* kan je de `.env` file uitlezen als je deze meegeeft in je aanroep.
@@ -65,6 +76,12 @@ console.log(process.env.AZURE_OPENAI_API_KEY)
 
 ## Langchain
 
+Initialiseer een nieuw npm project in je server-directory.
+```sh
+npm init
+```
+Zet je het `type` van je project op `module` in `package.json` om imports te kunnen gebruiken. 
+
 [Langchain](https://js.langchain.com/docs/get_started/introduction) is de API die we in `server.js` gaan gebruiken om te werken met Azure OpenAI (ChatGPT). 
 
 ```sh
@@ -79,7 +96,7 @@ const model = new ChatOpenAI({
     azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY, 
     azureOpenAIApiVersion: process.env.OPENAI_API_VERSION, 
     azureOpenAIApiInstanceName: process.env.INSTANCE_NAME, 
-    azureOpenAIApiDeploymentName: process.env.MODEL_CHAT, 
+    azureOpenAIApiDeploymentName: process.env.ENGINE_NAME, 
 })
 
 const joke = await model.invoke("Tell me a Javascript joke!")
@@ -120,51 +137,22 @@ We gaan de langchain code geschikt maken om vanuit een web client op te vragen.
 
 In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de OpenAI code vanuit je frontend te kunnen aanroepen.
 
-- Maak een express aanroep die een `request` via `GET` of `POST` kan ontvangen.
-- Je hebt `POST` nodig als je veel data mee wil kunnen sturen of als je niet wil dat de hele prompt in de adresbalk te zien is. 
+- Maak een express aanroep die een `request` via `GET` kan ontvangen op `/joke`.
 - Binnen node roep je de langchain functie aan.
 - Het resultaat geef je terug als JSON in de `response`.
-
-```js
-import cors from 'cors'
-import express from 'express'
-
-const app = express()
-app.use(cors())
-app.get('/asksomething', async(req, res) => {
-    // hier komt via GET / POST de vraag van de eindgebruiker binnen
-    // gebruik dit om je langchain functie aan te roepen en geef het result terug als JSON
-    let chat = await myLangchainFunction() 
-    res.json(chat)
-})
-
-app.listen(3000, () => console.log(`app luistert naar port 3000!`))
-```
-<br>
-
-#### Werken met nodemon 👺
-
-Je kan `nodemon` gebruiken zodat je express server automatisch herstart als je een wijziging hebt gemaakt. 
-```sh
-npm install nodemon
-```
-Het nodemon commando kan je het beste in je `scripts` plaatsen in je `package.json`:
-
-```json
-"scripts": {
-    "mycoolproject" : "nodemon server.js"
-},
-```
-```sh
-npm run mycoolproject
-```
+- Gebruik `nodemon` om je server automatisch te herstarten als je een wijziging hebt gemaakt. Je kunt hiervoor ook `--watch` gebruiken als alternatief. 
+- Het commando kun je het beste in je `scripts` plaatsen van `package.json`. <br/>```"dev": "node --env-file=.env --watch server.js",```
 
 #### Server testen
 
-- Gebruik [Hoppscotch](https://hoppscotch.io), de VS Code extension [Thunder Client](https://www.thunderclient.com) of [Postman](https://www.postman.com/downloads/) om je server calls te testen.
+- Gebruik [Postman](https://www.postman.com/downloads/) om je server calls te testen. Eventueel kun je online alternatief [Hoppscotch](https://hoppscotch.io) gebruiken, of de VS Code extension [Thunder Client](https://www.thunderclient.com).
 
+#### Chat
 
- 
+- Voeg een nieuw endpoint `/chat` toe dat een `request` via `POST` ontvangt met een query van de gebruiker.
+- Stuur nu deze query naar het model.
+- Het resultaat geef je weer terug als JSON in de `response`.
+
 <br><br><br>
 
 ### HTML Frontend
@@ -173,7 +161,7 @@ npm run mycoolproject
 - In de frontend javascript gebruik je `fetch()` met `GET` of `POST` om je server aan te roepen met de invoer uit het invoerveld. Zie hiervoor de lessen PRG3 en PRG6.
 - ⚠️ ***Belangrijk***: zorg dat je interface disabled is zo lang er nog geen antwoord terug is gekomen. De submit button is disabled. Toon via een `loading spinner` dat de app bezig is.
 - Het resultaat toon je vervolgens weer aan de gebruiker in de user interface. Enable de submit button en verwijder de loading spinner.
-- Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
+- Tip: Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
 
 <br><br><br>
 
