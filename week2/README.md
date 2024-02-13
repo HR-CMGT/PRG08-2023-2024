@@ -34,6 +34,15 @@ Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaa
 - Maak een `.env` file aan, plaats hierin de API keys uit de les.
 - Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
 
+#### .gitignore
+```sh
+.vscode
+.idea
+
+.env
+node_modules
+```
+
 #### .env
 
 ```sh
@@ -47,6 +56,8 @@ INSTANCE_NAME=___
 ```
 
 > *🚨 Deel de API keys en de ENV file niet met anderen. Plaats de API keys niet online.*
+
+
 
 #### API keys lezen
 
