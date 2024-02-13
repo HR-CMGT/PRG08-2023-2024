@@ -29,11 +29,6 @@ Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaa
 
 - Installeer [NodeJS 20.11 LTS](https://nodejs.org/en). 
 
-#### Werken met de `.env` file
-
-- Maak een `.env` file aan, plaats hierin de API keys uit de les.
-- Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
-
 #### .gitignore
 ```sh
 .vscode
@@ -42,6 +37,11 @@ Voor nu plaats je alleen een "hello world" in de index.html. In `script.js` plaa
 .env
 node_modules
 ```
+
+#### Werken met de `.env` file
+
+- Maak een `.env` file aan, plaats hierin de API keys uit de les.
+- Let op dat je de `.env` file toevoegt aan je `.gitignore`, zodat deze niet in je github repository terecht komt.
 
 #### .env
 
