@@ -120,16 +120,15 @@ We gaan de langchain code geschikt maken om vanuit een web client op te vragen.
 
 In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de OpenAI code vanuit je frontend te kunnen aanroepen.
 
-- Maak een express aanroep die een `request` via `GET` of `POST` kan ontvangen.
-- Je hebt `POST` nodig als je veel data mee wil kunnen sturen of als je niet wil dat de hele prompt in de adresbalk te zien is. 
+- Maak een express aanroep die een `request` via `POST` kan ontvangen.
 - Binnen node roep je de langchain functie aan.
 - Het resultaat geef je terug als JSON in de `response`.
-- Gebruik `nodemon` om je server automatisch te herstarten als je een wijziging hebt gemaakt. Je kunt hiervoor ook `--watch` gebruiken. 
+- Gebruik `nodemon` om je server automatisch te herstarten als je een wijziging hebt gemaakt. Je kunt hiervoor ook `--watch` gebruiken als alternatief. 
 - Het commando kun je het beste in je `scripts` plaatsen van `package.json`. <br/>```"dev": "node --env-file=.env --watch server.js",```
 
 #### Server testen
 
-- Gebruik [Hoppscotch](https://hoppscotch.io), de VS Code extension [Thunder Client](https://www.thunderclient.com) of [Postman](https://www.postman.com/downloads/) om je server calls te testen.
+- Gebruik [Postman](https://www.postman.com/downloads/) om je server calls te testen. Eventueel kun je [Hoppscotch](https://hoppscotch.io) als alternatief gebruiken of de VS Code extension [Thunder Client](https://www.thunderclient.com)
 
 <br><br><br>
 
