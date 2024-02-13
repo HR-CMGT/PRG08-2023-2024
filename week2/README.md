@@ -76,6 +76,12 @@ console.log(process.env.AZURE_OPENAI_API_KEY)
 
 ## Langchain
 
+Initialiseer een nieuw npm project in je server-directory.
+```sh
+npm init
+```
+Zet je het `type` van je project op `module` in `package.json` om imports te kunnen gebruiken. 
+
 [Langchain](https://js.langchain.com/docs/get_started/introduction) is de API die we in `server.js` gaan gebruiken om te werken met Azure OpenAI (ChatGPT). 
 
 ```sh
