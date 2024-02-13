@@ -145,7 +145,7 @@ In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de Op
 
 #### Server testen
 
-- Gebruik [Postman](https://www.postman.com/downloads/) om je server calls te testen. Eventueel kun je [Hoppscotch](https://hoppscotch.io) als alternatief gebruiken of de VS Code extension [Thunder Client](https://www.thunderclient.com)
+- Gebruik [Postman](https://www.postman.com/downloads/) om je server calls te testen. Eventueel kun je online alternatief [Hoppscotch](https://hoppscotch.io) gebruiken, of de VS Code extension [Thunder Client](https://www.thunderclient.com).
 
 #### Chat
 
