@@ -1,3 +1,11 @@
+# Speech
+
+- Spreken
+- Spraakherkenning
+
+<br><br><bR>
+
+
 ## Browser spraak
 
 Laat de browser een reactie uitspreken!
@@ -79,6 +87,51 @@ playButton.addEventListener("click", () => {
 
 <br>
 <br>
+<br>
+
+## Spraakherkenning
+
+Je kan de gebruiker een tekst laten inspreken, de tekst wordt dan herkend. Let op, het effect verschilt enorm per browser. 
+
+```js
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+// var aanpassen
+
+const testBtn = document.querySelector('button')
+testBtn.addEventListener('click', () => startListening())
+
+function startListening() {
+    testBtn.disabled = true
+
+    let recognition = new SpeechRecognition()
+    //recognition.lang = 'en-US'
+    recognition.lang = 'nl-NL' // nl werkt niet in alle browsers
+    recognition.interimResults = false
+    recognition.maxAlternatives = 1
+    recognition.start()
+
+    recognition.addEventListener("result", (event) => checkResult(event))
+
+    recognition.onspeechend = function () {
+        recognition.stop()
+        testBtn.disabled = false
+    }
+
+    recognition.onerror = function (event) {
+        testBtn.disabled = false
+        console.log(event.error)
+    }
+}
+
+function checkResult(event) {
+    let speechResult = event.results[0][0].transcript.toLowerCase()
+    console.log('🚨' + speechResult)
+    console.log('Confidence: ' + event.results[0][0].confidence)
+}
+```
+
+<br><br>
 
 ## Links
 
