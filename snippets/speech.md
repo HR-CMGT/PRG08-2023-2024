@@ -18,6 +18,7 @@ function speak(text) {
 
 speak("Hello world")
 ```
+<Br>
 
 ## User interaction
 
@@ -28,18 +29,30 @@ btn.addEventListener("click", () => {
   speak(`I think it's a hamster!`)
 })
 ```
+<br>
 
 ## Voices
 
-Je kan verschillende voices gebruiken. Zie ook de [docs](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
+Je kan verschillende voices gebruiken. Zie de [getvoices documentatie](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices).
+
+In dit voorbeeld tonen we alle beschikbare stemmen. De beschikbare stemmen verschillen per OS (Mac,Windows,Linux) en per browser (Safari, Edge, Chrome).
 
 ```typescript
 let voices = window.speechSynthesis.getVoices()
-let name = "Alex"
-utterThis.voice = voices.filter(function(voice) { return voice.name == name; })[0]
+for(let voice of voices) {
+    console.log(`${voice.name} (${voice.lang})`)
+}
+```
+In dit voorbeeld filteren we alle Nederlandse stemmen uit de lijst en gebruiken de eerste als stem.
+```js
+let dutchVoices = voices.filter(voice => voice.lang === "nl-NL")
+let utterThis = new SpeechSynthesisUtterance(text)
+utterThis.voice = dutchVoices[0] // de eerste dutch voice uit de lijst
+synth.speak(utterThis)
 ```
 
-[Op MacOS kan je je eigen stem toevoegen aan de beschikbare voices!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac)
+- [Op MacOS kan je je eigen stem toevoegen aan de beschikbare voices!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac)
+- Het duurt even voordat de voices beschikbaar zijn. Je kan dit checken met `synth.addEventListener("voiceschanged", () => {})`
 
 <br>
 <Br>
