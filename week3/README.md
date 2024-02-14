@@ -31,7 +31,23 @@ let res = await model.invoke(promptTemplate)
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Langchain Functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.
 
-<br><bR><br>
+#### Debuggen
+
+Benader prompt engineering net als gewoon programmeren. Werkt een prompt niet zoals je gehoopt had, lees hem dan nog eens goed en bedenk waarom de prompt verkeerd geïnterpreteerd zou kunnen worden door het model. Doe een kleine wijziging, en test of het resultaat beter wordt. Itereer net zolang tot je het gewenste resultaat bereikt hebt.
+
+Als we gebruik maken van een taalmodel, willen we vaak wat creativiteit/onvoorspelbaarheid in de resultaten. Als je aan het debuggen bent is het echter handiger om voorspelbare resultaten te krijgen zodat je kunt zien dat je prompt echt beter wordt en je niet gewoon 'geluk' hebt. De onvoorspelbaarheid van een model regelen we met de `temperature` die een waarde van 0 tot 1 kan hebben. Zet deze op 0 voor volledig voorspelbare resultaten.
+
+```javascript
+const model = new ChatOpenAI({
+    temperature: 0.0, 
+    azureOpenAIApiKey: process.env.AZURE_OPENAI_KEY,
+    azureOpenAIApiVersion: process.env.AZURE_OPENAI_VERSION,
+    azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_INSTANCE_NAME,
+    azureOpenAIApiDeploymentName: process.env.AZURE_OPENAI_DEPLOY_NAME,
+})
+```
+
+<br><br><br>
 
 ## System instructions en chat roles
 
