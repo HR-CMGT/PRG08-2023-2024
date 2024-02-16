@@ -17,12 +17,11 @@ Je gebruikt dit resultaat om functies in je eigen code uit te voeren, op basis v
 
 <br><br><br>
 
-```js
-import { ChatOpenAI } from "@langchain/openai";
+## Demo weerbericht
 
-//
-// voorbeeld functie die het weerbericht ophaalt. hier zou je een fetch in moeten plaatsen om het echte weer op te halen
-//
+Dit is een zelfgeschreven functie in jouw javascript app.
+
+```js
 global.getCurrentWeather = (location) => {
     if (location.toLowerCase().includes("tokyo")) {
         return { location, temperature: "10 c" };
@@ -32,10 +31,12 @@ global.getCurrentWeather = (location) => {
         return { location, temperature: "22 c" };
     }
 }
+```
+Vervolgens geef je de *function signature* mee aan je `model.invoke()` call. Het LLM gaat nu proberen om met het prompt deze functie in te vullen.
 
-//
-// geef de functiebeschrijving mee bij het aanmaken van het model. versie moet 1106 of hoger zijn.
-//
+```js
+import { ChatOpenAI } from "@langchain/openai";
+
 const chat = new ChatOpenAI({
     modelName: "gpt-3.5-turbo-1106",
     maxTokens: 128,
@@ -63,22 +64,21 @@ const chat = new ChatOpenAI({
     ],
     tool_choice: "auto", 
 });
-
-//
-// het taalmodel begrijpt dat de getweather functie drie keer aangeroepen moet worden met als parameter de locatie
-//
-const res = await chat.invoke([
-    ["human", "What's the weather like in San Francisco, Tokyo, and Paris?"],
-]);
-
-// check welke functies volgens het llm aangeroepen moeten worden
-console.log(res.additional_kwargs.tool_calls);
 ```
-<br>
+Als je nu een vraag stelt krijg je als antwoord alleen nog functienamen en functie parameters. Deze vind je in de `additional_kwargs` van het antwoord.
+```js
+const res = await chat.invoke([
+    ["human", "What's the weather like in San Francisco, Tokyo, and Paris?"]
+])
+console.log(res.additional_kwargs.tool_calls)
+```
+<br><br>
 
 ## Functies aanroepen
 
-Het chatmodel geeft alleen aan welke functies je met welke parameters moet aanroepen. Je voert de functies uit door de namen en parameters uit `additional_kwargs_tool_calls` te halen:
+Het chatmodel geeft alleen aan welke functies je met welke parameters moet aanroepen. Je haalt dit uit de `additional_kwargs.tool_calls` van het response.
+
+Omdat het enigszins tricky is om een functie op basis van een *string response* uit te voeren moet je dubbel checken of dit wel echt een functie in jouw code is.
 
 ```js
 for(let tool of res.additional_kwargs.tool_calls) {
@@ -95,7 +95,15 @@ for(let tool of res.additional_kwargs.tool_calls) {
 }
 ```
 
-<br>
+<br><Br>
+
+## Agents
+
+Een ***Agent*** is een LLM die een zelf bedachte function ook daadwerkelijk kan uitvoeren en zelf kan evalueren wat het resultaat is. 
+
+- [OpenAI Agents in Langchain](https://js.langchain.com/docs/modules/agents/)
+
+<br><br>
 
 ## Links
 
