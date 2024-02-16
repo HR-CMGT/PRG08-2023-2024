@@ -7,6 +7,7 @@ Deze week ga je je langchain kennis via [prompt engineering](https://platform.op
 #### Onderwerpen
 
 - Prompt engineering
+- Temperature
 - System instructions en chat roles
 - Chat history
 - Fake llm
@@ -27,25 +28,52 @@ let userQestion = `Tell me how to take care of my banana plant`
 let promptTemplate = `Answer the following question: ${userQuestion} as short as you can.`
 let res = await model.invoke(promptTemplate)
 ```
+### Lengte van het antwoord
+
+Je kan de lengte van het antwoord bepalen met `maxTokens`. Let op dat dit kan resulteren in afgebroken tekst.
+
+```js
+const response = await model.invoke({
+    prompt: "Can you ask me a question in German so I can practice?",
+    max_tokens: 100 // Adjust as needed
+});
+```
 
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Langchain Functies](https://js.langchain.com/docs/modules/model_io/prompts/quick_start) om prompt templates te schrijven.
 
-#### Debuggen
+#### Itereren
 
-Benader prompt engineering net als gewoon programmeren. Werkt een prompt niet zoals je gehoopt had, lees hem dan nog eens goed en bedenk waarom de prompt verkeerd geïnterpreteerd zou kunnen worden door het model. Doe een kleine wijziging, en test of het resultaat beter wordt. Itereer net zolang tot je het gewenste resultaat bereikt hebt.
+Werkt een prompt niet zoals je gehoopt had, lees hem dan nog eens goed en bedenk waarom de prompt verkeerd geïnterpreteerd zou kunnen worden. Je kan ook aan ChatGPT vragen om de prompt te verbeteren 🤯.
 
-Als we gebruik maken van een taalmodel, willen we vaak wat creativiteit/onvoorspelbaarheid in de resultaten. Als je aan het debuggen bent is het echter handiger om voorspelbare resultaten te krijgen zodat je kunt zien dat je prompt echt beter wordt en je niet gewoon 'geluk' hebt. De onvoorspelbaarheid van een model regelen we met de `temperature` die een waarde van 0 tot 1 kan hebben. Zet deze op 0 voor volledig voorspelbare resultaten.
+## Temperature
+
+Als je aan het debuggen bent is het handig om voorspelbare resultaten te krijgen zodat je kunt zien of je prompt beter wordt. De onvoorspelbaarheid van een model regelen we met de `temperature`. Zet deze op 0 voor volledig voorspelbare resultaten. 
+
+Je kan dit juist een hoge waarde geven als je creatieve en onvoorspelbare resultaten wil krijgen. Een waarde van 1 is heel creatief. Als je boven de 1 gaat kan je vreemde of onlogische resultaten krijgen.
 
 ```javascript
 const model = new ChatOpenAI({
     temperature: 0.0, 
     azureOpenAIApiKey: process.env.AZURE_OPENAI_KEY,
-    azureOpenAIApiVersion: process.env.AZURE_OPENAI_VERSION,
-    azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_INSTANCE_NAME,
-    azureOpenAIApiDeploymentName: process.env.AZURE_OPENAI_DEPLOY_NAME,
+    //...etc
 })
 ```
+Je kan ook per prompt de temperature meegeven:
+
+```js
+const model = new ChatOpenAI({
+    azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY, 
+    //...etc
+})
+
+const joke = await model.invoke({
+      prompt: "Tell me a Javascript joke!",
+      temperature: 2,
+});
+console.log(joke.content)
+```
+
 
 <br><br><br>
 
@@ -76,12 +104,16 @@ console.log(res.content)
 Langchain biedt classes voor `HumanMessage`, `AIMessage` en `SystemMessage` zodat je hier minder snel typfouten in maakt:
 
 ```js
-import { HumanMessage, SystemMessage } from "langchain/chat_models/messages";
+import { HumanMessage, SystemMessage, AIMessage } from "langchain/chat_models/messages"
 
 const messages = [
   new SystemMessage("You're a helpful assistant"),
   new HumanMessage("What is the purpose of studying AI?"),
+  new AIMessage("It will help you create smarter apps"),
+  new HumanMessage("Does that mean I can let AI do all the work?"),
 ];
+
+const result = await model.invoke(messages)
 ```
 
 <Br><br><br>
@@ -117,6 +149,11 @@ In bovenstaand voorbeeld is de chat history een variabele binnen de node applica
 
 - Hou de chat history bij *in de browser* in plaats van op de server, en geef die telkens mee. 
 - Je hebt nu ook de optie om de chat history in `localStorage` op te slaan. Dan blijft de history zelfs bewaard nadat je de browser afsluit.
+
+```js
+messages.push(["human", "what do you mean by that?"])
+localStorage.setItem("myChatHistory", JSON.stringify(messages))
+```
 
 <br><br><br>
 
@@ -184,7 +221,7 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Expert level: agents
+## Expert level: tools and agents
 
 Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is.
 
