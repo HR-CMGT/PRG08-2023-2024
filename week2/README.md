@@ -107,7 +107,7 @@ Om de code geschikt te maken voor de volgende stap kan je de `invoke` call alvas
 
 <br>
 
-### Eigen OpenAI KEY gebruiken
+### Optioneel: eigen OpenAI KEY gebruiken
 
 Als je zelf een key hebt voor OpenAI mag je die ook gebruiken. Het aanmaken van het model ziet er dan iets anders uit. Afhankelijk van je abonnement kan je hier `gpt-3.5-turbo` of `gpt-4` gebruiken. [Je kan hier een eigen key aanvragen](https://platform.openai.com/docs/introduction).
 
