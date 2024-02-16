@@ -221,9 +221,9 @@ Deze stream werkt in de `node` omgeving, maar nu moet je de response ook als str
 
 <Br><br><br>
 
-## Expert level: tools and agents
+## Expert level: function calling (tools)
 
-Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is.
+Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function calls. Een ***Agent*** is een LLM die de function dan ook daadwerkelijk uitvoert en zelf kijkt wat het resultaat is. 
 
 - [Code voorbeeld Langchain weerbericht](../snippets/functions.md)
 - [OpenAI LangChain Function Calling](https://js.langchain.com/docs/integrations/chat/openai)

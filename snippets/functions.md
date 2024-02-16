@@ -1,6 +1,15 @@
 # Function calling
 
-Je kan een LLM gebruiken om functies in je code aan te roepen. Het LLM is dan eigenlijk de interface tussen de gebruiker en de code. Je kan bijvoorbeeld een game besturen via tekst, of het weer opvragen door te praten tegen je LLM.
+Je kan een LLM gebruiken om functies in je code aan te roepen. Het resultaat van de LLM call is de naam van de functie die je moet aanroepen, zie dit voorbeeld:
+
+```js
+let result = model.invoke("wat is het weer in tokyo")
+```
+Het resultaat van de LLM call is nu een JSON object:
+```js
+function:{name:"getWeather", arguments:["tokyo"]}
+```
+Je gebruikt dit resultaat om functies in je eigen code uit te voeren, op basis van de taalopdracht van de eindgebruiker.
 
 #### 🚫 Azure
 
@@ -11,9 +20,8 @@ Je kan een LLM gebruiken om functies in je code aan te roepen. Het LLM is dan ei
 ```js
 import { ChatOpenAI } from "@langchain/openai";
 
-
 //
-// voorbeeld functie die het weerbericht ophaalt. hier zou je een fetch in kunnen plaatsen.
+// voorbeeld functie die het weerbericht ophaalt. hier zou je een fetch in moeten plaatsen om het echte weer op te halen
 //
 global.getCurrentWeather = (location) => {
     if (location.toLowerCase().includes("tokyo")) {
