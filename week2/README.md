@@ -163,6 +163,8 @@ In PRG06 heb je geleerd te werken met node express. Dit ga je gebruiken om de Op
 - Het resultaat toon je vervolgens weer aan de gebruiker in de user interface. Enable de submit button en verwijder de loading spinner.
 - Tip: Om de UI logica te testen kan je node server ook een fake message teruggeven, in plaats van telkens een call naar OpenAI te doen.
 
+<img src="../images/form-example.png" width="900">
+
 <br><br><br>
 
 ### Expert level: live zetten

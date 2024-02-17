@@ -6,6 +6,7 @@ Deze week ga je je langchain kennis via [prompt engineering](https://platform.op
 
 #### Onderwerpen
 
+- Frontend
 - Prompt engineering
 - Temperature
 - System instructions en chat roles
@@ -19,18 +20,24 @@ Deze week ga je je langchain kennis via [prompt engineering](https://platform.op
 
 <Br><br><br>
 
+## Frontend
+
+Reminder week 2: De frontend (HTML pagina) communiceert met je node server. De user interface toont het resultaat. De frontend houdt bij wanneer de server nog bezig is met een OpenAI call, zodat je niet meerdere calls tegelijk opstart.
+
+<img src="../images/form-example.png" width="900">
+
+<Br><br><br>
+
 ## Prompt engineering
 
 Dit houdt in dat je de vraag van de eindgebruiker uitbreidt met extra taalinstructies, om zo een beter resultaat terug te krijgen van het model. Bijvoorbeeld:
 
 ```js
-let userQestion = `Tell me how to take care of my banana plant`
-let promptTemplate = `Answer the following question: ${userQuestion} as short as you can.`
-let res = await model.invoke(promptTemplate)
+let prompt = `Tell me how to take care of my banana plant`
+let engineeredPrompt = `You are a plant expert. Answer the following question: ${prompt} as short as you can.`
+let result = await model.invoke(engineeredPrompt)
 ```
-### Lengte van het antwoord
-
-Je kan de lengte van het antwoord bepalen met `maxTokens`. Let op dat dit kan resulteren in afgebroken tekst.
+Je kan de lengte van het antwoord bepalen met `maxTokens`. 
 
 ```js
 const response = await model.invoke({
@@ -45,6 +52,8 @@ const response = await model.invoke({
 #### Itereren
 
 Werkt een prompt niet zoals je gehoopt had, lees hem dan nog eens goed en bedenk waarom de prompt verkeerd geïnterpreteerd zou kunnen worden. Je kan ook aan ChatGPT vragen om de prompt te verbeteren 🤯.
+
+<Br><br><br>
 
 ## Temperature
 
@@ -62,11 +71,6 @@ const model = new ChatOpenAI({
 Je kan ook per prompt de temperature meegeven:
 
 ```js
-const model = new ChatOpenAI({
-    azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY, 
-    //...etc
-})
-
 const joke = await model.invoke({
       prompt: "Tell me a Javascript joke!",
       temperature: 2,
@@ -141,8 +145,6 @@ messages.push(
 const chat2 = await model.invoke(messages)
 console.log(chat2.content)
 ```
-<br>
-
 #### Expert level: chat history in client
 
 In bovenstaand voorbeeld is de chat history een variabele binnen de node applicatie. Maar als je tegelijk met meerdere web clients bent verbonden, krijgt niet elke user een eigen chat history.
@@ -192,18 +194,6 @@ let chatresult = model.invoke(`Complain about the temperature of ${temperature} 
 
 <Br><br><br>
 
-## 💬 Spraak
-
-De browser/javascript heeft zowel spraak als spraakherkenning ingebouwd.
-De spraak komt uit je OS. In MacOS kan je [hier je eigen stem aan toevoegen!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac). Je kan dit gebruiken om je LLM tot leven te brengen.
-
-- [Code snippet spraak](https://github.com/HR-CMGT/PRG08-2023-2024/blob/main/snippets/speech.md)
-- [Documentatie spraakherkenning](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
-
-> *Je kan ook via [OpenAI "speech to text"](https://openai.com/research/whisper) doen, maar dit lijkt niet te werken met de Azure OpenAI key.*
-
-<Br><br><br>
-
 ## Onderzoek : andere LLM API's gebruiken
 
 Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms) kan je naast ***Azure OpenAI*** ook connectie maken met andere [LLM's](https://js.langchain.com/docs/integrations/llms/) en [ChatLLM's](https://js.langchain.com/docs/integrations/chat/). Voor de meeste van deze API's heb je een *API key nodig van de desbetreffende provider*. Je kan op eigen gelegenheid testen waar je een API key kan aanmaken. Populaire LLM API's zijn:
@@ -215,6 +205,18 @@ Met de [Langchain library](https://js.langchain.com/docs/integrations/platforms)
 - [Lokaal LLM](../snippets/local.md)
 
 <br><br><br>
+
+## 💬 Expert level: Spraak
+
+De browser/javascript heeft zowel spraak als spraakherkenning ingebouwd.
+De spraak komt uit je OS. In MacOS kan je [hier je eigen stem aan toevoegen!](https://support.apple.com/en-gb/guide/mac-help/mchldfd72333/mac). Je kan dit gebruiken om je LLM tot leven te brengen.
+
+- [Code snippet spraak](https://github.com/HR-CMGT/PRG08-2023-2024/blob/main/snippets/speech.md)
+- [Documentatie spraakherkenning](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+
+> *Je kan ook via [OpenAI "speech to text"](https://openai.com/research/whisper) doen, maar dit lijkt niet te werken met de Azure OpenAI key.*
+
+<Br><br><br>
 
 ## Expert level: refining your code
 
