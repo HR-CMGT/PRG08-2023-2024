@@ -53,11 +53,34 @@ const response = await model.invoke({
 
 Werkt een prompt niet zoals je gehoopt had, lees hem dan nog eens goed en bedenk waarom de prompt verkeerd geïnterpreteerd zou kunnen worden. Je kan ook aan ChatGPT vragen om de prompt te verbeteren 🤯.
 
+#### Technieken
+* Geef de AI een rol die past bij wat je aan hem gaat vragen.
+  *  ‘Je bent een zeer creatieve kinderboekenschrijver’
+  *  ‘Je bent een extreem nauwkeurige wetenschapper gespecialiseerd in…’
+
+* Wees duidelijk. Dat is bij taalmodellen niet hetzelfde als kort. Meer context is beter.
+
+* Geef een voorbeeld van wat je verwacht.
+  * ‘Een goede vraag voor deze dierenquiz zou zijn: hoeveel bulten heeft een kameel?’
+  * ‘Als ik zeg dat de kat geen honger meer heeft, dan kan ‘kat eten geven’ uit de todo-lijst.
+
+* Vraag om een output formaat zoals JSON, en geef daar ook een voorbeeld van.
+  * Dit is zowel handig om het uit te kunnen lezen met een script, maar zorgt ook dat je kunt bepalen wat je allemaal in je antwoord wilt hebben.
+
+* Formatteer zelf je antwoord om het model te helpen gegevens te vinden
+  * ‘Geef een samenvatting van de tekst tussen <context></context>’.
+  * ‘Het onderwerp voor het verhaal dat je moet verzinnen staat tussen [onderwerp][/onderwerp]’.
+
+
+* Begeleid het ‘denkproces’ van het model
+  * ‘De gebruiker wil graag een recept. Bedenk welke gerechten populair zijn in de Indische keuken die snel klaar zijn. De gebruiker heeft de volgende ingrediënten …. Kies een Indisch recept dat je daarmee zou kunnen maken in 30 minuten.’
+
+
 <Br><br><br>
 
 ## Temperature
 
-Als je aan het debuggen bent is het handig om voorspelbare resultaten te krijgen zodat je kunt zien of je prompt beter wordt. De onvoorspelbaarheid van een model regelen we met de `temperature`. Zet deze op 0 voor volledig voorspelbare resultaten. 
+Als je aan het debuggen bent is het handig om voorspelbare resultaten te krijgen zodat je kunt zien of je prompt beter wordt. De onvoorspelbaarheid van een model regelen we met de `temperature`. Zet deze op 0.0 voor erg voorspelbare resultaten. 
 
 Je kan dit juist een hoge waarde geven als je creatieve en onvoorspelbare resultaten wil krijgen. Een waarde van 1 is heel creatief. Als je boven de 1 gaat kan je vreemde of onlogische resultaten krijgen.
 
@@ -121,6 +144,7 @@ const result = await model.invoke(messages)
 ```
 
 <Br><br><br>
+
 
 ## Chat history
 
@@ -265,6 +289,7 @@ Een ***tool (of function)*** zorgt dat een LLM input kan leveren voor function c
 - [LangChain](https://js.langchain.com/docs/get_started/quickstart)
 - [Langchain Azure OpenAI](https://js.langchain.com/docs/integrations/chat/azure)
 - [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+- [Prompt Engineering for Developers - korte cursus](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) (In Python, maar omdat het om de prompts gaat maakt dat niet uit)
 
 In de lessen benaderen we Azure OpenAI via LangChain. Je kan hier meer lezen over Azure en OpenAI.
 
