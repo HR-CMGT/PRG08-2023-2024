@@ -49,7 +49,7 @@ const embeddings = new OpenAIEmbeddings({
 ```js
 const vectordata = await embeddings.embedQuery("Hello world")
 console.log(vectordata)
-console.log(`Created ${vectordata.length} vectors`)
+console.log(`Created vector with ${vectordata.length} values.`)
 ```
 [Langchain documentatie voor Azure OpenAI embedding](https://js.langchain.com/docs/integrations/text_embedding/azure_openai).
 
