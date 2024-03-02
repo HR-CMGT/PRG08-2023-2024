@@ -57,7 +57,7 @@ console.log(`Created vector with ${vectordata.length} values.`)
 
 ## Tekstbestand inlezen
 
-Langchain heeft verschillende opties om tekstbestanden te lezen, zoals [.txt, PDF, JSON, CSV, etc.](https://js.langchain.com/docs/modules/data_connection/document_loaders/). Je kan zelfs een [hele github repository](https://js.langchain.com/docs/integrations/document_loaders/web_loaders/github#usage) inlezen. In dit voorbeeld lezen we een `.txt` file. Voor grote teksten is het nodig om deze op te splitsen in kleinere "chunks". Dit moet je doen bij bestanden van tientallen tot honderden pagina's. 
+Langchain heeft verschillende opties om tekstbestanden te lezen, zoals [.txt, PDF, JSON, CSV, etc.](https://js.langchain.com/docs/modules/data_connection/document_loaders/). Je kan zelfs een [hele github repository](https://js.langchain.com/docs/integrations/document_loaders/web_loaders/github#usage) inlezen. In dit voorbeeld lezen we een `.txt` file. De ingelezen tekst 'knip' je op in chunks. Doordat de chuncks een vaste grootte hebben kan het gebeuren dat je midden in een zin/passage knipt. Om te voorkomen dat je chunks met halve informatie krijgt geef je de chunks een overlap. De grootte van de chunks en de overlap moet je zelf kiezen.
 
 ```js
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
@@ -66,7 +66,7 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory"
 
 const loader = new TextLoader("./myfile.txt")
 const data = await loader.load()
-const textSplitter = new RecursiveCharacterTextSplitter({chunkSize: 1500, chunkOverlap: 10})
+const textSplitter = new RecursiveCharacterTextSplitter({chunkSize: 1500, chunkOverlap: 100})
 const splitDocs = await textSplitter.splitDocuments(data)
 ```
 <br><br><br>
@@ -83,7 +83,7 @@ const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever())
 const response = await chain.call({ query: "who is the text about?" })
 console.log(response.text)
 ```
-- Let op dat hier geen chat history wordt bijgehouden. Dit is ook niet altijd nodig, als je alleen vragen over het document wil stellen.
+- Let op dat in dit voorbeeld nog geen chat history wordt bijgehouden. Dit is ook niet altijd nodig, als je alleen vragen over het document wil stellen.
 - De `MemoryVectorStore` verdwijnt uit het geheugen zodra je de node app afsluit.
 
 <br><br><br>
@@ -101,12 +101,24 @@ const answer = await chain.call({ question: "Waar gaat deze tekst over?" })
 console.log(answer)
 ```
 
+### De volledige conversatie-ketting
+
+Je hebt nu met relatief weinig code een chatbot waarmee je kunt praten over je document. Dit is wat LangChain voor je doet nadat je een `call` met een `question` doet: 
+* De `question` wordt samen met de `chat_history` naar het chatmodel gestuurd met als prompt:  
+  'Gebruik deze `chat_history` en vervolgvraag `question` om een op zichzelf staande vraag te maken'
+* Het chatmodel stuurt een op zichzelf staande vraag terug.
+* Er wordt een call gedaan naar het embeddingsmodel om de op zichzelf staande vraag te embedden.
+* Deze embedding wordt gebruikt om relevante teksten voor deze vraag in de vectorstore op te zoeken.
+* Daarna wordt de op zichzelf staande vraag, samen met de relevante teksten naar het chatmodel gestuurd met prompt:  
+  'Gebruik deze teksten om antwoord te geven op deze vraag'
+* Het chatmodel stuurt een anwtoord terug dat komt uit de informatie van jouw documenten.
+* Het antwoord wordt samen met jouw `question` toegevoegd aan de `chat_history`.
 
 <br><br><br>
 
 ## Vector stores
 
-Het doen van prompts (genereren van tokens) kost geld. Een simpele prompt kost bijna niets, maar het maken van een embedding kan sneller oplopen, vooral als je honderden pagina's wil embedden. Om die reden wil je een gemaakte embedding kunnen opslaan. Bekijk [hier een lijst van vectorstores](https://js.langchain.com/docs/integrations/vectorstores) die je via langchain kan gebruiken. In het algemeen kan je dit onderscheid maken:
+Het doen van prompts (genereren van tokens) kost geld. Een simpele prompt kost bijna niets, maar het maken van embeddings kan sneller oplopen, als je veel tekst laat embedden. Daarnaast is het zonde om steeds dezelfde embeddings te laten maken, vandaar dat je de wilt kunnen opslaan. Bekijk [hier een lijst van vectorstores](https://js.langchain.com/docs/integrations/vectorstores) die je via langchain kan gebruiken. In het algemeen kan je dit onderscheid maken:
 
 - *Lokaal bestand*. De vectordata wordt als lokaal bestand binnen je project opgeslagen.
 - *Vector database*. Dit is een "echte" database op je systeem, zoals ChromaDB, MongoDB.
@@ -125,10 +137,10 @@ Voor deze les werken we met [FAISS - Facebook Vector Store](https://js.langchain
 
 ## Troubleshooting
 
-Je krijgt een error over `size of k`. OpenAI verwacht minimaal 3 chunks in je tekst. Als er minder zijn kan je dit aangeven. In dit voorbeeld is er maar 1 chunk:
+Je krijgt een error over `size of k`. OpenAI verwacht minimaal 3 chunks in je tekst. Als er minder zijn kan je dit aangeven. In dit voorbeeld zijn er maar 2 chunks:
 
 ```js
-const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever({ k: 1 }))
+const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever({ k: 2 }))
 ```
 
 De FAISS documentatie is recent veranderd. Je kan deze waarschuwing krijgen. 
