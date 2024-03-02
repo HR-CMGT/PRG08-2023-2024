@@ -11,7 +11,7 @@ In deze oefening gaan we vragen over een document beantwoorden met een taalmodel
 ### Inhoud
 
 - Werken met grote hoeveelheden tekst
-- Tekst omzetten naar vectors
+- Tekst omzetten naar vectoren
 - Tekstbestand inlezen
 - Vragen beantwoorden
 - Vector stores
@@ -19,7 +19,7 @@ In deze oefening gaan we vragen over een document beantwoorden met een taalmodel
 
 <br><br><br>
 
-## Tekst omzetten naar vectors
+## Tekst omzetten naar vectoren
 
 In het college heb je gezien waarom teksten als `vectordata` worden gebruikt in taalmodellen. Jouw tekst moet je dus omzetten naar vectordata. Dit noemen we `embedding`. Om tekst te `embedden` heb je een taalmodel nodig dat *niet* als chat model is getraind. OpenAI gebruikt hier het `ada` model voor. 
 
