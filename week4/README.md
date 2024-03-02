@@ -21,7 +21,7 @@ In deze oefening gaan we vragen over een document beantwoorden met een taalmodel
 
 ## Tekst omzetten naar vectoren
 
-In het college heb je gezien waarom teksten als `vectordata` worden gebruikt in taalmodellen. Jouw tekst moet je dus omzetten naar vectordata. Dit noemen we `embedding`. Om tekst te `embedden` heb je een taalmodel nodig dat *niet* als chat model is getraind. OpenAI gebruikt hier het `ada` model voor. 
+In het college heb je gezien waarom teksten als `vectordata` worden gebruikt in taalmodellen. Jouw tekst moet je dus omzetten naar vectordata. Dit noemen we `embedding`. Om tekst te `embedden` heb je een taalmodel nodig dat *geen* volledig chat model is. OpenAI gebruikt hier het `ada` model voor. 
 
 We gebruiken het `embedding` (ada) model om vectordata te maken. We hebben het `chat` model (chatgpt) uit de vorige les ook nodig om vragen te stellen. De waarden voor de keys staan in de `.env` file.
 
