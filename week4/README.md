@@ -63,6 +63,7 @@ Langchain heeft verschillende opties om tekstbestanden te lezen, zoals [.txt, PD
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 import { TextLoader } from "langchain/document_loaders/fs/text"
 import { MemoryVectorStore } from "langchain/vectorstores/memory"
+import { RetrievalQAChain } from "langchain/chains"
 
 const loader = new TextLoader("./myfile.txt")
 const data = await loader.load()
@@ -79,7 +80,7 @@ const vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings)
 🤯 Je kan nu vragen stellen aan je eigen document! 
 
 ```js
-const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever())
+const chain = RetrievalQAChain.fromLLM(chatmodel, vectorStore.asRetriever())
 const response = await chain.call({ query: "who is the text about?" })
 console.log(response.text)
 ```
@@ -132,7 +133,6 @@ Voor deze les werken we met [FAISS - Facebook Vector Store](https://js.langchain
 
 - Maak een embedding van een tekstbestand en sla deze op met [FAISS](https://js.langchain.com/docs/integrations/vectorstores/faiss)
 - Maak een nieuwe `.js` file waarin de [FAISS](https://js.langchain.com/docs/integrations/vectorstores/faiss) data wordt ingeladen. Gebruik deze file om vragen over het document te stellen met het `chatgpt` model.
-
 <br><br><br>
 
 ## Troubleshooting
