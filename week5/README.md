@@ -12,6 +12,8 @@
 
 Je kan een `<canvas>` element gebruiken om de poses over het webcam beeld heen te tekenen.
 
+In het geval van [Hand Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/hand_landmarker), [Pose Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/pose_landmarker) en [Face Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/face_landmarker) kun je gebruik maken van de [DrawingUtils](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision.drawingutils) uit de tasks-vision library om te testen of je hand, lichaam of gezicht herkend wordt. Je hoeft dan alleen de landmarks mee te geven en de DrawUtils class zorgt ervoor dat ze meteen op de juiste plek getekend worden.
+
 | Hand | Body | Face |
 | ---- | ---- | ---- |
 | <img src="../images/hand_landmark_960.png" width="400"> | <img src="../images/pose_detector_960.png" width="400"> | <img src="../images/face_landmarker_960.png" width="400"> |
@@ -37,7 +39,11 @@ Bouw een html pagina met webcam pose detection van [MediaPipe](https://developer
 
 ## Posedata tonen
 
-Omdat je de poses in een canvas tekent, heb je toegang tot de `x,y` pose coördinaten. Toon deze coördinaten in de browser console of in een html veld. Maak een button die de coördinaten alleen toont `on click`, omdat de pagina traag kan worden als je 60 keer per seconde een grote hoeveelheid data logt.
+Omdat je de poses in een canvas tekent, heb je toegang tot de `x,y` pose coördinaten. Toon deze coördinaten in de browser console of in een html veld. 
+
+🚨 Let op! de landmarks zijn getallen tussen de 0 en 1. Je zal deze moeten vermenigvuldigen met de breedte en hoogte van het video element om ze op de juiste plek te krijgen.
+
+Maak een button die de coördinaten alleen toont `on click`, omdat de pagina traag kan worden als je 60 keer per seconde een grote hoeveelheid data logt.
 
 <br>
 
