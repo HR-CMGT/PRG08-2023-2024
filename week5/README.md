@@ -77,6 +77,7 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van d
 ## Links
 
 - [Canvas Drawing Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
+- [MediaPipe Guide](https://developers.google.com/mediapipe/solutions/guide)
 - [MediaPipe Javascript Documentation](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision)
 - [MediaPipe Examples](https://developers.google.com/mediapipe/solutions/examples)
 - [Codepen Hand](https://codepen.io/mediapipe-preview/pen/gOKBGPN)
