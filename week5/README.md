@@ -1,8 +1,12 @@
 # Week 5 - Pose detection
 
-- Intro Machine Learning. Data > Training > Model.
-- Werken met pose detection met pretrained model van mediapipe.
-- game of app besturen met poses
+## Introductie opdracht 2
+
+- Introductie Machine Learning. 
+- Werken met pose detection en mediapipe.
+- Een game of app besturen met poses
+
+In deze les leer je werken met MediaPipe en het verzamelen van PoseData uit de webcam: dit kan zijn de houding van je hand, lichaam of gezicht. ***⚠️ Deze data heb je nodig voor de komende 3 lessen!*** 
 
 <br><br><br>
 
@@ -10,7 +14,14 @@
 
 [MediaPipe](https://developers.google.com/mediapipe/solutions/examples) is een library van google, waarin een model is getraind om poses in webcam beelden te herkennen. Je krijgt deze poses terug als vector data (`x,y,z` coördinaten). 
 
-Je kan een `<canvas>` element gebruiken om de poses over het webcam beeld heen te tekenen.
+Je kan een `<canvas>` element gebruiken om de poses over het webcam beeld heen te tekenen. Je HTML ziet er dan als volgt uit:
+
+```html
+<section>
+    <video></video>    <!--- de webcam stream -->
+    <canvas></canvas>  <!--- pose tekening -->
+</section>
+```
 
 In het geval van [Hand Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/hand_landmarker), [Pose Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/pose_landmarker) en [Face Landmark Detection](https://mediapipe-studio.webapps.google.com/studio/demo/face_landmarker) kun je gebruik maken van de [DrawingUtils](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision.drawingutils) uit de tasks-vision library om te testen of je hand, lichaam of gezicht herkend wordt. Je hoeft dan alleen de landmarks mee te geven en de DrawUtils class zorgt ervoor dat ze meteen op de juiste plek getekend worden.
 
@@ -36,11 +47,9 @@ Bouw een html pagina met webcam pose detection van [MediaPipe](https://developer
 
 > *Bekijk ook dit [vereenvoudigd voorbeeld voor het lezen van de webcam](https://codepen.io/eerk/pen/QWPEYxj?editors=0011)*
 
-> *TIP: Als je niet bekend bent met het `<canvas>` element kan je eerst [deze MDN tutorial volgen](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)*
+<br><br><br>
 
-<br>
-
-## Posedata in de console
+## Posedata tonen
 
 MediaPipe heeft ingebouwd dat je de poses meteen in een canvas kan tekenen. Dit werkt als volgt:
 
@@ -128,6 +137,8 @@ canvasCtx.arc(canvasElement.width * x, canvasElement.height * y, 4, 0, 2 * Math.
 canvasCtx.stroke();
 canvasCtx.fill()
 ```
+> *TIP: Als je niet bekend bent met het `<canvas>` element kan je eerst [deze MDN tutorial volgen](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)*
+
 
 <br><br><br>
 
