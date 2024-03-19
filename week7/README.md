@@ -56,48 +56,56 @@ async function finishedTraining(){
     console.log(results)
 }
 ```
+Zorg dat je cats and dogs kan voorspellen voordat je verder gaat met de mediapipe oefening.
 
 <br>
 <br>
 <br>
+
+# Workflow
+
+We gaan nu werken aan opdracht 2. Je gaat posedata gebruiken om een neural network te trainen. Je werkt in drie projecten:
+
+| Voorbereiding | Training | Applicatie | 
+| ----------- | ------ | ------ | 
+| Data verzamelen uit MediaPipe | Data gereed maken | Webcam stream lezen |
+| Opslaan in JSON of JS file | Neural Network trainen | Model laden |
+|  | Model opslaan | Voorspelling doen | 
+
+<br><br><br>
 
 # Werken met posedata
 
-Als bovenstaande testje werkt kan je je `mediapipe posedata` uit les 5 gaan gebruiken om te trainen. Je werkt in drie projecten:
-
-- Project 1: Verzamelen posedata (week 5)
-- Project 2: trainen van het model met de posedata (week 6, week 7)
-- Project 3: inladen model in de frontend applicatie, live webcam poses voorspellen voor gameplay
-
-Zorg dat je posedata beschikbaar is in je project. Data kan in de vorm van objecten of arrays zijn. Voor een neural network is het belangrijk om je *data te randomizen*. Dat doen we in dit voorbeeld:
+Zorg dat je posedata beschikbaar is in je project. Data kan in de vorm van objecten of arrays zijn. Voor een neural network is het belangrijk om je *data te randomizen*. 
 
 ```js
-data = [
+let data = [
     {pose:[4,2,5,2,1,...], label:"rock"},
     {pose:[3,1,4,4,1,...], label:"rock"},
     {pose:[5,2,5,3,3,...], label:"paper"},
     ...
 ]
-data.sort(() => (Math.random() - 0.5))
+data = data.toSorted(() => (Math.random() - 0.5))
 ```
-<br>
+<br><br><br>
 
-### Neural network
+## Data gereed maken voor Neural network
 
-Je kan de `data` aan het neural network toevoegen via de `addData` functie.
-
-> 🚨 *Je moet hierbij goed opletten dat het neural network alleen een array van numbers, en een object met een label verwacht! Let op dat de vorm van arrays en objecten correct is, anders gaat het trainen mis.*
-
-#### Input voor neural network
+Je kan elke pose uit je `data` aan het neural network toevoegen via de `addData` functie. Dit doe je door je data op te splitsen in een array van numbers: `[3,5,2,1,4,3,5,2]`, gevolgd door een object met het label: `{label:"rock"}`. Je voegt één pose als volgt toe:
 ```js
 nn.addData([3,5,2,1,4,3,5,2], {label:"rock"})
 ```
+Je hebt een `for` loop nodig om één voor één al je pose data toe te voegen. 
+
+> *🚨 Een veel voorkomende fout is dat je posedata uit mediapipe niet naar de juiste vorm is omgezet voor de `addData` functie. Wat ook vaak fout gaat is dat niet **elke pose** evenveel punten bevat!*
 
 <br><br><br>
 
 ## Trainen
 
-Bij het trainen moet je aangeven hoeveel `epochs` dit moet duren. Hier kan je zelf mee experimenteren. De blauwe lijn moet zo dicht mogelijk bij de waarde 0 komen. Als hier geen verbetering meer in zit, heb je genoeg epochs.
+Nadat je al je data hebt toegevoegd roep je de `normalize` functie aan. Daarna begin je met trainen.
+
+Bij het trainen moet je aangeven hoeveel `epochs` dit moet duren. Hier kan je zelf mee experimenteren. De blauwe lijn moet zo dicht mogelijk bij de waarde 0 komen. Als hier geen verbetering meer in zit, heb je genoeg epochs. Als de blauwe lijn vrij snel stopt met verbeteren, dan is er een probleem in je data. Zie de troubleshooting.
 
 ```javascript
 function startTraining() {
@@ -117,11 +125,11 @@ async function finishedTraining(){
 
 ## Maak een voorspelling
 
-Met de `classify` functie kunnen we nieuwe data voorspellen. 
+Als je een model hebt, kan je met de `classify` functie testen of je nieuwe data kan voorspellen. Neem bijvoorbeeld handmatig een pose uit je data, of uit mediapipe, en kijk of dit ook goed voorspeld wordt. Let op dat je posedata evenveel punten bevat als bij het trainen!
 
 ```js
 async function makePrediction() {
-    const results = await nn.classify([...]) // array van numbers
+    const results = await nn.classify([2,4,2,1,3,5,6]) // dit is een pose uit mediapipe
     console.log(results)
 }
 ```
@@ -141,9 +149,17 @@ nn.save("model", () => console.log("model was saved!"))
 <br>
 <br>
 
-## Model laden
+# De frontend applicatie bouwen
 
 Dit is je game of applicatie die door de eindgebruiker gebruikt gaat worden. Hierin wordt de live webcam getoond met poses. Je gaat nu ook weer posedata uit de webcam halen. Het doel is nu om te voorspellen welke pose de gebruiker aanneemt, dit doen we met ons getrainde model.
+
+- Toon de webcam en lees posedata met mediapipe
+- Laad het getrainde model
+- Maak een voorspelling van de live posedata
+
+<br><br><br>
+
+## Model laden
 
 ```js
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
@@ -170,7 +186,9 @@ Bij het werken met Neural Networks heb je vaak meerdere projecten tegelijk open 
 - Het project waarin je een model aan het trainen bent met de gelabelde data. Hier heb je de webcam input niet nodig.
 - Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
 
-### Asynchrone functies
+<br>
+
+### Asynchrone functies en callbacks
 
 Een ML5 neural network werkt met *callbacks* en *asynchrone functies*. Dat betekent dat je moet *wachten* totdat een bepaalde taak is afgrond, *voordat* je de volgende taak kan uitvoeren! Bijvoorbeeld:
 
@@ -179,7 +197,19 @@ Een ML5 neural network werkt met *callbacks* en *asynchrone functies*. Dat betek
 - Inladen van een model
 - Doen van een voorspelling
 
+Je moet wachten totdat een call klaar is voordat je naar de volgende stap door kan gaan. In dit codevoorbeeld wachten we tot het laden van het model klaar is:
+
+```js
+nn.load(modelDetails, () => nextStep())
+
+function nextStep(){
+    console.log("het model is geladen!")
+}
+```
+
 > *🚨Een veel voorkomende fout is om te proberen een voorspelling te doen terwijl het trainen nog niet klaar is, of als het model nog niet is ingeladen.*
+
+<br>
 
 ### Fouten bij trainen
 
@@ -191,18 +221,17 @@ Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
 - Je verzamelde data geef je niet in de juiste vorm door aan het algoritme.
 - Je data in de classify aanroep heeft een andere vorm dan de data die je bij addData hebt gebruikt.
 
-#### Veel voorkomende fouten
+#### De pose is hier een object, maar het moet alleen een array met numbers zijn
 
 ```js
-// de pose is hier een object, maar het moet alleen een array met numbers zijn
 nn.addData({pose:[2,4,5,3]}, {label:"rock"})
-
-// hier gaat het trainen wel goed, maar bij classify is de data array ineens veel langer
+```
+#### Hier gaat het trainen wel goed, maar bij classify is de data array ineens veel langer
+```js
 nn.addData([2,3,4], {label:"rock"})
 nn.addData([5,3,1], {label:"paper"})
 let result = await nn.classify([2,3,4,5,6,7])
 ```
-
 <br>
 <br>
 <br>
