@@ -71,7 +71,7 @@ Het volgende doel is om een handpose, bodypose of facepose uit MediaPipe te clas
 
 Verzamel handpose, bodypose of facepose data uit mediapipe.
 
-Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor de pose in de console of in een html veld. Kopieer de coördinaten van een pose die je wil kunnen herkennen. Voeg er een label aan toe. 
+Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor de pose in de console of in een html veld. 
 
 > *🚨 Zorg dat de data uit één enkele array van getallen bestaat. De mediapipe posedata bestaat vaak uit meerdere nested arrays en objecten. Dit moet je vereenvoudigen.*
 > ```
@@ -111,7 +111,7 @@ Maak een nieuw project waarin ook weer de MediaPipe pose detection met de webcam
 
 Bij het werken met KNN heb je meerdere projecten tegelijk open staan:
 
-- Het project waarin je data verzamelt uit de webcam en er een label aan geeft. In dit project heb je een live webcam en teken je de posedata over het webcam beeld. Dit project slaat de data op om te kunnen gebruiken in je live applicatie.
+- Het project waarin je data verzamelt uit de webcam en er een label aan geeft. In dit project heb je een live webcam en teken je de posedata over het webcam beeld. Dit project slaat de data op om te kunnen gebruiken in je live applicatie. Natuurlijk kan je KNN alvast toevoegen om te kunnen testen of je poses kunt detecteren (in de console).
 - De live applicatie waarin de verzamelde data ingeladen wordt om KNN mee te kunnen trainen. Het getrainde model is direct te gebruiken op nieuwe data (bijv inputdata van je webcam) in dit project. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen of de output van de webcam te laten zien.
 
 
