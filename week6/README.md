@@ -24,22 +24,15 @@ Als we een nieuw punt tekenen in de grafiek, kunnen we via de **afstand tot de a
 
 ## Werken met KNN in Javascript
 
-Installeer het KNN algoritme. 
+In de map van [week 6](./) staat [knear.js](./knear.js). Deze kun je downloaden en toevoegen aan jouw project. We raden je aan om deze versie van de library te gebruiken. We hebben error messages toegevoegd aan de library wanneer er met onjuiste data wordt gewerkt. 
 
-```sh
-npm install knear
-```
 Maak het algoritme aan in app.js
+```sh
+import kNear from "./knear.js"
 
-```javascript
-import knn from 'knear'
 const k = 3
-const machine = new knn.kNear(k)
+const machine = new kNear(k);
 ```
-
-- Als je deze test in de `node` backend doet kan je het makkelijk testen via `node app.js`
-- Als je deze test in de frontend/browser doet heb je een module bundler nodig zoals [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) of [Parcel](https://parceljs.org/getting-started/webapp/)
-
 <br><br><br>
 
 ## Classifying
@@ -81,6 +74,17 @@ Verzamel handpose, bodypose of facepose data uit mediapipe.
 Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor de pose in de console of in een html veld. Kopieer de coördinaten van een pose die je wil kunnen herkennen. Voeg er een label aan toe. 
 
 > *🚨 Zorg dat de data uit één enkele array van getallen bestaat. De mediapipe posedata bestaat vaak uit meerdere nested arrays en objecten. Dit moet je vereenvoudigen.*
+> ```
+>     [
+>         {x: 0.1, y: 0.3, z: 0.6},
+>         {x: 0.2, y: 0.7, z: 0.9},
+>         ...
+>     ]
+> 
+>     omzetten naar
+> 
+>     [0.1, 0.3, 0.6, 0.2, 0.7, 0.9, ...]
+> ```
 
 De data sla je op in een javascript array of in een JSON file. Hieronder een voorbeeld met één pose:
 
@@ -107,9 +111,8 @@ Maak een nieuw project waarin ook weer de MediaPipe pose detection met de webcam
 
 Bij het werken met KNN heb je meerdere projecten tegelijk open staan:
 
-- Het project waarin je data verzamelt uit de webcam en er een label aan geeft. In dit project heb je een live webcam en teken je de posedata over het webcam beeld.
-- Het project waarin je een model aan het trainen bent met de gelabelde data. Hier heb je de webcam input niet nodig.
-- Het project waarin je test of je model goed werkt met nieuwe input. Dit kan je doen met testdata of met live webcam input. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen.
+- Het project waarin je data verzamelt uit de webcam en er een label aan geeft. In dit project heb je een live webcam en teken je de posedata over het webcam beeld. Dit project slaat de data op om te kunnen gebruiken in je live applicatie.
+- De live applicatie waarin de verzamelde data ingeladen wordt om KNN mee te kunnen trainen. Het getrainde model is direct te gebruiken op nieuwe data (bijv inputdata van je webcam) in dit project. In het eindproduct hoef je niet altijd de pose als lijntjes over het webcam beeld heen te tekenen of de output van de webcam te laten zien.
 
 
 ### Fouten bij trainen
