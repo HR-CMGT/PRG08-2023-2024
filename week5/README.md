@@ -42,7 +42,7 @@ Bouw een html pagina met webcam pose detection van [MediaPipe](https://developer
 |Pose|Demo|Docs|Codepen|
 |---|---|---|---|
 | ✌️ Hand | [demo](https://mediapipe-studio.webapps.google.com/demo/hand_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/hand_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/gOKBGPN) |
-| 🕺 Body | [demo](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/abRLMxN) |
+| 🕺 Body | [demo](https://mediapipe-studio.webapps.google.com/demo/pose_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker#get_started) | [simple codepen](https://codepen.io/eerk/pen/QWPEYxj?editors=0011),<br> [google codepen](https://codepen.io/mediapipe-preview/pen/abRLMxN) |
 | 😱 Face | [demo](https://mediapipe-studio.webapps.google.com/demo/face_landmarker) | [docs](https://developers.google.com/mediapipe/solutions/vision/face_landmarker#get_started) | [codepen](https://codepen.io/mediapipe-preview/pen/OJBVQJm) |
 
 > *Bekijk ook dit [vereenvoudigd voorbeeld voor het lezen van de webcam](https://codepen.io/eerk/pen/QWPEYxj?editors=0011)*
