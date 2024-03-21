@@ -74,26 +74,28 @@ Verzamel handpose, bodypose of facepose data uit mediapipe.
 Laat de webcam detectie lopen en toon de `x,y,z` coördinaten voor de pose in de console of in een html veld. 
 
 > *🚨 Zorg dat de data uit één enkele array van getallen bestaat. De mediapipe posedata bestaat vaak uit meerdere nested arrays en objecten. Dit moet je vereenvoudigen.*
-> ```
-> [
->     {x: 0.1, y: 0.3, z: 0.6},
->     {x: 0.2, y: 0.7, z: 0.9},
->     ...
-> ]
-> 
-> omzetten naar
-> 
-> [0.1, 0.3, 0.6, 0.2, 0.7, 0.9, ...]
-> ```
+```js
+[
+     {x: 0.1, y: 0.3, z: 0.6},
+     {x: 0.2, y: 0.7, z: 0.9},
+     ...
+]
+```
+Moet je omzetten naar
+```js
+[0.1, 0.3, 0.6, 0.2, 0.7, 0.9, ...]
+```
 
-De data sla je op in een javascript array of in een JSON file. Hieronder een voorbeeld met één pose:
+Vervolgens geef je een **label** aan de data. Het geheel sla je op in een javascript array of in een JSON file. Hieronder een voorbeeld met één pose:
 
 ```js
 [
     {pose:[3,34,6,3,...], label:"rock"}
 ]
 ```
-*Let op dat je voor elke pose die je wil leren tientallen voorbeelden nodig hebt.*
+Let op dat je voor elke pose die je wil leren *tientallen voorbeelden* nodig hebt.
+
+<br><br><br>
 
 ### Pose data gebruiken
 
