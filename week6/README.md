@@ -40,8 +40,8 @@ const machine = new kNear(k);
 Je gaat het KNN algoritme trainen met gelabelde data. In dit voorbeeld zie je twee datapunten. Vul hier alle data uit onderstaande tabel in! 
 
 ```javascript
-machine.learn([6, 5, 9], 'cat')
-machine.learn([12, 20, 19], 'dog')
+machine.learn([6, 5, 9, 4], 'cat')
+machine.learn([12, 20, 19, 3], 'dog')
 ```
 
 | Body length | Height | Weight | Ear length |  Label |
@@ -56,7 +56,7 @@ machine.learn([12, 20, 19], 'dog')
 Als je met voldoende data getraind hebt, kan je een `classification` doen.
 
 ```javascript
-let prediction = machine.classify([12,18,17])
+let prediction = machine.classify([12,18,17,12])
 console.log(`I think this is a ${prediction}`)
 ```
 <br>
