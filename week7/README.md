@@ -3,6 +3,7 @@
 - Werken met Neural Networks in Javascript
 - Data, trainen en model opslaan
 - Voorspellingen doen
+- Expert level
 - Troubleshooting
 
 <br><br><br>
@@ -185,6 +186,14 @@ Nadat het model is geladen *(let op de callback functie)*, kan je live posedata 
 <br>
 <br>
 
+# Expert level
+
+Je kan zelf extra [hidden layers](../snippets/layers.md) toevoegen om complexere data te kunnen leren.
+
+<br>
+<br>
+<br>
+
 # Troubleshooting
 
 ### Workflow
@@ -199,7 +208,7 @@ Bij het werken met Neural Networks heb je vaak meerdere projecten tegelijk open 
 
 ### Asynchrone functies en callbacks
 
-Een ML5 neural network werkt met *callbacks* en *asynchrone functies*. Dat betekent dat je moet *wachten* totdat een bepaalde taak is afgrond, *voordat* je de volgende taak kan uitvoeren! Bijvoorbeeld:
+Een ML5 neural network werkt met [callbacks en asynchrone functies](https://learn.ml5js.org/#/tutorials/promises-and-callbacks). Dat betekent dat je moet *wachten* totdat een bepaalde taak is afgrond, *voordat* je de volgende taak kan uitvoeren! Bijvoorbeeld:
 
 - Laden van een JSON file met `fetch`
 - Trainen van een ML5 Neural Network
@@ -226,9 +235,9 @@ Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
 
 - De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet hetzelfde zijn (bv. een array van 20 numbers).
 - Er is te weinig data. Probeer minimaal 20 tot 30 poses per label op te slaan. 100 poses zou nog beter zijn.
-- De data bevat niet genoeg variatie. Probeer voor elk label verschillende variaties op te slaan *(dichtbij camera, ver van camera, links in beeld, rechts in beeld)*.
+- De data bevat niet genoeg variatie. Dit valt op als het trainen wel goed gaat maar het voorspellen werkt niet goed. Probeer voor elk label verschillende variaties op te slaan *(dichtbij camera, ver van camera, links in beeld, rechts in beeld)*.
 - De labels kloppen niet of je bent labels vergeten.
-- Er is iets mis gegaan bij het omzetten van je webcam data naar training data. Je moet een array van getallen en een object met een label doorgeven.
+- Er is iets mis gegaan bij het omzetten van je webcam data naar training data. Je moet een array van getallen en een object met een label doorgeven `[3,3,4,32,2], {label:"Rock"}`.
 - De labels komen niet overeen (bv. `"Rock"` en `"rock"` is niet hetzelfde).
 - Je data in de `classify` aanroep heeft een andere vorm dan de data die je bij `addData` hebt gebruikt.
 
@@ -251,6 +260,7 @@ let result = await nn.classify([2,3,4,5,6,7])
 
 - [ML5 AI library voor Javascript](https://learn.ml5js.org/#/)
 - [ML5 Neural Networks](https://learn.ml5js.org/#/reference/neural-network)
+- [Callbacks en asynchrone functies](https://learn.ml5js.org/#/tutorials/promises-and-callbacks)
 - [ML5 Neural Networks Hidden Layers](./snippets/layers.md)
 - [📺 Crash Course Neural Networks](https://www.youtube.com/watch?v=JBlm4wnjNMY)
 - [📺 But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk)

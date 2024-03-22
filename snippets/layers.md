@@ -68,10 +68,37 @@ In de model summary kan je zien of je instellingen goed zijn gegaan:
 
 <br>
 <br>
+<br>
+
+### Learning rate
+
+Je kan testen met batch size en learning rate om te zien of je een betere accuracy krijgt.
+
+```javascript
+const options = { 
+    task: 'classification', 
+    debug: true   ,
+    learningRate: 0.2,
+}
+nn = ml5.neuralNetwork(options)
+```
+
+```js
+const trainingOptions = {
+  epochs: 32,
+  batchSize: 12
+}
+nn.train(trainingOptions, finishedTraining);
+```
+<br>
+<br>
+<br>
 
 ### Regression
 
-Bij regression moet je opletten dat `activation` bij de output layer op `sigmoid` staat. Dit zorgt ervoor dat je output een getal tussen 0 en 1 wordt. Je kan dit ook leeg laten, dan krijg je een getal dat niet wordt afgerond.
+Regression betekent het voorspellen van een *getal* in plaats van een *klasse*. Bijvoorbeeld: de prijs van een huis, of het energieverbruik van een auto. Je kan bij het aanmaken van een neural network aangeven dat de task `regression` moet zijn.
+
+In dit voorbeeld maken we extra hidden layers aan voor een regression task:
 
 ```javascript
 const options = { 
@@ -89,11 +116,18 @@ const options = {
         },
         {
             type: 'dense',
-            activation: 'sigmoid',     // <-- opgelet!
+            activation: 'linear',     
         },
     ]
 }
 nn = ml5.neuralNetwork(options)
+```
+Het toevoegen van data voor regression ziet er als volgt uit. In dit voorbeeld worden twee eigenschappen van een auto (gewicht en horsepower) gelinkt aan het energieverbruik (miles per gallon):
+
+```js
+// [weight, horsepower], miles per gallon
+nn.addData([1000,120], 10)
+nn.addData([1200,140], 12)
 ```
 
 <br>
