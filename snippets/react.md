@@ -28,7 +28,7 @@ export default function App() {
     const canvasRef = useRef(null)
 
     return (
-        <section>
+        <section className="videosection">
             <Webcam
                 width="480"
                 height="270"
@@ -38,21 +38,13 @@ export default function App() {
                 videoConstraints={videoConstraints}
                 ref={webcamRef}
             />
+            <canvas ref={canvasRef} width="480" height="270"></canvas>
         </section>
     )
 }
 ```
-## Plaats webcam en canvas element boven elkaar.
+Plaats de webcam en het canvas element boven elkaar. Omdat de webcam is gespiegeld moet je het x coordinaat ook spiegelen in de CSS.
 
-Omdat de webcam is gespiegeld moet je het canvas spiegelen in de CSS.
-
-```js
-<section className="videosection">
-    <Webcam ... />
-    <canvas ref={canvasRef} width="480" height="270"></canvas>
-</section>
-```
-css
 ```css
 .videosection {
     background-color: rgb(70, 70, 70);
@@ -75,11 +67,58 @@ css
 
 <br><br><br>
 
+## Opzet app
+
+De app bestaat uit een `ref` voor de webcam, posemodel, en canvas. Er is een `state` voor de posedata.
+
+```js
+import { useEffect, useRef, useState } from "react";
+import { PoseLandmarker, HandLandmarker, FilesetResolver, DrawingUtils } from "@mediapipe/tasks-vision";
+import Webcam from "react-webcam";
+
+const videoConstraints = {...};
+
+export default function App() {
+    const [poseData, setPoseData] = useState([])
+    const webcamRef = useRef(null)
+    const canvasRef = useRef(null)
+    const landmarkerRef = useRef(null)
+
+    // capture de webcam stream en ontvang posedata
+    const capture = async() => {
+        //...
+    }
+
+    // laad het landmarker model in de landmarkerRef
+    useEffect(() => {
+        //...
+    }, [])
+
+    // als de pose state is veranderd wordt deze code aangeroepen
+    useEffect(() => {
+        //...
+    }, [poseData]);
+
+    return (
+        <section className="videosection">
+        ...
+        </section>
+    )
+}
+
+
+
+
+```
+
+
+<br><br><br>
+
 ## Landmarker laden
 
 Start de landmarker in `useEffect`. Sla een referentie naar het model op met `useRef`. 
 
-In dev mode triggert useEffect soms twee keer, dit is een bug in react.
+In dev mode triggert useEffectsoms twee keer, dit is een bug in react.
 
 ```js
  useEffect(() => {
@@ -128,7 +167,8 @@ const capture = async() => {
 
 # Posedata tonen
 
-Omdat `poseData` nu een `state` is kan je de objecten tonen in je component. 
+Omdat `poseData` nu een `state` is kan je de objecten tonen in je component:
+
 ```jsx
 <section>
     <h1>Handen</h1>
