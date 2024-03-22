@@ -107,6 +107,12 @@ Maak een nieuw project waarin ook weer de MediaPipe pose detection met de webcam
 
 <br><br><br>
 
+# Expert level
+
+- Je kan [React](../snippets/react.md) gebruiken om de MediaPipe interface te bouwen.
+
+<br><br><br>
+
 # Troubleshooting
 
 ### Workflow
@@ -150,3 +156,4 @@ let result = machine.classify([2,3,4,5,6,7])
 - [MediaPipe Examples](https://developers.google.com/mediapipe/solutions/examples)
 - [MediaPipe Javascript Documentation](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision)
 - [MediaPipe Handpose](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision.handlandmarker#handlandmarker_class)
+- [MediaPipe in React](../snippets/react.md) 

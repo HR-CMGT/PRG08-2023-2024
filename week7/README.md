@@ -16,7 +16,7 @@
 
 In week 6 hebben we pose data leren herkennen met het "K-Nearest-Neighbour" algoritme. We gaan nu het "Neural Network" algoritme gebruiken. Een aantal voordelen:
 
-- Het KNN model moet altijd alle data onthouden.
+- Het KNN model moet altijd alle data onthouden. 
 - Een KNN model kan erg groot zijn als er veel data is.
 - Het NN model kan juist erg klein zijn, ongeacht hoeveel data er is.
 - Een NN is beter in het vinden van complexe of onlogisch lijkende patronen *(een grote dikke kat wordt toch als kat herkend en niet als hond)*
@@ -188,7 +188,8 @@ Nadat het model is geladen *(let op de callback functie)*, kan je live posedata 
 
 # Expert level
 
-Je kan zelf extra [hidden layers](../snippets/layers.md) toevoegen om complexere data te kunnen leren.
+- Je kan [React](../snippets/react.md) gebruiken om de interface te bouwen.
+- Je kan zelf extra [hidden layers](../snippets/layers.md) toevoegen om complexere data te kunnen leren.
 
 <br>
 <br>
@@ -262,5 +263,6 @@ let result = await nn.classify([2,3,4,5,6,7])
 - [ML5 Neural Networks](https://learn.ml5js.org/#/reference/neural-network)
 - [Callbacks en asynchrone functies](https://learn.ml5js.org/#/tutorials/promises-and-callbacks)
 - [ML5 Neural Networks Hidden Layers](./snippets/layers.md)
+- [MediaPipe in React](../snippets/react.md) 
 - [📺 Crash Course Neural Networks](https://www.youtube.com/watch?v=JBlm4wnjNMY)
 - [📺 But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk)

@@ -171,9 +171,14 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van d
 
 > *Tip: gebruik de `z` coördinaat om te zien hoe ver weg iets is.*
 
+<br><br><br>
+
+# Expert level
+
+- Je kan [React](../snippets/react.md) gebruiken om de MediaPipe interface te bouwen.
 
 
-<br>
+<br><br><br>
 
 |  |  |
 |--|--|
@@ -195,3 +200,4 @@ Bedenk een game of applicatie waarbij je gebruik maakt van de coördinaten van d
 - [Codepen Face](https://codepen.io/mediapipe-preview/pen/OJBVQJm)
 - [Hand as computer interface](https://medium.spatialpixel.com/turning-your-hand-into-a-keyboard-6b21d092cfd0)
 - [Charlie Gerard pose experiments](https://charliegerard.dev/projects)
+- [MediaPipe in React](../snippets/react.md)
