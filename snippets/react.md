@@ -260,7 +260,7 @@ useEffect(() => {
     drawingUtilsRef.current = new DrawingUtils(ctx)
 }, [])
 ```
-Daarna kan je de drawing utils aanroepen elke keer dat `poseData` is veranderd. Dit kan je ook in een eigen canvas component plaatsen.
+Daarna kan je de drawing utils aanroepen elke keer dat `poseData` is veranderd. 
 ```js
 useEffect(() => {
     const ctx = canvasRef.current.getContext('2d')
@@ -308,7 +308,3 @@ export default function Hands({ poseData }) {
 
 <br><br><br>
 
-
-# Finished project
-
-Bekijk de [src](./src) folder voor het complete project.
