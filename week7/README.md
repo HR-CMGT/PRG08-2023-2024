@@ -9,7 +9,9 @@
 
 ## Neural Networks
 
-![nn](../images/nn.png)
+<img src="../images/neural-classification.png" width="550">
+
+<br>
 
 In week 6 hebben we pose data leren herkennen met het "K-Nearest-Neighbour" algoritme. We gaan nu het "Neural Network" algoritme gebruiken. Een aantal voordelen:
 
@@ -58,6 +60,8 @@ async function finishedTraining(){
 ```
 Zorg dat je cats and dogs kan voorspellen voordat je verder gaat met de mediapipe oefening.
 
+> *In bovenstaande code wordt zowel een `callback` als een `async await` code gebruikt. Je moet wachten tot het trainen klaar is, en je moet ook wachten tot een `classify` klaar is. Vergeet dit niet bij het bouwen van je eigen app*.
+
 <br>
 <br>
 <br>
@@ -91,21 +95,21 @@ data = data.toSorted(() => (Math.random() - 0.5))
 
 ## Data gereed maken voor Neural network
 
-Je kan elke pose uit je `data` aan het neural network toevoegen via de `addData` functie. Dit doe je door je data op te splitsen in een array van numbers: `[3,5,2,1,4,3,5,2]`, gevolgd door een object met het label: `{label:"rock"}`. Je voegt één pose als volgt toe:
+Na het randomizen kan je poses aan het neural network toevoegen via de `addData` functie. Dit doe je door je data op te splitsen in een array van numbers: `[3,5,2,1,4,3,5,2]`, gevolgd door een object met het label: `{label:"rock"}`. Je voegt één pose als volgt toe:
 ```js
 nn.addData([3,5,2,1,4,3,5,2], {label:"rock"})
 ```
 Je hebt een `for` loop nodig om één voor één al je pose data toe te voegen. 
 
-> *🚨 Een veel voorkomende fout is dat je posedata uit mediapipe niet naar de juiste vorm is omgezet voor de `addData` functie. Wat ook vaak fout gaat is dat niet **elke pose** evenveel punten bevat!*
+> *🚨 Een veel voorkomende fout is dat je posedata uit mediapipe niet naar de juiste vorm is omgezet voor de `addData` functie. Wat ook vaak fout gaat is dat niet **elke pose** evenveel punten bevat, of dat je labels niet overeenkomen.*
 
 <br><br><br>
 
 ## Trainen
 
-Nadat je al je data hebt toegevoegd roep je de `normalize` functie aan. Daarna begin je met trainen.
+Nadat je al je data hebt toegevoegd roep je de `normalize` functie aan. Daarna begin je met trainen. Bij het trainen kan je experimenteren met het aantal `epochs`. De blauwe lijn moet zo dicht mogelijk bij de waarde 0 komen. 
 
-Bij het trainen moet je aangeven hoeveel `epochs` dit moet duren. Hier kan je zelf mee experimenteren. De blauwe lijn moet zo dicht mogelijk bij de waarde 0 komen. Als hier geen verbetering meer in zit, heb je genoeg epochs. Als de blauwe lijn vrij snel stopt met verbeteren, dan is er een probleem in je data. Zie de troubleshooting.
+> *Als de blauwe lijn nauwelijks verbetert, ook bij een hoog aantal epochs, dan is er waarschijnlijk een probleem met je data. Zie het `troubleshooting` hoofdstuk*.
 
 ```javascript
 function startTraining() {
@@ -117,7 +121,12 @@ async function finishedTraining(){
 }
 ```
 
-<img src="../images/epochs.png" width="350">
+| Training kan beter | Training gaat goed | 
+| ----------- | ------ | 
+| <img src="../images/epochs.png" width="350"> | <img src="../images/training-good.png" width="350"> | 
+
+
+
 
 <br>
 <br>
@@ -215,18 +224,20 @@ function nextStep(){
 
 Het trainen van een model kan makkelijk mis gaan. De meest voorkomende oorzaken:
 
-- De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet voor elk datapunt exact hetzelfde zijn. Als één pose uit 100 punten bestaat, dan moeten alle poses uit 100 punten bestaan.
+- De data is niet consistent. De inhoud van elk datapunt *(een array met getallen)* moet hetzelfde zijn (bv. een array van 20 numbers).
+- Er is te weinig data. Probeer minimaal 20 tot 30 poses per label op te slaan. 100 poses zou nog beter zijn.
+- De data bevat niet genoeg variatie. Probeer voor elk label verschillende variaties op te slaan *(dichtbij camera, ver van camera, links in beeld, rechts in beeld)*.
 - De labels kloppen niet of je bent labels vergeten.
-- Er is iets mis gegaan bij het opslaan van de posedata. Niet elke pose heeft evenveel getallen, of je hebt getallen opgeslagen als strings. (bv. `pose="5,2,5,2"`)
-- Je verzamelde data geef je niet in de juiste vorm door aan het algoritme.
-- Je data in de classify aanroep heeft een andere vorm dan de data die je bij addData hebt gebruikt.
+- Er is iets mis gegaan bij het omzetten van je webcam data naar training data. Je moet een array van getallen en een object met een label doorgeven.
+- De labels komen niet overeen (bv. `"Rock"` en `"rock"` is niet hetzelfde).
+- Je data in de `classify` aanroep heeft een andere vorm dan de data die je bij `addData` hebt gebruikt.
 
-#### De pose is hier een object, maar het moet alleen een array met numbers zijn
+#### 🚫 De pose is hier een object, maar het moet alleen een array met numbers zijn
 
 ```js
 nn.addData({pose:[2,4,5,3]}, {label:"rock"})
 ```
-#### Hier gaat het trainen wel goed, maar bij classify is de data array ineens veel langer
+#### 🚫 De classify aanroep is niet hetzelfde als de addData aanroep
 ```js
 nn.addData([2,3,4], {label:"rock"})
 nn.addData([5,3,1], {label:"paper"})
