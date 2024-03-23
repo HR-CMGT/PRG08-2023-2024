@@ -118,8 +118,6 @@ export default function App() {
 
 Start de landmarker in `useEffect`. Sla een referentie naar het model op met `useRef`. 
 
-In dev mode triggert useEffectsoms twee keer, dit is een bug in react.
-
 ```js
  useEffect(() => {
     const createHandLandmarker = async () => {
@@ -308,3 +306,4 @@ export default function Hands({ poseData }) {
 
 <br><br><br>
 
+> *In React StrictMode kan in de dev server `useEffect` onverwacht twee keer worden aangeroepen. In de `build` versie krijg je deze error niet.*

@@ -15,6 +15,7 @@ import knn from 'knear'
 export default function App() {
     const [prediction, setPrediction] = useState(undefined)
     const machine = useRef(new knn.kNear(3)) // of new kNear(3)    
+
     const makePrediction = () => {
         const result = machine.current.classify([3,5,4])
         setPrediction(result)
@@ -29,8 +30,10 @@ export default function App() {
 
     return (
         <>
+            <button onClick={makePrediction}>Make Prediction</button>
             <p>The prediction is {prediction}</p>
         </>
     )
 }
 ```
+> *In React StrictMode kan in de dev server `useEffect` onverwacht twee keer worden aangeroepen. In de `build` versie krijg je deze error niet.*

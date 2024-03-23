@@ -188,8 +188,9 @@ Nadat het model is geladen *(let op de callback functie)*, kan je live posedata 
 
 # Expert level
 
-- Je kan [React](../snippets/react.md) gebruiken om de interface te bouwen.
 - Je kan zelf extra [hidden layers](../snippets/layers.md) toevoegen om complexere data te kunnen leren.
+- Je kan [React](../snippets/react.md) gebruiken om de MediaPipe data te verzamelen.
+- Je kan het [ML5 Neural Network in React](../snippets/reactml5.md) gebruiken om voorspellingen in de UI te tonen.
 
 <br>
 <br>
@@ -264,5 +265,6 @@ let result = await nn.classify([2,3,4,5,6,7])
 - [Callbacks en asynchrone functies](https://learn.ml5js.org/#/tutorials/promises-and-callbacks)
 - [ML5 Neural Networks Hidden Layers](./snippets/layers.md)
 - [MediaPipe in React](../snippets/react.md) 
+- [ML5 Neural Network in React](../snippets/reactml5.md) 
 - [📺 Crash Course Neural Networks](https://www.youtube.com/watch?v=JBlm4wnjNMY)
 - [📺 But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk)
