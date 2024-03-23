@@ -109,6 +109,7 @@ Maak een nieuw project waarin ook weer de MediaPipe pose detection met de webcam
 
 # Expert level
 
+- Je kan KNN trainen in [React](../snippets/reactknn.md)
 - Je kan [React](../snippets/react.md) gebruiken om de MediaPipe interface te bouwen.
 
 <br><br><br>
@@ -156,4 +157,5 @@ let result = machine.classify([2,3,4,5,6,7])
 - [MediaPipe Examples](https://developers.google.com/mediapipe/solutions/examples)
 - [MediaPipe Javascript Documentation](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision)
 - [MediaPipe Handpose](https://developers.google.com/mediapipe/api/solutions/js/tasks-vision.handlandmarker#handlandmarker_class)
+- [KNN in React](../snippets/reactknn.md) 
 - [MediaPipe in React](../snippets/react.md) 
