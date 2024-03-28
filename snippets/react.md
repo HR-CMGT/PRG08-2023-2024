@@ -192,7 +192,9 @@ Je kan deze hele code ook in een eigen component plaatsen:
 ```
 <br><br><br>
 
-# Posedata naar console of canvas
+# Posedata
+
+## Posedata in console
 
 Deze `useEffect` luistert naar state changes. Dit kan je gebruiken als je de coordinaten in de console wil loggen of als je de pose in het canvas wil tekenen.
 
@@ -209,14 +211,7 @@ useEffect(() => {
 
 <br><br><br>
 
-# Posedata tekenen
-
-- Zelf tekenen in canvas element
-- DrawingUtils gebruiken
-
-<br>
-
-## Zelf tekenen in canvas element
+## Posedata in canvas element
 
 Je hebt een `useRef` nodig om een referentie naar het canvas te krijgen. 
 
@@ -245,9 +240,9 @@ Het is mooier om de canvas en drawing code in een eigen component te zetten. De 
 <Painting poseData={poseData}/>
 ```
 
-<br><br>
+<br><br><br>
 
-## DrawingUtils
+# PoseData met DrawingUtils
 
 Je kan de MediaPipe `DrawingUtils` gebruiken om poses te tekenen. Je moet een `new DrawingUtils()` aanmaken bij de eerste `useEffect` call. 
 
@@ -304,6 +299,42 @@ export default function Hands({ poseData }) {
 
 ```
 
-<br><br><br>
 
 > *In React StrictMode kan in de dev server `useEffect` onverwacht twee keer worden aangeroepen. In de `build` versie krijg je deze error niet.*
+
+<br><br><br>
+
+## RequestAnimationFrame
+
+In React moet je er rekening mee houden dat een `state` niet altijd bevat wat je verwacht. In onderstaande code gebruiken we `useRef` om via `requestAnimationframe` de juiste state uit te lezen.
+
+
+```js
+const App = () => {
+  const [title, setTitle] = useState("Testing");
+  const titleRef = useRef(title)
+ 
+  const onClickHandler = (tag) => {
+     setTitle(tag)
+  }
+
+  useEffect(() => {
+    titleRef.current = title
+  }, [title]); 
+
+  useEffect(() => {
+    const logState = () => {
+      console.log(titleRef.current)
+      window.requestAnimationFrame(logState)
+    }
+    logState()
+  }, [])
+
+  return (
+    <button onClick={onClickHandler}>Click me</button>
+  )
+}
+```
+
+
+ 
