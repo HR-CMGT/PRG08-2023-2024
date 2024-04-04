@@ -8,13 +8,17 @@
 
 <br><br><br>
 
-## Accuracy berekenen
+# Accuracy
 
 Tot nu toe hebben we de nauwkeurigheid van de voorspelling van het `K-Nearest-Neighbour` en het `Neural Network` getest door live voor de webcam poses te classifyen, en te kijken of de voorspelling klopt. Maar we weten niet precies hoe vaak een correcte voorspelling gedaan wordt.
 
+## Testdata 
+
+Met MediaPipe kan je makkelijk een nieuwe dataset maken die je gaat gebruiken om te testen. Als je al heel veel posedata had verzameld, kan je ook je bestaande data splitsen in traindata en testdata.
+
 ### Splitsen in train en testdata
 
-We kunnen de *accuracy* van een model uitrekenen door de originele posedata op te splitsen in *train* en *test* data. In dit voorbeeld shufflen we onze data en splitsen we het op in twee datasets. Het shufflen (`sort`) is nodig omdat anders alle `rocks` en `scissors` in de traindata komen en alle `papers` in de testdata. Het getal `0.8` betekent dat 80% van de data is om te trainen, en 20% is om te testen.
+In dit voorbeeld shufflen we onze data en splitsen we het op in twee datasets. Het shufflen (`sort`) is nodig omdat anders alle `rocks` en `scissors` in de traindata komen en alle `papers` in de testdata. Het getal `0.8` betekent dat 80% van de data is om te trainen, en 20% is om te testen.
 
 ```js
 const data = [
@@ -30,21 +34,25 @@ const test = data.slice(Math.floor(data.length * 0.8) + 1)
 
 > *🚨 Let op dat zowel je traindata als je testdata voldoende voorbeelden van elke pose bevat.*
 
-### Accuracy uitrekenen
+<br><br><br>
 
-We trainen het model nu alleen met de `train` dataset, zoals je ook gedaan hebt in les 6 en 7. Vervolgens ga je voor elk datapunt in je `test` dataset een voorspelling doen. Omdat je voor de `test` data ook het label beschikbaar hebt, kan je vergelijken of de voorspelling overeenkomt met het echte label:
+## Accuracy uitrekenen
+
+We trainen het model nu alleen met de `train` dataset, zoals je ook gedaan hebt in les 6 en 7. Vervolgens ga je voor elk datapunt in je `test` dataset een voorspelling doen. Omdat je voor de `test` data ook het label beschikbaar hebt, kan je vergelijken of de voorspelling overeenkomt met het echte label. Hier zie je een voorbeeld met 1 pose uit de testdata:
 
 ```js
-for (let d of test) {
-    const result = await nn.classify(d.pose)  // bv. [3,5,3,45,65,3,...]
-    console.log(`Ik voorspelde: ${result[0].label}. Het correcte antwoord is: ${d.label}`)
-}
+const testpose = {pose:[3,4,6], label:"rock"}
+const prediction = await nn.classify(testpose.pose)
+console.log(`Ik voorspelde: ${prediction[0].label}. Het correcte antwoord is: ${testpose.label}`)
 ```
-#### Opdracht
 
-*Maak een variabele aan waarin je bijhoudt hoe vaak de voorspelling overeenkomt met het echte label. Toon als percentage hoeveel voorspellingen van het totaal goed zijn gegaan!*
+Maak een variabele aan waarin je bijhoudt *hoe vaak* de voorspelling overeenkomt met het echte label. Toon als percentage hoeveel voorspellingen van het totaal goed zijn gegaan! 
 
-<br>
+```
+let accuracy = correctpredictions / totaltestposes
+```
+
+<br><br><br>
 
 ### Expert level: Confusion matrix
 
@@ -56,15 +64,13 @@ Als je nóg preciezer wil kunnen bepalen hoe accuraat je voorspelling is kan je 
 | Paper | 2 | 18 | 10 |
 | Scissors | 0 | 1 | 19 |
 
-#### Opdracht
-
-*Verbeter je accuracy berekening door per class bij te houden of de voorspelling goed gaat.*
-
 <br><br><br>
 
 ## Accuracy verbeteren
 
 Een algoritme heeft vaak instellingen waarmee je kan experimenteren *(zgn. hyperparameters)*. In deze les ga je kijken of jouw voorspellingen beter worden nadat je deze instellingen hebt aangepast. 
+
+<br><br><br>
 
 ### K-Nearest-Neighbour
 
